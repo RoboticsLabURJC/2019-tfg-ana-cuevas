@@ -39,24 +39,26 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         d = par*0.5   #The parameter indicates total density, divide by two
                       # to get salt density and pepper density
         numpix =np.ceil(d* img.size) #The total number of pixels affected
-        print(numpix)
+        h, w = img.shape
+        numpix = numpix.item()
         out = np.copy(imgd)
-        print('out normal')
-        print(out)
+        
         #get noise coords
-        for i in (numpix):
-            coordssalt = np.random.randint(0, i - 1, 2)
-            print(coordssalt)
+        
+        saltx = np.random.randint(0, h-1, int(numpix))
+        salty = np.random.randint(0, w-1, int(numpix))
+        pepperx = np.random.randint(0, h-1, int(numpix))
+        peppery = np.random.randint(0, w-1, int(numpix))
+        
+        for i in range(0, int(numpix)-1):
             
-            out[coordssalt[0],coordssalt[1]] = 1
-            print('out modificada')
-            print(out)
-            coordspepper = np.random.randint(0, i - 1, 2)
-            out[coordspepper[0], coordspepper[1]] = 0
+            out[saltx[i],salty[i]] = 1
+        
+            out[pepperx[i],peppery[i]] = 0
         
         print('out double')
         print(out)
-        imdoublefloat2uint8(out)
+        out = imdoublefloat2uint8(out)
         print('out uint 8')
         print(out)
         return(out)
