@@ -27,12 +27,18 @@ def RGB2ind(img):
     
     colorsorder = [(k, colors[k]) for k in sorted(colors, key=colors.get, reverse=True)]
     colormap = []
-    print(colorsorder[0])
+    #print(colorsorder)
+    count= 0
+    for i in range(0, 255):
+        count += colorsorder[i][1]
+    print(count)
+    print(h*w)
     
     for i in range(0, 255):
         k= colorsorder[i][0]
         l = list(k)
         print(l)
+
     return [img, colors]
 
 if __name__ == "__main__":
