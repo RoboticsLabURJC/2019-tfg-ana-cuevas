@@ -12,6 +12,7 @@ parameters:
 """
 import numpy as np
 import cv2
+import math
 
 def im2double(im):
     info = np.iinfo(im.dtype) # Get the data type of the input image
@@ -30,8 +31,9 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         h,w = img.shape
         m, v = par
         nmat = np.random.standard_normal(size=(h,w))
-        nmat = v*nmat + m
+        nmat = math.sqrt(v)*nmat + m
         noisy = imgd + nmat
+        
         noisy = imdoublefloat2uint8(noisy)
         return noisy
         
@@ -62,6 +64,16 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         print('out uint 8')
         print(out)
         return(out)
+    
+    elif noise == "speckle":
+        
+        v = par
+        h,w = img.shape
+        nmat = np.random.uniform(-0.5, 0.5, (h,w))
+        print(nmat.shape)
+        noisy = imgd + math.sqrt(12*v)*np.multiply(imgd,nmat);
+        noisy = imdoublefloat2uint8(noisy)
+        return noisy
         
     else:
         print("Incorrect argument fo noise")
@@ -69,4 +81,4 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         
 img = np.matrix([[127, 32, 24, 36, 80, 95],[127, 32, 46, 36, 80, 95],[127, 32, 100, 36, 80, 95],[64, 255, 8, 12, 25, 67]], dtype = 'uint8')
 print(img)
-imnoise(img, "sandp", 0.1)
+imnoise(img, "speckle", 0.1)
