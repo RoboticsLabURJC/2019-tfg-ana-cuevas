@@ -13,6 +13,7 @@ parameters:
 import numpy as np
 import cv2
 import math
+from matplotlib import pyplot as plt
 
 def im2double(im):
     info = np.iinfo(im.dtype) # Get the data type of the input image
@@ -20,7 +21,20 @@ def im2double(im):
                                           #possible value in the datatype
                                           
 def imdoublefloat2uint8(im):
+    
+    h, w = im.shape
+    
+    for i in range(0, h):
+        for j in range(0, w):
+            
+            if im[i,j]<=0.0:
+                
+                im[i,j]= 0;
+                
+            if im[i,j]>1.0:
+                im[i,j]= 1.0;
     im = im*255
+    
     return im.astype(np.uint8)
 
 def imnoise(img, noise = "gauss", par = [0,0.01]):
@@ -33,7 +47,6 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         nmat = np.random.standard_normal(size=(h,w))
         nmat = math.sqrt(v)*nmat + m
         noisy = imgd + nmat
-        
         noisy = imdoublefloat2uint8(noisy)
         return noisy
         
@@ -58,11 +71,11 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         
             out[pepperx[i],peppery[i]] = 0
         
-        print('out double')
-        print(out)
+        #print('out double')
+        #print(out)
         out = imdoublefloat2uint8(out)
-        print('out uint 8')
-        print(out)
+        #print('out uint 8')
+        #print(out)
         return(out)
     
     elif noise == "speckle":
@@ -70,7 +83,7 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         v = par
         h,w = img.shape
         nmat = np.random.uniform(-0.5, 0.5, (h,w))
-        print(nmat.shape)
+        #print(nmat.shape)
         noisy = imgd + math.sqrt(12*v)*np.multiply(imgd,nmat);
         noisy = imdoublefloat2uint8(noisy)
         return noisy
@@ -79,6 +92,6 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         print("Incorrect argument fo noise")
         return(img)
         
-img = np.matrix([[127, 32, 24, 36, 80, 95],[127, 32, 46, 36, 80, 95],[127, 32, 100, 36, 80, 95],[64, 255, 8, 12, 25, 67]], dtype = 'uint8')
-print(img)
-imnoise(img, "speckle", 0.1)
+#img = np.matrix([[127, 32, 24, 36, 80, 95],[127, 32, 46, 36, 80, 95],[127, 32, 100, 36, 80, 95],[64, 255, 8, 12, 25, 67]], dtype = 'uint8')
+#print(img)
+#imnoise(img, "speckle", 0.1)
