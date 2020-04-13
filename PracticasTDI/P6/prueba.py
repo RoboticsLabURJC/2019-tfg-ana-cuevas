@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-RGB2HSI: funcion para cambiar espacio de color
+Created on Mon Apr 13 12:32:50 2020
 
-parámetros:
-    In: Imagen en RGB rango 0-255
-    Out: Imagen HSI rango 0-1
-                          
+@author: anusk
 """
+
 import numpy as np
 import cv2
 import math
@@ -15,6 +13,7 @@ def RGB2HSI(Img):
     
     eps = 0.00000000001
     Ist = Img/255
+    print('Ist type')
     print(Ist.dtype)
     I_R,I_G,I_B = cv2.split(Ist)
     
@@ -23,7 +22,7 @@ def RGB2HSI(Img):
     R = I_R / 255
     G = I_G / 255
     B = I_B / 255
-    
+    print(I_R.dtype)
     h, w = R.shape
 
     #H
@@ -47,7 +46,16 @@ def RGB2HSI(Img):
     #S
     S = 1- (3*np.minimum(R, G, B))/(R+G+B+ eps)
     
+    print('s : ' + str(S.dtype))
+    
     I_HSI = cv2.merge((H,S,I))
     
     return I_HSI
     
+
+if __name__ == "__main__":
+    
+    I = cv2.imread('Board_Recorte.tif')
+    I = cv2.cvtColor(I, cv2.COLOR_BGR2RGB)
+    
+    I_func = RGB2HSI(I)
