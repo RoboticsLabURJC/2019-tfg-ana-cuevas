@@ -19,6 +19,8 @@ Log  de avances
         - Buscando información sobre filtro de entropía, solo existe versión C
         - Mirando el código de matlab partes del código ocultas 
         - Buscando más recursos
-        
+-Continuar P6
+        - Sacados bordes de los 7 chips usando morfología
+        - Terminado de copiar enunciado
         
         
