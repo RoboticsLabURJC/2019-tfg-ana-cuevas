@@ -1,0 +1,24 @@
+28/04/2020 - 01/05/2020
+
+Objetivos de la semana
+
+1. Github pages
+2. Avances en texturas P5
+3. Continuar traducción P4
+4. Continuar P6
+
+
+Log  de avances
+
+- Investigado sobre github pages, mirar yekyll para una mejor presentación
+- Texturas P5
+        - No existen los filtros usados en la práctica en OpenCV
+        - Encontrada opción para filtro de variación estandar en Stack overflow:       
+          https://stackoverflow.com/questions/7331105/stdfilt-in-opencv/40027378#40027378
+        - Implementado filtro de variación estándar en stdfilter.py, comprobado funcionamiento en cuadernillo
+        - Buscando información sobre filtro de entropía, solo existe versión C
+        - Mirando el código de matlab partes del código ocultas 
+        - Buscando más recursos
+        
+        
+        
