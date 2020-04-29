@@ -22,5 +22,7 @@ Log  de avances
 -Continuar P6
         - Sacados bordes de los 7 chips usando morfología
         - Terminado de copiar enunciado
+        - Hecho apartado de cuadrados y rectangulos (excentricidad)
+        - P6 completada a falta de traducció
         
         
