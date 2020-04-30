@@ -19,10 +19,13 @@ Log  de avances
         - Buscando información sobre filtro de entropía, solo existe versión C
         - Mirando el código de matlab partes del código ocultas 
         - Buscando más recursos
+        - Encontradas formas de calcular la entropía de un array unidimensional en python, intentos de implementación en sntropyfilt.py
+        - Conseguida una imagen que se parece a el filtro de entropia ejecutado en matlab, habria que revisar donde divergen
 -Continuar P6
         - Sacados bordes de los 7 chips usando morfología
         - Terminado de copiar enunciado
         - Hecho apartado de cuadrados y rectangulos (excentricidad)
-        - P6 completada a falta de traducció
+        - P6 completada a falta de traducción
+        
         
         
