@@ -23,10 +23,10 @@ def entropy2(labels):
         return 0
     
     counts = np.bincount(labels)
-    #counts = 256
     probs = counts / n_labels
-    #print('probs' + str(probs))
-    n_classes = np.count_nonzero(probs)
+    
+    #n_classes = np.count_nonzero(probs)
+    n_classes = 256
     #print('nclases  ' + str(n_classes))
     if n_classes <= 1:
         return 0
@@ -50,6 +50,7 @@ if __name__ == "__main__":
 
     J = copy.deepcopy(img)
     J = np.float64(J)
+    J = np.pad(J, ((4, 4), (4, 4)), 'reflect')
     
     for i in range(4, h-4):
             for j in range(4, w-4):
@@ -61,8 +62,9 @@ if __name__ == "__main__":
 
                 J[i,j]= entropy2(x)
                 
-                
-                
+    
+    J = J[4:h-4, 4:w-4]            
+    J = np.uint8(255*J)           
     cv2.imshow('stdfilt', J)
     cv2.waitKey(0)
     cv2.destroyWindow('stdfilt')

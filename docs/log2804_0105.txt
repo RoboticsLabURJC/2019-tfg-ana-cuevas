@@ -21,6 +21,7 @@ Log  de avances
         - Buscando más recursos
         - Encontradas formas de calcular la entropía de un array unidimensional en python, intentos de implementación en sntropyfilt.py
         - Conseguida una imagen que se parece a el filtro de entropia ejecutado en matlab, habria que revisar donde divergen
+        - Mejorado filtro de entropía y añadido padding
 -Continuar P6
         - Sacados bordes de los 7 chips usando morfología
         - Terminado de copiar enunciado
