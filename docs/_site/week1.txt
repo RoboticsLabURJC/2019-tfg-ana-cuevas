@@ -1,3 +1,0 @@
--Started exercise 4 (Only needs translation)
--Finished exercise 2 (Solved white noise problem)
--Started progress diary
