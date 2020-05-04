@@ -1,0 +1,3 @@
+- Translate and correct exercise's 4 text
+- Go to matlab and get index matrix for exercise 1
+- Study the materials necessary for exercise 3
