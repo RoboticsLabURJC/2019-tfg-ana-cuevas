@@ -21,7 +21,7 @@ title_separator          : "-"
 subtitle                 : Programming Robot Intelligence
 name                     : "JdeRobot"
 description              : "Programming Robot Intelligence"
-url                      : http://roboticslaburjc.github.io/2019-tfg-ana-cuevas
+url                      : https://roboticslaburjc.github.io/2019-tfg-ana-cuevas
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : RoboticsLabURJC
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
