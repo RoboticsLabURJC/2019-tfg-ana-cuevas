@@ -50,6 +50,7 @@ def entropyfilter(img):
     J = np.float64(J)
     J = np.pad(J, ((4, 4), (4, 4)), 'reflect')
     
+    
     for i in range(4, h-4):
             for j in range(4, w-4):
                 
@@ -59,10 +60,14 @@ def entropyfilter(img):
                 #print(x.dtype)
 
                 J[i,j]= entropy2(x)
-                
     
-    J = J[4:h-4, 4:w-4]
-    J = J/J.max()
+    cv2.imshow('stdfilt', J)
+    cv2.waitKey(0)
+    cv2.destroyWindow('stdfilt')            
+    newH, newW = J.shape
+    J = J[4:newH-4, 4:newW-4]
+    print(J.shape)
+    #J = J/J.max()
     
                 
     return np.uint8(255*J) 
