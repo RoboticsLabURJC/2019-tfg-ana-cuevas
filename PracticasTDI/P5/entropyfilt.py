@@ -44,33 +44,24 @@ def entropy2(labels):
 
 def entropyfilter(img):
     
-    h, w = img.shape
 
     J = copy.deepcopy(img)
-    J = np.float64(J)
+    F = np.zeros(J.shape, dtype=np.float64)
+     
     J = np.pad(J, ((4, 4), (4, 4)), 'reflect')
-    
+    h, w = J.shape
     
     for i in range(4, h-4):
             for j in range(4, w-4):
                 
-                x = img[i-4:i+5,j-4:j+5]
+                x = J[i-4:i+5,j-4:j+5]           
                 x = np.reshape(x, 81)
+                F[i-4,j-4]= entropy2(x)
                 
-                #print(x.dtype)
-
-                J[i,j]= entropy2(x)
-    
-    cv2.imshow('stdfilt', J)
-    cv2.waitKey(0)
-    cv2.destroyWindow('stdfilt')            
-    newH, newW = J.shape
-    J = J[4:newH-4, 4:newW-4]
-    print(J.shape)
-    #J = J/J.max()
+    F = F/F.max()
     
                 
-    return np.uint8(255*J) 
+    return np.uint8(255*F) 
 
 if __name__ == "__main__":
     
