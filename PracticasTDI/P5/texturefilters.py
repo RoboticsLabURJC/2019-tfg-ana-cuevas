@@ -1,19 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr 30 12:17:09 2020
+Created on Mon May 18 10:59:52 2020
 
 @author: anusk
+
+This file contains the functions for two different texture filters.
+
+stfilt: standar deviation filter
+        input: uint8 gray scale image
+        output : uint8 graysclae image
+
+entropyfilt: entropy filter with padding of 9.
+        input: uint8 gray scale image
+        output : uint8 graysclae image
 """
 
 import numpy as np
-from scipy.stats import entropy
-from math import log, e
-import pandas as pd
 import copy
 import cv2
+from math import log, e
 
-
-
+    
 def entropy2(labels):
     """ Computes entropy of label distribution. """
  
@@ -42,7 +49,7 @@ def entropy2(labels):
     
     return ent
 
-def entropyfilter(img):
+def entropyfilt(img):
     
     h, w = img.shape
 
@@ -67,13 +74,18 @@ def entropyfilter(img):
                 
     return np.uint8(255*J) 
 
-if __name__ == "__main__":
-    
-    img = cv2.imread('cormoran_rgb.jpg', True)
-    img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-    
-    J = entropyfilter(img)
 
-    cv2.imshow('stdfilt', J)
-    cv2.waitKey(0)
-    cv2.destroyWindow('stdfilt')          
+def stdfilt(img):
+
+    img = img / 255.0
+    
+    # c = imfilter(I,h,'symmetric');
+    h = np.ones((3,3))
+    n = h.sum()
+    n1 = n - 1
+    c1 = cv2.filter2D(img**2, -1, h/n1, borderType=cv2.BORDER_REFLECT)
+    c2 = cv2.filter2D(img, -1, h, borderType=cv2.BORDER_REFLECT)**2 / (n*n1)
+    J = np.sqrt( np.maximum(c1-c2,0) )
+    
+    return np.uint8(255*J)
+

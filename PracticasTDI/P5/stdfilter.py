@@ -20,6 +20,7 @@ def stdfilt(img):
     c1 = cv2.filter2D(img**2, -1, h/n1, borderType=cv2.BORDER_REFLECT)
     c2 = cv2.filter2D(img, -1, h, borderType=cv2.BORDER_REFLECT)**2 / (n*n1)
     J = np.sqrt( np.maximum(c1-c2,0) )
+    J = np.uint8(255*J)
     
     return(J)
 
