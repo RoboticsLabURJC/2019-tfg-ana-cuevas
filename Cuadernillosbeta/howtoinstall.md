@@ -38,7 +38,7 @@ In a terminal go to the directory of exercise 1
 `cd 1-Introduction`
 
 Now run:
-`pipenv -python x.x.x sync` this will create an enviroment with all the libraries specified in the pipfile that comes with the exercise.
+`pipenv -python x.x.x sync` where x.x.x is the version of python onyour computer, this will create an environment with all the libraries specified in the pipfile that comes with the exercise.
 
 To open the exercise run:
 `pipenv run jupyter notebook`
@@ -47,4 +47,5 @@ This should open a browser tab with the page of a jupyter notebook, it looks lik
 ![](Captura1.PNG)
 
 Open 1_Introduction.ipynb.
-Now you can strat working on a jupyter notebook witjout havin to install individually all the libraries necessary.
+
+Now you can start working on a jupyter notebook without having to install individually all the libraries necessary.
