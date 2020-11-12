@@ -14,8 +14,11 @@ Pip should be installed with python, but sometimes that's not the case , to chec
 `$ pip --version`
 
 In case pip is not installed here are some guides for the different opperating systems:
+
 ..* [windows](https://phoenixnap.com/kb/install-pip-windows)
+
 ..* [ubuntu](https://linuxize.com/post/how-to-install-pip-on-ubuntu-20.04/)
+
 ..* [Mac OS](https://sourabhbajaj.com/mac-setup/Python/pip.html)
 
 ## How to install pipenv
