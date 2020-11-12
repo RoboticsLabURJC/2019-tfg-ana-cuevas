@@ -32,7 +32,7 @@ To check if pipenv is working correctly try:
 `pipenv -h`
 
 It should look like this:
-![](Captura1.PNG)
+![](Captura2.PNG)
 
 ## Use pipenv to open a TDI exercise
 
