@@ -32,7 +32,7 @@ To check if pipenv is working correctly try:
 `pipenv -h`
 
 It should look like this:
-![](Captura2.PNG)
+![](Captura1.PNG)
 
 ## Use pipenv to open a TDI exercise
 
@@ -47,7 +47,7 @@ To open the exercise run:
 `pipenv run jupyter notebook`
 
 This should open a browser tab with the page of a jupyter notebook, which looks like this:
-![](Captura1.PNG)
+![](Captura2.PNG)
 
 Open 1_Introduction.ipynb.
 
