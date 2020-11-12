@@ -13,13 +13,13 @@ For a guide on how to install Python go to https://www.python.org/downloads/
 Pip should be installed with python, but sometimes that's not the case , to check if you have pip run:
 `$ pip --version`
 
-In case pip is not installed here are some guides for the different opperating systems:
+In case pip is not installed here are some guides for the different operating systems:
 
-..* [windows](https://phoenixnap.com/kb/install-pip-windows)
+* [windows](https://phoenixnap.com/kb/install-pip-windows)
 
-..* [ubuntu](https://linuxize.com/post/how-to-install-pip-on-ubuntu-20.04/)
+* [ubuntu](https://linuxize.com/post/how-to-install-pip-on-ubuntu-20.04/)
 
-..* [Mac OS](https://sourabhbajaj.com/mac-setup/Python/pip.html)
+* [Mac OS](https://sourabhbajaj.com/mac-setup/Python/pip.html)
 
 ## How to install pipenv
 
@@ -34,21 +34,21 @@ To check if pipenv is working correctly try:
 It should look like this:
 ![](Captura1.PNG)
 
-## Use pipenv to open a TDI exercsise
+## Use pipenv to open a TDI exercise
 
-Now that pipenv is working fork this repository.
+Now that pipenv is working, fork this repository.
 In a terminal go to the directory of exercise 1
 `cd 1-Introduction`
 
 Now run:
-`pipenv -python x.x.x sync` where x.x.x is the version of python onyour computer, this will create an environment with all the libraries specified in the pipfile that comes with the exercise.
+`pipenv -python x.x.x sync` where x.x.x is the version of python on your computer, this will create an environment with all the libraries specified in the pipfile that comes with the exercise.
 
 To open the exercise run:
 `pipenv run jupyter notebook`
 
-This should open a browser tab with the page of a jupyter notebook, it looks like this:
+This should open a browser tab with the page of a jupyter notebook, which looks like this:
 ![](Captura1.PNG)
 
 Open 1_Introduction.ipynb.
 
-Now you can start working on a jupyter notebook without having to install individually all the libraries necessary.
+Now you can start working on a jupyter notebook without having to individually install all the libraries neededs.
