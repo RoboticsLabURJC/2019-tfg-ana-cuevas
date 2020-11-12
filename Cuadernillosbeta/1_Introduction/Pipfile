@@ -10,6 +10,7 @@ jupyter = "*"
 opencv-python = "*"
 numpy = "*"
 matplotlib = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3.7"
