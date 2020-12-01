@@ -89,7 +89,7 @@ def imnoise(img, noise = "gauss", par = [0,0.01]):
         return noisy
         
     else:
-        print("Incorrect argument fo noise")
+        print("Incorrect argument for noise")
         return(img)
         
 #img = np.matrix([[127, 32, 24, 36, 80, 95],[127, 32, 46, 36, 80, 95],[127, 32, 100, 36, 80, 95],[64, 255, 8, 12, 25, 67]], dtype = 'uint8')
