@@ -67,29 +67,13 @@ def addnoise(movie, out, noiseType, noisyframes):
             if item not in range(len(Frames)):
                 print('frame number out of bounds')
     
-    channels = len(Frames[0].shape)
-    if channels == 2:
-        color = False
-        height, width = Frames[0].shape
- 
-    if channels == 3:
-        color = True
-        height, width, layers = Frames[0].shape
-        
+    height = Frames[0].shape[0]
+    width = Frames[0].shape[1]
     size = (width,height)
     
     for frame_number in noisyframes:
-        print(frame_number)
-        #frame_number = noisyframes[i]
-        if not color:
-            newframes[frame_number] = plusnoise(Frames[frame_number], noiseType)
-        else:
-            B,G,R = cv2.split(Frames[frame_number])
-            newB = plusnoise(B, noiseType)
-            newG = plusnoise(G, noiseType)
-            newR = plusnoise(R, noiseType)
-            
-            newframes[frame_number] = cv2.merge((newB,newG,newR))
+        
+        newframes[frame_number] = plusnoise(Frames[frame_number], noiseType)
     
     out = cv2.VideoWriter(out,cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
  
@@ -108,12 +92,12 @@ def tempNoiseFilter(movie, out, numAvgFrames):
  
     if channels == 3:
         height, width, layers = Frames[0].shape
-        
+    
+    
     size = (width,height)
     
     for k in range(len(Frames)):
-    #for k in range(10):
-        print(k)
+    
         if k >= numAvgFrames:
             sumFrames = np.float64(np.zeros( Frames[0].shape))
             for m in range(numAvgFrames):
