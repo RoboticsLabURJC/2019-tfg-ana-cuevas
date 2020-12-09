@@ -33,6 +33,7 @@ for m=1:blockSize(1):frameWidth-blockSize(1)+1
         % -----------------   EBMA SCRIPT  --------------------------------------------
         %Get the Current macro block
         anchorBlock=anchorFrame(m:m+blockSize(1)-1,n:n+blockSize(2)-1);
+        
         %Initial motion vector direction: mv_x mv_y
         mv_x=0;
         mv_y=0;
