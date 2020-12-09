@@ -14,19 +14,20 @@ import copy
 
 def imreconstruct(marker, mask):
 
-    EE = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
+    EE = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9,9))
     print(marker)
     Imrec = copy.deepcopy(marker)
     Imresult =np.zeros(mask.shape)
     i = 0
     
-    while Imrec.any() != Imresult.any():
-        print(Imresult)
-        print('entra en el while')
+    while (Imrec != Imresult).any():
+        
         Imresult = copy.deepcopy(Imrec)
         Imdilated = cv2.dilate(Imresult, EE)
+        
         Imrec = np.minimum(Imdilated, mask)
-        if i == 40:
+        if i == 200:
+            print('no sale del while')
             break
         i += 1
         
@@ -35,11 +36,26 @@ def imreconstruct(marker, mask):
 
 if __name__ == "__main__":
     
-    I = cv2.imread('apples.jpg', 0)
-    #I = cv2.cvtColor(I, cv2.COLOR_BGR2RGB)
-    EE = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (20,20))
-    Ie = cv2.erode(I,EE)
-    I_rec = imreconstruct(Ie, I)
+    I = cv2.imread('I_celulas.bmp', 0)
+    Icolor = cv2.imread('Icelulas.bmp', 1)
+    EE1 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
+    EE2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
+    EE3 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7,7))
+    
+    
+    open1 = cv2.morphologyEx(I, cv2.MORPH_OPEN, EE1)
+    clos1 = cv2.morphologyEx(open1, cv2.MORPH_CLOSE, EE1)
+    open2 = cv2.morphologyEx(clos1, cv2.MORPH_OPEN, EE2)
+    clos2 = cv2.morphologyEx(open2, cv2.MORPH_CLOSE, EE2)
+    open3 = cv2.morphologyEx(clos2, cv2.MORPH_OPEN, EE3)
+    I_ASF3 = cv2.morphologyEx(open3, cv2.MORPH_CLOSE, EE3)
+    
+    I_neg = 255 - I_ASF3
+    
+    EEnuevo = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (19,19))
+
+    I_marker = cv2.erode(I_neg,EEnuevo,iterations = 1)
+    I_rec = imreconstruct(I_marker, I_neg)
     
     cv2.imshow('recontruct', I_rec)
     cv2.waitKey(0)
