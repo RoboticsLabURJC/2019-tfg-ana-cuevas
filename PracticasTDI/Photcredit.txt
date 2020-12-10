@@ -4,3 +4,6 @@ aerial: Photo by Fabien Martin on Unsplash
 cells: http://cellimagelibrary.org/images/43552#cite
 
 apples: Photo by RP Photography from Pexels
+
+vegetables: Photo by Min An from Pexels
+fruits: Photo by Trang Doan from Pexels

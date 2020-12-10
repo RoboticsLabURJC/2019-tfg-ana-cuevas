@@ -1,0 +1,6 @@
+Tratamiento de imagen en python: https://books.google.es/books?hl=es&lr=&id=TzTrDwAAQBAJ&oi=fnd&pg=PT14&dq=python+image+processing&ots=gj6RJNSb0p&sig=upklMHqnlVbV4cbmrTWWnPd2cJA#v=onepage&q=python%20image%20processing&f=false
+
+OpenCV: https://dl.acm.org/doi/10.1145/2181796.2206309
+	https://opencv.org/about/
+
+Python: https://www.python.org/doc/essays/blurb/ 

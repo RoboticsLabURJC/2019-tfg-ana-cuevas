@@ -51,9 +51,11 @@ Otras bibliotecas que facilitan el tratamiento de imagen en Python son Numpy, un
 
 \subsection{OpenCV}
 
-Como ya hemos mencionado antes, OpenCV(Open Source Computer Vision Library) es una biblioteca centrada en el tratamiento de imagen y video (Computer Vision) y en aprendizaje de máquina, con interfaces para varios lenguajes de programación como C++, Python o Java. OpenCV es la biblioteca de procesamiento de imagen más usada en el mundo con más de 18 millones de descargas. Originalmente programada en C++ \\
+Como ya hemos mencionado antes, OpenCV(Open Source Computer Vision Library) es una biblioteca centrada en el tratamiento de imagen y video (Computer Vision) y en aprendizaje de máquina, con interfaces para varios lenguajes de programación como C++, Python o Java. OpenCV es la biblioteca de procesamiento de imagen más usada en el mundo con más de 18 millones de descargas. Originalmente programada en C el resto de lenguajes usa diferentes interfaces para acceder al código. Esto permite mejorar el rendimiento siendo C el lenguaje más rápido en ejecución.\\
 
 OpenCV contiene  desde funciones de bajo nivel para el procesado de imagen hasta algoritmos complejos para deteccion de caras. En este trabajo, ya que trata de dar una base de tratamiento de imagen, usaremos funciones de bajo nivel como filtros o funciones para cambiar de espacio de color.\\
+
+En este trabajo se ha usado la versión 4.2.0 de OpenCV.\\
 
 \subsection{Numpy}
 \subsection{Matplotlib}
@@ -61,6 +63,7 @@ OpenCV contiene  desde funciones de bajo nivel para el procesado de imagen hasta
 \section{Jupyter}
 \section{Matlab}
 \section{Estructura de las prácticas de TDI}
+
 
 Las prácticas originales para la asignatura de Tratamiento Digital de la Imagen consisten en una carpeta zip que se ponía a disposición de los alumnos en el aula virtual de la asignatura. Dentro de esta carpeta están las imágenes que se van a utilizar en la práctica (cuando no eran imágenes internas de MatLab), funciones adicionales necesarias en caso de que no existieran previamente y un enunciado en pdf. En la imagen \ref{carpetapracticas} se puede ver un ejemplo de una de estas carpetas.
 \begin{figure}[h]
@@ -95,6 +98,8 @@ Otra característica común de los enunciados de TDI son las preguntas para resp
 Algunos de los enunciados tienen imágenes del aspecto que tendría que tener la imagen sobre la que se está trabajando después de ciertos pasos para que el alumno pueda ver si el ejercicio progresa adecuadamente o si debería modificar alguna variable o revisar el código.\\
 
 Si se pide un algoritmo un podo más complejo en los enunciados aparece dado un trozo de ese código como ejemplo o directamente para copiar en matlab ya que el objetivo de estas prácticas no era aprender a programar en MatLab si no ilustrar de forma práctica lo dado en teoría de la asignatura.\\
+
+Las prácticas se sulen centrar en el tratamiento de una imagen en específico, elegida para ilustar el tema del que trata la práctica, por ejemplo en la práctica 1 en el apartado que trata sobre color se scoge una imagen con diferentes verduras que muestran una variedad de colores para ilustrar la mezcla aditiva de color al representarse individualmentelas matrices de cada color del sistema de representación RGB. Debido a que algunas de las imágenes usadas en las prácticas originales pertenecen a Matlab o se desconoce su origen se ha tenido que buscar imágenes nuevas, siempre intentando mantener las características de la imagen original.\\
 
 En total la asignatura consiste de nueve prácticas, 7 de imagen y 2 de video. \\
 
