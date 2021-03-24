@@ -16,3 +16,5 @@ Matpltlob: https://matplotlib.org/
 
 scikit-learn: https://scikit-learn.org/stable/
 	https://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html
+
+k-medias: https://www.unioviedo.es/compnum/laboratorios_py/kmeans/kmeans.html
