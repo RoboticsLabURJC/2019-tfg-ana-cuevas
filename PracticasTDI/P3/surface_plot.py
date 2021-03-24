@@ -3,7 +3,6 @@
 Created on Tue Jul 14 13:54:10 2020
 https://gist.github.com/CMCDragonkai/dd420c0800cba33142505eff5a7d2589
 
-@author: anusk
 """
 
 import numpy as np
