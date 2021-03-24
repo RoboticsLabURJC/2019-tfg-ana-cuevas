@@ -12,7 +12,9 @@ def EBMA(targetFrame, anchorFrame, blocksize):
     accuracy = 1
     p =16
     frameH, frameW = anchorFrame.shape
+    print(anchorFrame.shape)
     predictFrame = np.zeros(anchorFrame.shape)
+    
     k=0
     dx =[]
     dy=[]
@@ -21,26 +23,30 @@ def EBMA(targetFrame, anchorFrame, blocksize):
     
     rangestart = [0,0]
     rangeEnd =[0,0]
-    for m in range(0, frameW-blocksize, blocksize):
-        
-        rangestart[0] = m*accuracy -p*accuracy
-        rangeEnd[0] = m*accuracy + blocksize*accuracy + p*accuracy
-
-        if rangestart[0] < 0:
-            rangestart[0] =0
-            
-        if rangeEnd[0]> frameW*accuracy:
-            rangeEnd[0] = frameW*accuracy
-        
-        for n in range(0, frameH-blocksize, blocksize):
-            rangestart[1] = n*accuracy -p*accuracy
-            rangeEnd[1] = n*accuracy + blocksize*accuracy + p*accuracy
     
-            if rangestart[1] < 0:
-                rangestart[1] =0
+    
+    
+    for m in range(0, frameW, blocksize):
+        
+        rangestart[1] = m*accuracy -p*accuracy
+        rangeEnd[1] = m*accuracy + blocksize*accuracy + p*accuracy
+
+        if rangestart[1] < 0:
+            rangestart[1] =0
+            
+        if rangeEnd[1]> frameW*accuracy:
+            rangeEnd[1] = frameW*accuracy
+        
+        for n in range(0, frameH, blocksize):
+     
+            rangestart[0] = n*accuracy -p*accuracy
+            rangeEnd[0] = n*accuracy + blocksize*accuracy + p*accuracy
+    
+            if rangestart[0] < 0:
+                rangestart[0] =0
                 
-            if rangeEnd[1]> frameH*accuracy:
-                rangeEnd[1] = frameH*accuracy
+            if rangeEnd[0]> frameH*accuracy:
+                rangeEnd[0] = frameH*accuracy
             
             """
             EBMA ALGORITHM
@@ -53,11 +59,12 @@ def EBMA(targetFrame, anchorFrame, blocksize):
             
             error = 255*blocksize*blocksize*100
             
-            for x in range(rangestart[0], rangeEnd[0]-blocksize):
-                for y in range(rangestart[1], rangeEnd[1]-blocksize):
+            for x in range(rangestart[1], rangeEnd[1]-blocksize):
+                for y in range(rangestart[0], rangeEnd[0]-blocksize):
                     targetblock = targetFrame[y:y+blocksize, x:x+blocksize]
-                    
-                    temp_error = np.sum(np.absolute(np.subtract(anchorblock, targetblock)))
+                    anchorblock = np.float64(anchorblock)
+                    targetblock = np.float64(targetblock)
+                    temp_error = np.sum(np.uint8(np.absolute(anchorblock -targetblock)))
                     if temp_error < error:
                         error = temp_error
                         mv_x = y/accuracy-n
@@ -85,3 +92,6 @@ if __name__ == "__main__":
     cv2.imshow('new frame', newFrame)
     cv2.waitKey(0)
     cv2.destroyWindow('new frame')  
+    
+    #boole = (targetframe!=anchorframe)
+    #print(boole)
