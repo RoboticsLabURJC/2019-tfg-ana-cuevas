@@ -12,6 +12,7 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
     
     anchorframe = anchorFrame.astype('uint16')
     targetframe = targetFrame.astype('uint16')
+    predictFrame = np.zeros(anchorFrame.shape)
     accuracy = 1
     p =16
     frameH, frameW = anchorFrame.shape
@@ -53,7 +54,7 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
     anchorDown2[0:int(frameH/2),0:int(frameW/2)] = anchorFrame[0:frameH:2,0:frameW:2]
     anchorDown3 = np.zeros([int(frameH/4),int(frameW/4)], dtype = np.uint16)
     anchorDown3[0:int(frameH/4),0:int(frameW/4)] = anchorDown2[0:int(frameH/2):2,0:int(frameW/2):2]
-    
+    predictFrame = anchorFrame
     
     #Search fields range for each level
     rangs = rangs/(factor+e)
@@ -63,7 +64,7 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
     rangestart = [0,0]
     rangeEnd =[0,0]  
     
-    errorarray =[]
+    
     for i in range(0, frameH-blocksize+1, blocksize):
         
         rangestart[0] = int(i + rangs[0])
@@ -105,7 +106,7 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
                     #calculate error
                     
                     temp_error = np.sum(np.absolute(anchorBlock -downtargetFrame))
-                    errorarray.append(temp_error)
+                    
                     if temp_error < error:
                         
                         error = temp_error
@@ -117,23 +118,89 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
                         mv_y = y/accuracy-i
                         dx[m]= mv_x
                         dy[m]= mv_y
-                        print(dy)
             
             ox.append(j)
             oy.append(i)
             m= m+1
-            print(m)
+    dy = np.asarray(dy)
+    dx = np.asarray(dx)
     
-    for ii in range(L-1 , 1, -1):
+    for ii in range(L-1 , 0, -1):
+          print(ii)
           dx= dx*2   
           dy = dy*2
-          framH = frameH*2
+          frameH = frameH*2
           
           lineW = np.floor(frameW/blocksize)
           frameW = frameW*2
+          ttt = dy.size -1
+          m = 0
+          dxx =[]
+          dyy=[]
           
+          for i in range(0, frameH-blocksize+1, blocksize):            
+            baseline = round(((i+1)/2)/blocksize) * lineW
             
-    return errorarray
+            for j in range(0, frameW-blocksize+1, blocksize):
+                mindx = int(np.floor(baseline+ round(((j+1)/2)/blocksize)+1))
+                
+                if mindx>ttt:
+                    mindx = ttt
+                
+                
+                rangestart[0] = np.int16(i+dy[mindx]+rangs[0])
+                rangeEnd[0]= np.int16(i+dy[mindx]+blocksize+rang6[0])
+                
+                if rangestart[0] < 0:
+                    rangestart[0] =0
+                    
+                if rangeEnd[0]> frameH:
+                    rangeEnd[0] = frameH
+                
+                rangestart[1] = np.int16(j + dx[mindx]+rangs[1])
+                rangeEnd[1] = np.int16(j + dx[mindx] + blocksize +rang6[1])
+                
+                if rangestart[1] < 0:
+                    rangestart[1] =0
+                    
+                if rangeEnd[1]> frameW*accuracy:
+                    rangeEnd[1] = int(frameW*accuracy)
+                    
+               #Level 2
+                
+                if ii==2:
+                    tmpt=targetDown2[:,:]
+                    tmpa = anchorDown2[:,:]
+                
+                if ii==1:
+                    tmpt=targetDown1[:,:]
+                    tmpa = anchorDown1[:,:]
+                
+                tmpt = np.int16(tmpt)
+                tmpa = np.int16(tmpa)
+                anchorBlock = tmpa[i:i+blocksize, j:j+blocksize]
+                mv_x =0
+                mv_y=0
+                error = 255*blocksize*blocksize*100
+                for y in range(rangestart[0], rangeEnd[0]-blocksize+1):
+                    for x in range(rangestart[1], rangeEnd[1]-blocksize+1):
+                        downtargetFrame = tmpt[y:y+accuracy*blocksize:accuracy, x:x+accuracy*blocksize:accuracy]
+                        temp_error = np.sum(np.absolute(anchorBlock -downtargetFrame))
+                        
+                        if temp_error<error:
+                            error = temp_error
+                            mv_x = x/accuracy-j
+                            mv_y = y/accuracy-i
+                            while len(dx)<=m:
+                                dx.append(0)
+                                dy.append(0)
+                            
+                            dx[m]= mv_x
+                            dy[m]= mv_y
+                            predictFrame[i:i+blocksize, j:j+blocksize] = downtargetFrame
+                            
+                
+    return np.uint8(predictFrame)
 
     
 
@@ -151,4 +218,6 @@ if __name__ == "__main__":
     targetframe = targetframe.astype('uint16')
     frameH, frameW = anchorframe.shape
     newFrame= HBMA(targetframe, anchorframe, 16,3)
-    
+    cv2.imshow('new frame', newFrame)
+    cv2.waitKey(0)
+    cv2.destroyWindow('new frame')  
