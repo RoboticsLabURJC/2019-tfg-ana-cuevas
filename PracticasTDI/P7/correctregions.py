@@ -7,6 +7,7 @@ Created on Tue Mar 30 11:25:52 2021
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+from skimage.feature import peak_local_max
 
 def correctregions(img, markers):
     
@@ -60,12 +61,12 @@ if __name__ == "__main__":
     border = findborder(markers)
     new = np.zeros([frameH,frameW,3], np.uint8)
     
-    for x in range(0, len(border)):
-        a=border[x][0]
-        b=border[x][1]
-        new[a,b] = [255,0,0]
+    #for x in range(0, len(border)):
+     #   a=border[x][0]
+     #   b=border[x][1]
+     #   new[a,b] = [255,0,0]
     
     plt.figure('new markers')
     plt.imshow(new)
-    #plt.imshow(markers, cmap=plt.cm.get_cmap('nipy_spectral'))
+    plt.imshow(markers, cmap=plt.cm.get_cmap('nipy_spectral'))
     
