@@ -10,8 +10,8 @@ import numpy as np
 
 def HBMA(targetFrame, anchorFrame, blocksize,L):
     
-    anchorframe = anchorFrame.astype('uint16')
-    targetframe = targetFrame.astype('uint16')
+    anchorFrame = anchorFrame.astype('uint16')
+    targetFrame = targetFrame.astype('uint16')
     predictFrame = np.zeros(anchorFrame.shape)
     accuracy = 1
     p =16
@@ -43,8 +43,8 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
     
     #Downsample
     
-    anchorDown1 = anchorFrame
-    targetDown1 = targetFrame
+    anchorDown1 = np.copy(anchorFrame)
+    targetDown1 = np.copy(targetFrame)
     targetDown2 = np.zeros([int(frameH/2),int(frameW/2)], dtype = np.uint16)
     targetDown2[0:int(frameH/2),0:int(frameW/2)] = targetFrame[0:frameH:2,0:frameW:2]
     targetDown3 = np.zeros([int(frameH/4),int(frameW/4)], dtype = np.uint16)
@@ -54,7 +54,7 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
     anchorDown2[0:int(frameH/2),0:int(frameW/2)] = anchorFrame[0:frameH:2,0:frameW:2]
     anchorDown3 = np.zeros([int(frameH/4),int(frameW/4)], dtype = np.uint16)
     anchorDown3[0:int(frameH/4),0:int(frameW/4)] = anchorDown2[0:int(frameH/2):2,0:int(frameW/2):2]
-    predictFrame = anchorFrame
+    predictFrame = np.copy(anchorFrame)
     
     #Search fields range for each level
     rangs = rangs/(factor+e)
@@ -124,7 +124,7 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
             m= m+1
     dy = np.asarray(dy)
     dx = np.asarray(dx)
-    
+
     for ii in range(L-1 , 0, -1):
           print(ii)
           dx= dx*2   
@@ -191,16 +191,34 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
                             error = temp_error
                             mv_x = x/accuracy-j
                             mv_y = y/accuracy-i
-                            while len(dx)<=m:
-                                dx.append(0)
-                                dy.append(0)
+                            while len(dxx)<=m:
+                                dxx.append(0)
+                                dyy.append(0)
                             
-                            dx[m]= mv_x
-                            dy[m]= mv_y
+                            dxx[m]= mv_x
+                            dyy[m]= mv_y
                             predictFrame[i:i+blocksize, j:j+blocksize] = downtargetFrame
+                
+                if m==351 :
+                    print(m)
+                
+                if len(ox)<m:
+                    ox[m] = i
+                    oy[m] =j
+                else:
+                    ox.append(i)
+                    oy.append(j)
+                m = m+1
+                
+          
+          dx = np.asarray(dxx)
+          dy = np.asarray(dyy)
+    
+    mv_d = [dx,dy]
+    mv_o = [np.array(ox), np.array(oy)]    
                             
                 
-    return np.uint8(predictFrame)
+    return [np.uint8(predictFrame), mv_o, mv_d]
 
     
 
@@ -217,7 +235,7 @@ if __name__ == "__main__":
     anchorframe = anchorframe.astype('uint16')
     targetframe = targetframe.astype('uint16')
     frameH, frameW = anchorframe.shape
-    newFrame= HBMA(targetframe, anchorframe, 16,3)
+    newFrame, origin, direction= HBMA(targetframe, anchorframe, 16,3)
     cv2.imshow('new frame', newFrame)
     cv2.waitKey(0)
     cv2.destroyWindow('new frame')  

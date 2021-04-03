@@ -6,6 +6,7 @@ Created on Wed Dec  9 10:20:31 2020
 """
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
 def EBMA(targetFrame, anchorFrame, blocksize):
     
@@ -71,6 +72,9 @@ def EBMA(targetFrame, anchorFrame, blocksize):
                         mv_y = x/accuracy-m
                         
                         predictFrame[n:n+blocksize, m:m+blocksize] = targetblock
+                        while len(dx)<=k:
+                                dx.append(0)
+                                dy.append(0)
                         dx[k]= mv_x
                         dy[k]= mv_y
             
@@ -78,20 +82,20 @@ def EBMA(targetFrame, anchorFrame, blocksize):
             oy.append(m)
             k = k + 1
     
-    #mv_d = [np.array(dx); np.array(dy)]
-    #mv_o = [np.array(ox); np.array(oy)]
-    return np.uint8(predictFrame)
+    mv_d = [np.array(dx), np.array(dy)]
+    mv_o = [np.array(ox), np.array(oy)]
+    return np.uint8(predictFrame), mv_o, mv_d
                     
 if __name__ == "__main__":
     
     anchorframe = cv2.imread('foremanY69.png',0)
     targetframe = cv2.imread('foremanY72.png',0)
     
-    newFrame= EBMA(targetframe, anchorframe, 16)
-    print(newFrame.shape)
-    cv2.imshow('new frame', newFrame)
-    cv2.waitKey(0)
-    cv2.destroyWindow('new frame')  
+    newFrame, origin, direction= EBMA(targetframe, anchorframe, 16)
+    #print(newFrame.shape)
+    #fig, ax =plt.subplots(figsize=targetframe.shape)
+    #ax.quiver(origin[0], origin[1], direction[0], direction[1])
+    #plt.show()
     
     #boole = (targetframe!=anchorframe)
     #print(boole)
