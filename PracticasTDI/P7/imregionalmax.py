@@ -13,20 +13,41 @@ import matplotlib.pyplot as plt
 
 def correctregions(img, markers):
     
-    for i in range(contour.shape[0]):
-        a = contour[i][0]
-        b = contour[i][1]
-        
-        for m in range(-1,2):
-            for n in range(-1,2):
-                if markers[a+m,b+n] != markers[a,b]:
-                    print(str(a)+ ' ' + str(b) + ' etiqueta ' + str(markers[a,b]))
-                    print(str(a+m)+ ' ' + str(b+n) + ' etiqueta ' + str(markers[a+m,b+n]))
-                    if img[a,b]==img[a+m,b+n]:
-                        markers[a,b] = markers[a+m,b+n]
-                        print('cambia con a=' + str(a) + ' b=' +str(b)+ ' nueva etiqueta ' + str(markers[a,b]))
+    for i in range(0, frameH):
+        for j in range(0,frameW):
+            if markers[i,j] != 0:
+                for m in range(-1,2):
+                    for n in range(-1,2):
+                        if 0<i+m<frameH:
+                            if 0<j+n<frameW:
+                                if markers[i+m,j+n] != markers[i,j]:
+                            
+                                    if img[i,j]==img[i+m,j+n]:
+                                        markers[i+m,j+n] = markers[i,j]
+                        
     return markers
-        
+
+
+def findborder(markers):
+    
+    frameH, frameW = markers.shape
+    borders = []
+    for i in range(0, frameH):
+        for j in range(0,frameW):
+            isborder = False
+            if markers[i,j] != 0:
+                
+                for m in range(-1,2):
+                    for n in range(-1,2):
+                    
+                        if 0<i+m<frameH:
+                            if 0<j+n<frameW:
+                                if markers[i+m,j+n] != markers[i,j]:
+                                    isborder = True
+                
+                if isborder:
+                    borders.append([i,j])
+    return borders
 def imregionalmax(img):
     
     frameH, frameW = img.shape
@@ -34,12 +55,14 @@ def imregionalmax(img):
     binary = peak_local_max(img, footprint=conn, indices=False, exclude_border=0)
     binary = np.uint8(binary)*255
     ret, markers = cv2.connectedComponents(binary)
-    contours, hie =cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    contour = contours[0][:, 0, :]
-    markers2 = correctregions(img, markers,contour)
-    for i in range(contour.shape[0]):
-        a = contour[i][0]
-        b = contour[i][1]
+    #contours, hie =cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+    #contour = contours[0][:, 0, :]
+    markers2 = correctregions(img, markers)
+    border = findborder(markers2)
+    
+    for i in range(len(border)):
+        a = border[i][0]
+        b = border[i][1]
         region = markers2[a,b]
         maxreg = True
         if region != 0:
@@ -50,7 +73,7 @@ def imregionalmax(img):
                         if 0<b+n<frameW:
                             
                             if markers2[a+m,b+n] != region:
-                                if img[a+m,b+n] < img[a,b]:
+                                if img[a+m,b+n] > img[a,b]:
                                     maxreg = False
                                 
                                     
