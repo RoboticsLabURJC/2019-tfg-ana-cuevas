@@ -85,9 +85,9 @@ def PhaseCorrelation(anchorFrame, targetFrame):
                 elif iix[3]>c[tempy[0],tempx[0]]:
                     halfx[loopi-1,loopj-1]=-1
     
-    #fig,ax = plt.subplots()
-    #ax.quiver(matchx,matchy)  
-    #plt.show()                  
+    fig,ax = plt.subplots()
+    ax.quiver(matchx,matchy)  
+    plt.show()                  
     
     #MC prediction
     predict = np.zeros([dimy,dimx], np.double) 
@@ -117,7 +117,17 @@ def PhaseCorrelation(anchorFrame, targetFrame):
             
     plt.figure()
     plt.imshow(predict,cmap='gray')
-    plt.show
+    plt.show()
+    
+    matchyy= matchy +0.5*halfy
+    matchxx = matchx +0.5*halfx
+    
+    dy = matchyy[1:int(dimy/blocky)-1, 1:int(dimx/blockx)-1]
+    dx = matchxx[1:int(dimy/blocky)-1, 1:int(dimx/blockx)-1]
+
+    rangey = np.arange(np.min(dy), np.max(dy)+0.5,.05)
+    
+    print(rangey.dtype)
 
 if __name__ == "__main__":
     
