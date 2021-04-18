@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 
 def correctregions(img, markers):
     
+    frameH, frameW = markers.shape
+    
     for i in range(0, frameH):
         for j in range(0,frameW):
             if markers[i,j] != 0:
@@ -48,6 +50,7 @@ def findborder(markers):
                 if isborder:
                     borders.append([i,j])
     return borders
+
 def imregionalmax(img):
     
     frameH, frameW = img.shape
@@ -55,6 +58,7 @@ def imregionalmax(img):
     binary = peak_local_max(img, footprint=conn, indices=False, exclude_border=0)
     binary = np.uint8(binary)*255
     ret, markers = cv2.connectedComponents(binary)
+    
     #contours, hie =cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     #contour = contours[0][:, 0, :]
     markers2 = correctregions(img, markers)
@@ -82,10 +86,11 @@ def imregionalmax(img):
     
             
     plt.figure('Segmented image')
-    plt.imshow(markers, cmap=plt.cm.get_cmap('nipy_spectral'))
+    plt.imshow(markers2, cmap=plt.cm.get_cmap('nipy_spectral'))
 
 if __name__ == "__main__":
     
-    img = cv2.imread('minimos.png',0)
+    img = cv2.imread('prueba_min.png',0)
     I_neg = 255-img
     imregionalmax(I_neg)
+    
