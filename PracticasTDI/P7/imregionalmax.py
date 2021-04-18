@@ -59,8 +59,6 @@ def imregionalmax(img):
     binary = np.uint8(binary)*255
     ret, markers = cv2.connectedComponents(binary)
     
-    #contours, hie =cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    #contour = contours[0][:, 0, :]
     markers2 = correctregions(img, markers)
     border = findborder(markers2)
     
@@ -91,6 +89,6 @@ def imregionalmax(img):
 if __name__ == "__main__":
     
     img = cv2.imread('prueba_min.png',0)
-    I_neg = 255-img
-    imregionalmax(I_neg)
+    #I_neg = 255-img
+    imregionalmax(img)
     
