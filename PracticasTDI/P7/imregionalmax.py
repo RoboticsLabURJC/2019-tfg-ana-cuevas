@@ -81,14 +81,17 @@ def imregionalmax(img):
                                     
         if not maxreg:
             markers2[markers2 == region] = 0
-    
             
-    plt.figure('Segmented image')
-    plt.imshow(markers2, cmap=plt.cm.get_cmap('nipy_spectral'))
+    print(markers2.dtype)
+    fin = markers2.astype(np.uint8)
+    fin[fin!=0] =255
+    print(fin)
+    return fin
 
 if __name__ == "__main__":
     
-    img = cv2.imread('prueba_min.png',0)
+    img = cv2.imread('I_rec.png',0)
     #I_neg = 255-img
-    imregionalmax(img)
-    
+    I_maxreg = imregionalmax(img)
+    plt.figure('Segmented image')
+    plt.imshow(I_maxreg, cmap='gray')
