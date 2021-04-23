@@ -10,6 +10,8 @@ Reference: https://www.mathworks.com/help/images/ref/imimposemin.html
 import numpy as np
 import math
 from skimage.morphology import reconstruction, square, disk, cube
+import cv2
+import matplotlib.pyplot as plt
 
 def imimposemin(I, BW, conn=None, max_value=255):
  
@@ -84,5 +86,14 @@ def imimposemin(I, BW, conn=None, max_value=255):
         J[BW] = -math.inf
     except:
         J[BW] = -float("inf")
-
+    
     return J
+
+if __name__ == "__main__":
+    
+    I_minimos = cv2.imread('minimos.png',0)
+    I_celulas_grad = cv2.imread('gradient.png',0)
+    #I_neg = 255-img
+    I_celulas_grad_mrk=imimposemin(I_celulas_grad,I_minimos)
+    plt.figure('Segmented image')
+    plt.imshow(I_celulas_grad_mrk, cmap='gray')
