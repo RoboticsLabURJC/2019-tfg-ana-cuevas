@@ -600,6 +600,24 @@ Para conseguir los bordes reales de las células se vuelve a aplicar watershed, 
 
 
 \subsection{Comparativa Matlab vs Python}
+
+La primera diferencia en esta práctica entre Matlap y python es la imagen empleada ya que la imagen original fue sacada de un artículo que no se ha podido localizar y se desconoce su licencia de copyright, se ha encontrado otra imagen también de celulas muy cercanas las unas a las otras, en este caso de cebolla.\\
+
+El primer apartado se mantiene igual, aplicar un filtro secuencial consiste en realizar repetidas aperturas y cierres sobre la imagen con funciones ya usadas en la práctica anterior.\\
+
+Debido al cambio de imagen algunos de los valores empleados como elemento estructural se han tenido que cambiar, es el caso del elemento estructural usado para la erosión antes de la reconstrucción. Para la reconstrucción se encuentra una función enscikit-image que funciona exactamente igual al equivalente en matlab. \textbf{Imreconstruct} en los dos casos recibe una imagen de máscara y una de marcadores.\\
+
+No existe en python un equivalente a la función \textbf{imregionalmax} para conseguir los máximos regionales de una imagen, se ha tenido que programar. La función resultante produce el mismo resultado pero con problemas en cuanto a la velocidad de ejecución que si la imagenes muy grande como es el caso de la imagen de células de esta práctica puede llegar a superar un minuto. La original en Matlab está programada en C lo que la hace más rápida y evita el problema.La otra gran diferencia entre las funciones es que la de pythondevuelve regiones más pequeñas que en la de matlab quedan eliminadas, esto supone añadir un paso más en la práctica para filtrar estas regiones pequeñas usando regionprops para filtrar por area.\\
+
+A continuación se eliminan los marcadores que corresponden a las células del borde de la imagen que no están completas, en matlab se usa la función \textbf{imclearborder} enpython no hay versión en ninguna librería oficial, pero se ha encontrado una versión en Github subida por el usuario hatamiarash7 que cumple la misma función.\\
+
+Lo siguiente es eliminar los marcadores que no coincidan con un núcleo e la imagen original, en Matlab se usa la función regionprops con el atributo mean intensity, regionprops en scipy-image tiene el mismo atributo con el mismo funcionamiento.\\
+
+Para obtener los marcadores externo se usa la función de dilatar ya mencionada en la práctica anterior y la transformada de distancia, para realizar esta transformada matlab tiene la función \textbf{bwdist} mientras que OpenCv tiene \textbf{distancetransform}, la principal diferencia entre estas dos funciones es que trabajan al revés, la de Matlaba te devuelve la distancia al punto de primer lano más cercano, mientras que la versión OpenCv devuelve la cistancia a 0. Esto se resuelve pasando el negativo de los marcadores a la función en el cuadernillo de Jupyter.\\
+
+
+
+
 \subsection{Desarrollo de funciones}
 
 \section{ Práctica 8}
