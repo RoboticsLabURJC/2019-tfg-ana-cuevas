@@ -20,6 +20,14 @@ import copy
 import cv2
 from math import log, e
 
+def rangefilt(img):
+    EE = cv2.getStructuringElement(cv2.MORPH_RECT, (7,7))
+    E = cv2.erode(img,EE,iterations = 1)
+    D =cv2.dilate(img, EE)
+    
+    J = D-E
+    return J
+
     
 def entropy2(labels):
     """ Computes entropy of label distribution. """
