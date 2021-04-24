@@ -566,11 +566,41 @@ Este ejercicio ha requerido el desarrollo de una función para cambiar del espac
 \label{rgb2hsi} 
 \end{figure}
 
-\section{ Práctica 7l}
+\section{ Práctica 7}
 \subsection{Teoría tratada en la práctica}
+
+Esta práctica trata el método de segmentación por Watershed con marcadores para contar el número de células enteras que hay en una imagen. Watershed es un algoritmode segmentación basado en morfología matemática que imagina la imagen como una seria de desniveles topográficos que forman picos y valles [\ref{watershed}] que se van inundando, se cogen las depresiones de intensidad como marcadores de los que crece el agua (la etiqueta). El proceso de inundación continñua hasta que toda la imagen está "inundada", donde se toca el agua de diferentes regiones se formas las lineas de watershed que limitan las regiones.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{imagenes/valles}
+\caption{Ejemplo de watershed}
+\label{watershed} 
+\end{figure}
+
+Para que watershed funcione de la manera deseada es necesario primero extraer los marcadores que indicarán los valles. Primero se extraen los marcadores internos, para ello se trata la imagen en escala de grises con un filtro secuencial alternado que se utiliza para suavizar la imagen. Los filtros secuenciales alternados consisten en realizar de forma secuencial una serie de operaciones morfológicas con diferente elemento estructural, en este caso se alterna entre apertura y cierre con elementos estructurales con forma de disco de radios 1, 2 y 3.\\
+
+A continuación seva a usar reconstrucción que es una operación morfológica que toma una imagen ( marker) y la dilata repetidamente hasta que su forma coincide con otra imagen(máscara). Para crear el markador aplicamos erosión sobre el negativo y usamos el propio negativo como máscara.\\ 
+
+El siguiente paso es extraer los mínimos regionales, un mínimo regional es una región (conjunto de píxeles conexos del mismo nivel) cuyo nivel es inferior al de todos los píxeles que la rodean. Esto devuelve una imagen binaria con más regiones que células en la imagen, para reducir el número de regiones se usan 3 profesos diferentes:\\
+
+Primero se limpian los bordes, no nos interesan células que no estén enteras ya que podrían aparecer en la siguiente imagen de microscopio y ser contadas dos veces.\\
+
+El siguiente proceso es eliminar las regiones demasiado pequeñas que pueden haber surgido por ruido en la imagen.\\
+
+El último proceso consiste en comparar la posición de nuestras regiones con la posición de los núcloes de las celdas en la imagen original basándonos en que los núcloes aparecen en un color más oscuro, se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.\\
+
+Con eso ya tendríamos los marcadores internos, para conseguir los marcadores externos (o de fondo) dilatamos la imagen de los marcadores internos para salir de la célulay hacemos una transformada de distancia que, es una operación que devuelve una imagen en escala de grises donde el valor de cada pixel corresponde a la distancia a la que se encuentra de un pixel de primer plano. Los píxeles de primer plano en la transformada de distancia tienen valor 0.\\
+
+Sobre la imagen de la transformada de distancia aplicamos watershed, los bordes que se forman entre regiones marcan los marcadores externos, siendo los puntos más alejados del nucleo de cada célula.\\
+
+A continuación se crea una imagen que combina los marcadores internos y externos. \\
+
+Para conseguir los bordes reales de las células se vuelve a aplicar watershed, pero esta vez usando marcadores, como imagen de referencia en lugar de la transformada de distancia se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores queden como los únicos mínimos regionales.\\
+
+
 \subsection{Comparativa Matlab vs Python}
 \subsection{Desarrollo de funciones}
-
 
 \section{ Práctica 8}
 \subsection{Teoría tratada en la práctica}

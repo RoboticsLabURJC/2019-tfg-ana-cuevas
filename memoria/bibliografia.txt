@@ -18,3 +18,5 @@ scikit-learn: https://scikit-learn.org/stable/
 	https://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html
 
 k-medias: https://www.unioviedo.es/compnum/laboratorios_py/kmeans/kmeans.html
+
+watershed: https://sisbib.unmsm.edu.pe/bibvirtual/publicaciones/risi/2010_n2/v7n2/a04v7n2.pdf
