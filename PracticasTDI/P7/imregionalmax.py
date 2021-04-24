@@ -57,7 +57,7 @@ def imregionalmax(img):
     conn = np.ones((3,3))
     binary = peak_local_max(img, footprint=conn, indices=False, exclude_border=0)
     binary = np.uint8(binary)*255
-    ret, markers = cv2.connectedComponents(binary)
+    ret, markers = cv2.connectedComponents(binary, connectivity=8)
     
     markers2 = correctregions(img, markers)
     border = findborder(markers2)
