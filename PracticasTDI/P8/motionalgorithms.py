@@ -26,9 +26,6 @@ def EBMA(targetFrame, anchorFrame, blocksize):
     
     rangestart = [0,0]
     rangeEnd =[0,0]
-    
-    errorarray = []
-    
         
     for n in range(0, frameH, blocksize):
  
@@ -70,7 +67,6 @@ def EBMA(targetFrame, anchorFrame, blocksize):
                         error = temp_error
                         mv_x = x/accuracy-m
                         mv_y = y/accuracy-n
-                        errorarray.append(error)
                         predictFrame[n:n+blocksize, m:m+blocksize] = targetblock
                         dx[k]= mv_x
                         dy[k]= mv_y
@@ -81,7 +77,7 @@ def EBMA(targetFrame, anchorFrame, blocksize):
     
     mv_d = [dx, dy]
     mv_o = [ox, oy]
-    return np.uint8(predictFrame), mv_o, mv_d, errorarray
+    return np.uint8(predictFrame), mv_o, mv_d
 
 def HBMA(targetFrame, anchorFrame, blocksize,L):
     
@@ -104,8 +100,8 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
     mv_y = 0
     dx =[]
     dy=[]
-    ox = []
-    oy=[]
+    ox = np.zeros(int(frameH*frameW/blocksize**2))
+    oy=np.zeros(int(frameH*frameW/blocksize**2))
 
     error = 255*blocksize*blocksize*100
     
@@ -194,8 +190,8 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
                         dx[m]= mv_x
                         dy[m]= mv_y
             
-            ox.append(j)
-            oy.append(i)
+            ox[m] =i
+            oy[m] =j
             m= m+1
     dy = np.asarray(dy)
     dx = np.asarray(dx)
@@ -210,8 +206,8 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
           frameW = frameW*2
           ttt = dy.size -1
           m = 0
-          dxx =[]
-          dyy=[]
+          dxx =np.zeros(int(frameH*frameW/blocksize**2))
+          dyy=np.zeros(int(frameH*frameW/blocksize**2))
           
           for i in range(0, frameH-blocksize+1, blocksize):            
             baseline = round(((i+1)/2)/blocksize) * lineW
@@ -266,35 +262,27 @@ def HBMA(targetFrame, anchorFrame, blocksize,L):
                             error = temp_error
                             mv_x = x/accuracy-j
                             mv_y = y/accuracy-i
-                            while len(dxx)<=m:
-                                dxx.append(0)
-                                dyy.append(0)
-                            
+
                             dxx[m]= mv_x
                             dyy[m]= mv_y
                             predictFrame[i:i+blocksize, j:j+blocksize] = downtargetFrame
                 
-                if m==351 :
-                    print(m)
                 
-                if len(ox)<m:
-                    ox[m] = i
-                    oy[m] =j
-                else:
-                    ox.append(i)
-                    oy.append(j)
+                    ox[m] = j
+                    oy[m] =i
+
+                    
                 m = m+1
                 
           
-          dx = np.asarray(dxx)
-          dy = np.asarray(dyy)
+          dx = dxx
+          dy = dyy
     
     mv_d = [dx,dy]
-    mv_o = [np.array(ox), np.array(oy)]    
+    mv_o = [ox, oy]    
                             
                 
     return [np.uint8(predictFrame), mv_o, mv_d]
-
 
 def PhaseCorrelation(anchorFrame, targetFrame):
     
