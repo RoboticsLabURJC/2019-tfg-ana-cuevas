@@ -19,46 +19,44 @@ def EBMA(targetFrame, anchorFrame, blocksize):
     predictFrame = np.zeros(anchorFrame.shape)
     
     k=0
-    dx =[]
-    dy=[]
-    ox = []
-    oy =[]
+    dx =np.zeros(int(frameH*frameW/blocksize**2))
+    dy=np.zeros(int(frameH*frameW/blocksize**2))
+    ox = np.zeros(int(frameH*frameW/blocksize**2))
+    oy =np.zeros(int(frameH*frameW/blocksize**2))
     
     rangestart = [0,0]
     rangeEnd =[0,0]
     
+    errorarray = []
     
-    
-    for m in range(0, frameW, blocksize):
         
-        rangestart[1] = m*accuracy -p*accuracy
-        rangeEnd[1] = m*accuracy + blocksize*accuracy + p*accuracy
+    for n in range(0, frameH, blocksize):
+ 
+        rangestart[0] = n*accuracy -p*accuracy
+        rangeEnd[0] = n*accuracy + blocksize*accuracy + p*accuracy
 
-        if rangestart[1] < 0:
-            rangestart[1] =0
+        if rangestart[0] < 0:
+            rangestart[0] =0
             
-        if rangeEnd[1]> frameW*accuracy:
-            rangeEnd[1] = frameW*accuracy
+        if rangeEnd[0]> frameH*accuracy:
+            rangeEnd[0] = frameH*accuracy
         
-        for n in range(0, frameH, blocksize):
-     
-            rangestart[0] = n*accuracy -p*accuracy
-            rangeEnd[0] = n*accuracy + blocksize*accuracy + p*accuracy
+        for m in range(0, frameW, blocksize):
+        
+            rangestart[1] = m*accuracy -p*accuracy
+            rangeEnd[1] = m*accuracy + blocksize*accuracy + p*accuracy
     
-            if rangestart[0] < 0:
-                rangestart[0] =0
+            if rangestart[1] < 0:
+                rangestart[1] =0
                 
-            if rangeEnd[0]> frameH*accuracy:
-                rangeEnd[0] = frameH*accuracy
-            
+            if rangeEnd[1]> frameW*accuracy:
+                rangeEnd[1] = frameW*accuracy
             """
             EBMA ALGORITHM
             """
             anchorblock = anchorFrame[n:n+blocksize, m:m+blocksize]
             mv_x = 0
             mv_y = 0
-            dx.append(0)
-            dy.append(0)
             
             error = 255*blocksize*blocksize*100
             
@@ -70,24 +68,20 @@ def EBMA(targetFrame, anchorFrame, blocksize):
                     temp_error = np.sum(np.uint8(np.absolute(anchorblock -targetblock)))
                     if temp_error < error:
                         error = temp_error
-                        mv_x = y/accuracy-n
-                        mv_y = x/accuracy-m
-                        
+                        mv_x = x/accuracy-m
+                        mv_y = y/accuracy-n
+                        errorarray.append(error)
                         predictFrame[n:n+blocksize, m:m+blocksize] = targetblock
-                        while len(dx)<=k:
-                                dx.append(0)
-                                dy.append(0)
                         dx[k]= mv_x
                         dy[k]= mv_y
             
-            ox.append(n)
-            oy.append(m)
+            ox[k] = m
+            oy[k] = n
             k = k + 1
     
-    mv_d = [np.array(dx), np.array(dy)]
-    mv_o = [np.array(ox), np.array(oy)]
-    return np.uint8(predictFrame), mv_o, mv_d
-
+    mv_d = [dx, dy]
+    mv_o = [ox, oy]
+    return np.uint8(predictFrame), mv_o, mv_d, errorarray
 
 def HBMA(targetFrame, anchorFrame, blocksize,L):
     
