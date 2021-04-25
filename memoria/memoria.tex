@@ -159,8 +159,10 @@ En total la asignatura consiste de 9 prácticas, 7 de imagen y 2 de video. \\
 	Este ejercicio aplica operaciones de morfología matemática para segmentar los chips de una placa y separarlos de acuerdo a su forma.
   \item Segmentación opr watershed:\\
 	El objetivo de esta práctica es segmentar una imagen con células para contarlas. Para conseguir esto se plantea el uso del algoritmo de watershed con arcadores. Primero se extraen los marcadores internos de las células usando herramientas como la reconstrucción morfológica y conseguir los máximos regionales de una imagen, operaciones estudiadas en la parte correspondiente a esta práctica del temario, lo mismo ocurre con los marcadores exteriores y el uso de la transformada de distancia. Esta práctica además tiene el objetivo de demostrar que la segmentación de este tipo de elementos que muchas veces se encuentran superpuestos en a imagen es muy complicada y siguen dando bastante error.
-  \item Video y estimación de movimiento:
-  \item The numbers starts at 1 with every call to the enumerate environment.
+  \item Manejo de vídeos en MATLAB. Detección y estimación de movimiento:\\
+	Esta es la primera de las prácticas de video, está dividida en dos secciones claras. La primera es una introducción a las herramientas de video en Matlab, estructura de video, como reproducir y guardar videos. La segunda parte trata 3 algoritmos de estimación de movimiento: EBMA, HBMA y correlación de fase.
+  \item Mejora y restauración de vídeo. Filtrado interframe:\\
+	La segunda práctica de vídeo y la última de la asignatura trata la restauración de video contaminado con ruido de una forma muy similar a la práctica 2 de imagen. Primero se centra en el filtrado frame a frame y después en el filtrado interframe, es decir usando varios frames para compararlos entre si y así filtrar.
 \end{enumerate}
 
 \chapter{Prácticas de TDI}
@@ -570,7 +572,7 @@ Este ejercicio ha requerido el desarrollo de una función para cambiar del espac
 \section{ Práctica 7}
 \subsection{Teoría tratada en la práctica}
 
-Esta práctica trata el método de segmentación por Watershed con marcadores para contar el número de células enteras que hay en una imagen. Watershed es un algoritmode segmentación basado en morfología matemática que imagina la imagen como una seria de desniveles topográficos que forman picos y valles [\ref{watershed}] que se van inundando, se cogen las depresiones de intensidad como marcadores de los que crece el agua (la etiqueta). El proceso de inundación continñua hasta que toda la imagen está "inundada", donde se toca el agua de diferentes regiones se formas las lineas de watershed que limitan las regiones.\\
+Esta práctica trata el método de segmentación por \emph{Watershed} con marcadores para contar el número de células enteras que hay en una imagen.\emph{ Watershed} es un algoritmo de segmentación basado en morfología matemática que trata la imagen como una serie de desniveles topográficos que forman picos y valles [\ref{watershed}] que se van inundando. Se cogen las depresiones de intensidad como marcadores de los que crece el agua (la etiqueta). El proceso de inundación continúa hasta que toda la imagen está "inundada" y donde se toca el agua de diferentes regiones se forman las lineas de  \emph{Watershed} que limitan las regiones.\\
 
 \begin{figure}[h]
 \centering
@@ -579,51 +581,73 @@ Esta práctica trata el método de segmentación por Watershed con marcadores pa
 \label{watershed} 
 \end{figure}
 
-Para que watershed funcione de la manera deseada es necesario primero extraer los marcadores que indicarán los valles. Primero se extraen los marcadores internos, para ello se trata la imagen en escala de grises con un filtro secuencial alternado que se utiliza para suavizar la imagen. Los filtros secuenciales alternados consisten en realizar de forma secuencial una serie de operaciones morfológicas con diferente elemento estructural, en este caso se alterna entre apertura y cierre con elementos estructurales con forma de disco de radios 1, 2 y 3.\\
+Para que \emph{Watershed} funcione de la manera deseada es necesario extraer los marcadores que indicarán los valles. Primero se extraen los marcadores internos, para ello se trata la imagen en escala de grises con un filtro secuencial alternado que se utiliza para suavizar la imagen. Los filtros secuenciales alternados consisten en realizar de forma secuencial una serie de operaciones morfológicas con diferente elemento estructural, en este caso se alterna entre apertura y cierre con elementos estructurales con forma de disco de radios 1, 2 y 3.\\
 
-A continuación seva a usar reconstrucción que es una operación morfológica que toma una imagen ( marker) y la dilata repetidamente hasta que su forma coincide con otra imagen(máscara). Para crear el markador aplicamos erosión sobre el negativo y usamos el propio negativo como máscara.\\ 
+A continuación se va a usar reconstrucción que es una operación morfológica que toma una imagen (marker) y la dilata repetidamente hasta que su forma coincide con otra imagen (máscara). Para crear el marcador aplicamos erosión sobre el negativo y usamos el propio negativo como máscara.\\ 
 
-El siguiente paso es extraer los mínimos regionales, un mínimo regional es una región (conjunto de píxeles conexos del mismo nivel) cuyo nivel es inferior al de todos los píxeles que la rodean. Esto devuelve una imagen binaria con más regiones que células en la imagen, para reducir el número de regiones se usan 3 profesos diferentes:\\
+El siguiente paso es extraer los mínimos regionales, un mínimo regional es una región (conjunto de píxeles conexos del mismo nivel) cuyo nivel es inferior al de todos los píxeles que la rodean. Esto devuelve una imagen binaria con más regiones que células en la imagen. Para reducir el número de regiones se usan 3 procesos diferentes:\\
 
 Primero se limpian los bordes, no nos interesan células que no estén enteras ya que podrían aparecer en la siguiente imagen de microscopio y ser contadas dos veces.\\
 
 El siguiente proceso es eliminar las regiones demasiado pequeñas que pueden haber surgido por ruido en la imagen.\\
 
-El último proceso consiste en comparar la posición de nuestras regiones con la posición de los núcloes de las celdas en la imagen original basándonos en que los núcloes aparecen en un color más oscuro, se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.\\
+El último proceso consiste en comparar la posición de nuestras regiones con la posición de los núcleos de las celdas en la imagen original basándonos en que los núcleos aparecen en un color más oscuro, se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.\\
 
-Con eso ya tendríamos los marcadores internos, para conseguir los marcadores externos (o de fondo) dilatamos la imagen de los marcadores internos para salir de la célulay hacemos una transformada de distancia que, es una operación que devuelve una imagen en escala de grises donde el valor de cada pixel corresponde a la distancia a la que se encuentra de un pixel de primer plano. Los píxeles de primer plano en la transformada de distancia tienen valor 0.\\
+Con eso ya tendríamos los marcadores internos. Para conseguir los marcadores externos (o de fondo) dilatamos la imagen de los marcadores internos para salir de la célula y hacemos una transformada de distancia que, es una operación que devuelve una imagen en escala de grises donde el valor de cada pixel corresponde a la distancia a la que se encuentra de un pixel de primer plano. Los píxeles de primer plano en la transformada de distancia tienen valor 0.\\
 
-Sobre la imagen de la transformada de distancia aplicamos watershed, los bordes que se forman entre regiones marcan los marcadores externos, siendo los puntos más alejados del nucleo de cada célula.\\
+Sobre la imagen de la transformada de distancia aplicamos  \emph{Watershed}, los bordes que se forman entre regiones marcan los marcadores externos, siendo los puntos más alejados del nucleo de cada célula.\\
 
 A continuación se crea una imagen que combina los marcadores internos y externos. \\
 
-Para conseguir los bordes reales de las células se vuelve a aplicar watershed, pero esta vez usando marcadores, como imagen de referencia en lugar de la transformada de distancia se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores queden como los únicos mínimos regionales y que los bordes de las células sean los puntos de mayor intensidad de la imagen mientras que el fondo y los nucleos al tener menos variación tienen menor intensidad.\\
+Para conseguir los bordes reales de las células se vuelve a aplicar  \emph{Watershed}, pero esta vez usando marcadores, como imagen de referencia en lugar de la transformada de distancia se usa el gradiente de la imagen reconstruido de forma que. nuestros marcadores, queden como los únicos mínimos regionales y que los bordes de las células sean los puntos de mayor intensidad de la imagen mientras, que el fondo y los nucleos, al tener menos variación tienen menor intensidad.\\
 
 
 \subsection{Comparativa Matlab vs Python}
 
-La primera diferencia en esta práctica entre Matlap y python es la imagen empleada ya que la imagen original fue sacada de un artículo que no se ha podido localizar y se desconoce su licencia de copyright, se ha encontrado otra imagen también de celulas muy cercanas las unas a las otras, en este caso de cebolla.\\
+La primera diferencia en esta práctica entre Matlap y Python es la imagen empleada . La imagen original fue sacada de un artículo que no se ha podido localizar y se desconoce su licencia de copyright. Se ha encontrado otra imagen también de celulas muy cercanas las unas a las otras, en este caso de cebolla.\\
 
 El primer apartado se mantiene igual, aplicar un filtro secuencial consiste en realizar repetidas aperturas y cierres sobre la imagen con funciones ya usadas en la práctica anterior.\\
 
-Debido al cambio de imagen algunos de los valores empleados como elemento estructural se han tenido que cambiar, es el caso del elemento estructural usado para la erosión antes de la reconstrucción. Para la reconstrucción se encuentra una función enscikit-image que funciona exactamente igual al equivalente en matlab. \textbf{Imreconstruct} en los dos casos recibe una imagen de máscara y una de marcadores.\\
+Debido al cambio de imagen algunos de los valores empleados como elemento estructural se han tenido que cambiar, es el caso del elemento estructural usado para la erosión antes de la reconstrucción. Para la reconstrucción se encuentra una función en Scikit-image que funciona exactamente igual al equivalente en Matlab. \textbf{Imreconstruct} en los dos casos recibe una imagen de máscara y una de marcadores.\\
 
-No existe en python un equivalente a la función \textbf{imregionalmax} para conseguir los máximos regionales de una imagen, se ha tenido que programar. La función resultante produce el mismo resultado pero con problemas en cuanto a la velocidad de ejecución que si la imagenes muy grande como es el caso de la imagen de células de esta práctica puede llegar a superar un minuto. La original en Matlab está programada en C lo que la hace más rápida y evita el problema.La otra gran diferencia entre las funciones es que la de pythondevuelve regiones más pequeñas que en la de matlab quedan eliminadas, esto supone añadir un paso más en la práctica para filtrar estas regiones pequeñas usando regionprops para filtrar por area.\\
+No existe en Python un equivalente a la función \textbf{imregionalmax}. Para conseguir los máximos regionales de una imagen, se ha tenido que programar. La función resultante produce el mismo resultado pero con problemas en cuanto a la velocidad de ejecución.  Si la imagen es muy grande, como es el caso de la imagen en esta práctica, el tiempo de ejecución puede llegar a superar un minuto. La original en Matlab está programada en C lo que la hace más rápida y evita el problema. La otra gran diferencia entre las funciones es que la de Python devuelve regiones más pequeñas que en la de matlab quedan eliminadas. Esto supone añadir un paso más en la práctica para filtrar estas regiones pequeñas usando\textbf{ regionprops} para filtrar por área.\\
 
-A continuación se eliminan los marcadores que corresponden a las células del borde de la imagen que no están completas, en matlab se usa la función \textbf{imclearborder} enpython no hay versión en ninguna librería oficial, pero se ha encontrado una versión en Github subida por el usuario hatamiarash7 que cumple la misma función.\\
+A continuación, se eliminan los marcadores que corresponden a las células del borde de la imagen que no están completas, en Matlab se usa la función \textbf{imclearborder}. En Python no hay versión en ninguna librería oficial, pero se ha encontrado una versión en Github subida por el usuario hatamiarash7 que cumple la misma función.\\
 
-Lo siguiente es eliminar los marcadores que no coincidan con un núcleo e la imagen original, en Matlab se usa la función regionprops con el atributo mean intensity, regionprops en scipy-image tiene el mismo atributo con el mismo funcionamiento.\\
+Lo siguiente es eliminar los marcadores que no coincidan con un núcleo en la imagen original, en Matlab se usa la función\textbf{ regionprops} con el atributo \emph{mean intensity}, \texbf{regionprops} en scipy-image tiene el mismo atributo con el mismo funcionamiento.\\
 
-Para obtener los marcadores externo se usa la función de dilatar ya mencionada en la práctica anterior y la transformada de distancia, para realizar esta transformada matlab tiene la función \textbf{bwdist} mientras que OpenCv tiene \textbf{distancetransform}, la principal diferencia entre estas dos funciones es que trabajan al revés, la de Matlaba te devuelve la distancia al punto de primer plano más cercano, mientras que la versión OpenCv devuelve la cistancia a 0. Esto se resuelve pasando el negativo de los marcadores a la función en el cuadernillo de Jupyter.\\
+Para obtener los marcadores externos se usa la función de dilatar ya mencionada en la práctica anterior y la transformada de distancia, para realizalar Matlab tiene la función \textbf{bwdist} mientras que OpenCV tiene \textbf{distancetransform}. La principal diferencia entre estas dos funciones es que trabajan al revés, la de Matlab devuelve la distancia al punto de primer plano más cercano, mientras que la versión OpenCv devuelve la distancia a 0. Esto se resuelve pasando el negativo de los marcadores a la función en el cuadernillo de Jupyter.\\
 
-A continuación se aplica watershed sobre esta imagen, en matlab la función de \textbl{watershed} recibe como argumento la imagen a segmentar. En python tenemos dos opciones, ninguna funciona exactamente igual que la de matlab. La primera que se prueba es la versión de OpenCV que se descarta inmediatamente ya que requiere una imagen RGB como primer argumento y la imagen que queremos pasar nosotros es en escala de grises, la segunda opción es la de Scikit-image también llamada \textbl{watershed}, esta si que permite imágenes en escala de grises la principal diferencia con Matlab es que como segundo argumento pide una imagen binaria de marcadores y si no viene especificada como marcadores se eligen los mínimos locales de la imagen, en la versión de matlab se coogen los mínimos regionales. En este primer uso de watershed la diferencia no es relevante ya que coinciden los mínimos. otra diferencia ya menor es que la versión de Matlab automaticamente devielve lasfronteras señaladas en la imagen con un 0 de etiqueta, mientras que en la versión de scikit-image se tiene que especificar que se requiere etiqueta para las líneas de watershed.\\
+A continuación, se aplica \emph{Watershed} sobre esta imagen, en Matlab la función de \textbf{Watershed} recibe como argumento la imagen a segmentar. En Python tenemos dos opciones aunque ninguna funciona exactamente igual que la de Matlab.\\
 
-Con esto ya tenemos los marcadores tanto internos como externos. A continuación se usa un filtro paso alto para sacar el gradiente dl mismo modo que se gizo en la práctica 2. 
+La primera que se prueba es la versión de OpenCV que se descarta inmediatamente ya que requiere una imagen RGB como primer argumento y la imagen que queremos pasar nosotros es en escala de grises.\\
 
-Y se vuelve a aplicar watershed, esta vez la diferencia entre los mínimos si que es relevante así que en la versión de la práctica en Python a la función de watershed además de pasarle el gradiente con marcadores como segundo argumento se pasa la imagen binaria de marcadores.\\
+La segunda opción es la de Scikit-image, también llamada \textbf{Watershed}. Esta si que permite imágenes en escala de grises; la principal diferencia con Matlab es que como segundo argumento pide una imagen binaria de marcadores y si no viene especificada como marcadores se eligen los mínimos locales de la imagen, en la versión de Matlab se cogen los mínimos regionales. En este primer uso de watershed la diferencia no es relevante ya que coinciden los mínimos.\\
+
+ Otra diferencia, ya menor, es que la versión de Matlab automáticamente devuelve las fronteras señaladas en la imagen con un 0 de etiqueta, mientras que en la versión de Scikit-image se tiene que especificar que se requiere etiqueta para las líneas de \emph{Watershed}.\\
+
+Con esto ya tenemos los marcadores tanto internos como externos. A continuación se usa un filtro paso alto para sacar el gradiente del mismo modo que se hizo en la práctica 2. 
+
+Y se vuelve a aplicar  \emph{Watershed}, esta vez la diferencia entre los mínimos si que es relevante así que, en la versión de la práctica en Python, a la función de \textbf{watershed} además de pasarle el gradiente con marcadores como segundo argumento se pasa la imagen binaria de marcadores.\\
 
 
 \subsection{Desarrollo de funciones}
+
+Para esta práctica se ha tenido que desarrollar la función \textbf{imregionalmax}, que es una función que toma una imagen en escala de grises y devuelve una imagen binaria con los máximos regionales en primer plano. La problemática de esta función es que requiere ir iterando por cada pixel de la imagen y realizando varias operaciones, esto hace que sea imposible de programar directamente en Python ya que el tiempo de ejecución sería demasiado elevado, por ello se han tenido que buscar formas de acortar el proceso lo máximo posible, aunque sigue tardando más que su equivalente en Matlab programado en C.
+
+Para poder ir comprobando el funcionamiento de la función mientras se programaba se creó una imagen simple [\ref{minimos}] en la que se podían ver a primera vista los máximos regoinales .\\
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{imagenes/minimos}
+\caption{Imagen utilizada en el desarrollo de Imregionalmax}
+\label{minimos} 
+\end{figure}
+
+Primero se usa la función \textbf{peak\_local\_max}  que devuelve una imagen binaria con los máximos locales en primer plano, a continuación se usa \textbf{connectedcomponents} de OpenCv para etiquetar las regiones de mismo nivel. A continuación se sacan los bordes de las regiones con la función \textbf{findborder}, esto se hace para no ir comparando pixel a pixel, solo se miran los que estén al rededor de un cambio de nivel de intensidad. Aquí es donde se puede ver el primer problema que hay que solucionar, las regiones no son correctas, ya que al usar \textbf{peak\_local\_max} algunos píxeles que son parte de una región pegada a otra de mayor nivel los devuelve como fondo ya que no son máximos locales y esto crea un que da problemas a la hora de comparra píxeles más adelante, para solucionarlo se crea una función \textbf{correctregions} que comprueba si las regiones son correctas o se pueden extender un pixel más que se haya dejado fuera. Se usa esta función entre Connected components y findborders.\\
+
+Ahora recorremos la lista de píxeles borde de región comprobando si los píxeles de su alrededor son del mismo nivel o menores, en el caso de que un pixel sea mayor, esa región no es un máximo regional, por lo que se pone a 0 en la imagen de marcadores y podemos dejar de comprobar el resto de sus bordes. Al final las regiones que quedan son los máximos regionales.
 
 
 \section{ Práctica 8}
