@@ -159,6 +159,7 @@ En total la asignatura consiste de 9 prácticas, 7 de imagen y 2 de video. \\
 	Este ejercicio aplica operaciones de morfología matemática para segmentar los chips de una placa y separarlos de acuerdo a su forma.
   \item Segmentación opr watershed:\\
 	El objetivo de esta práctica es segmentar una imagen con células para contarlas. Para conseguir esto se plantea el uso del algoritmo de watershed con arcadores. Primero se extraen los marcadores internos de las células usando herramientas como la reconstrucción morfológica y conseguir los máximos regionales de una imagen, operaciones estudiadas en la parte correspondiente a esta práctica del temario, lo mismo ocurre con los marcadores exteriores y el uso de la transformada de distancia. Esta práctica además tiene el objetivo de demostrar que la segmentación de este tipo de elementos que muchas veces se encuentran superpuestos en a imagen es muy complicada y siguen dando bastante error.
+  \item Video y estimación de movimiento:
   \item The numbers starts at 1 with every call to the enumerate environment.
 \end{enumerate}
 
@@ -596,7 +597,7 @@ Sobre la imagen de la transformada de distancia aplicamos watershed, los bordes 
 
 A continuación se crea una imagen que combina los marcadores internos y externos. \\
 
-Para conseguir los bordes reales de las células se vuelve a aplicar watershed, pero esta vez usando marcadores, como imagen de referencia en lugar de la transformada de distancia se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores queden como los únicos mínimos regionales.\\
+Para conseguir los bordes reales de las células se vuelve a aplicar watershed, pero esta vez usando marcadores, como imagen de referencia en lugar de la transformada de distancia se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores queden como los únicos mínimos regionales y que los bordes de las células sean los puntos de mayor intensidad de la imagen mientras que el fondo y los nucleos al tener menos variación tienen menor intensidad.\\
 
 
 \subsection{Comparativa Matlab vs Python}
@@ -613,12 +614,17 @@ A continuación se eliminan los marcadores que corresponden a las células del b
 
 Lo siguiente es eliminar los marcadores que no coincidan con un núcleo e la imagen original, en Matlab se usa la función regionprops con el atributo mean intensity, regionprops en scipy-image tiene el mismo atributo con el mismo funcionamiento.\\
 
-Para obtener los marcadores externo se usa la función de dilatar ya mencionada en la práctica anterior y la transformada de distancia, para realizar esta transformada matlab tiene la función \textbf{bwdist} mientras que OpenCv tiene \textbf{distancetransform}, la principal diferencia entre estas dos funciones es que trabajan al revés, la de Matlaba te devuelve la distancia al punto de primer lano más cercano, mientras que la versión OpenCv devuelve la cistancia a 0. Esto se resuelve pasando el negativo de los marcadores a la función en el cuadernillo de Jupyter.\\
+Para obtener los marcadores externo se usa la función de dilatar ya mencionada en la práctica anterior y la transformada de distancia, para realizar esta transformada matlab tiene la función \textbf{bwdist} mientras que OpenCv tiene \textbf{distancetransform}, la principal diferencia entre estas dos funciones es que trabajan al revés, la de Matlaba te devuelve la distancia al punto de primer plano más cercano, mientras que la versión OpenCv devuelve la cistancia a 0. Esto se resuelve pasando el negativo de los marcadores a la función en el cuadernillo de Jupyter.\\
 
+A continuación se aplica watershed sobre esta imagen, en matlab la función de \textbl{watershed} recibe como argumento la imagen a segmentar. En python tenemos dos opciones, ninguna funciona exactamente igual que la de matlab. La primera que se prueba es la versión de OpenCV que se descarta inmediatamente ya que requiere una imagen RGB como primer argumento y la imagen que queremos pasar nosotros es en escala de grises, la segunda opción es la de Scikit-image también llamada \textbl{watershed}, esta si que permite imágenes en escala de grises la principal diferencia con Matlab es que como segundo argumento pide una imagen binaria de marcadores y si no viene especificada como marcadores se eligen los mínimos locales de la imagen, en la versión de matlab se coogen los mínimos regionales. En este primer uso de watershed la diferencia no es relevante ya que coinciden los mínimos. otra diferencia ya menor es que la versión de Matlab automaticamente devielve lasfronteras señaladas en la imagen con un 0 de etiqueta, mientras que en la versión de scikit-image se tiene que especificar que se requiere etiqueta para las líneas de watershed.\\
 
+Con esto ya tenemos los marcadores tanto internos como externos. A continuación se usa un filtro paso alto para sacar el gradiente dl mismo modo que se gizo en la práctica 2. 
+
+Y se vuelve a aplicar watershed, esta vez la diferencia entre los mínimos si que es relevante así que en la versión de la práctica en Python a la función de watershed además de pasarle el gradiente con marcadores como segundo argumento se pasa la imagen binaria de marcadores.\\
 
 
 \subsection{Desarrollo de funciones}
+
 
 \section{ Práctica 8}
 \subsection{Teoría tratada en la práctica}
