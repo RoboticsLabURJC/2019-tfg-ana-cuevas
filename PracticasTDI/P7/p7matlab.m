@@ -56,7 +56,7 @@ I_minimos=bgm | I_max_reg3;
 
 % d. Obtener el módulo del gradiente de la imagen original
 h=fspecial('sobel');
-I_celulas_grad=imfilter(I_gray,h);
+I_celulas_grad=imfilter(double(I_gray),h);
 
 % e. Imponer como únicos mínimos regionales las regiones de primer plano de I_minimos
 I_celulas_grad_mrk=imimposemin(I_celulas_grad,I_minimos);

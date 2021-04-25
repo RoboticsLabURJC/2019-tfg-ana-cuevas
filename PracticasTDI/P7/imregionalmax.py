@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 30 11:08:28 2021
+Created on Sun Apr 25 18:12:54 2021
 
 @author: anusk
 """
@@ -10,22 +10,24 @@ import cv2
 from scipy import ndimage as ndi
 from skimage.feature import peak_local_max
 import matplotlib.pyplot as plt
+import time
 
 def correctregions(img, markers):
     
     frameH, frameW = markers.shape
-    
-    for i in range(0, frameH):
-        for j in range(0,frameW):
-            if markers[i,j] != 0:
-                for m in range(-1,2):
-                    for n in range(-1,2):
-                        if 0<i+m<frameH:
-                            if 0<j+n<frameW:
-                                if markers[i+m,j+n] != markers[i,j]:
-                            
-                                    if img[i,j]==img[i+m,j+n]:
-                                        markers[i+m,j+n] = markers[i,j]
+    border = findborder(markers)
+    for i in range(len(border)):
+        a = border[i][0]
+        b = border[i][1]
+        if markers[a,b] != 0:
+            for m in range(-1,2):
+                for n in range(-1,2):
+                    if 0<a+m<frameH:
+                        if 0<b+n<frameW:
+                            if markers[a+m,b+n] != markers[a,b]:
+                        
+                                if img[a,b]==img[a+m,b+n]:
+                                    markers[a+m,b+n] = markers[a,b]
                         
     return markers
 
@@ -82,16 +84,15 @@ def imregionalmax(img):
         if not maxreg:
             markers2[markers2 == region] = 0
             
-    print(markers2.dtype)
     fin = markers2.astype(np.uint8)
     fin[fin!=0] =255
-    print(fin)
     return fin
 
 if __name__ == "__main__":
-    
-    img = cv2.imread('I_rec.png',0)
-    #I_neg = 255-img
-    I_maxreg = imregionalmax(img)
+    start_time = time.time()
+    img = cv2.imread('prueba_min.png',0)
+    I_neg = 255-img
+    I_maxreg = imregionalmax(I_neg)
+    print("--- %s seconds ---" % (time.time() - start_time))
     plt.figure('Segmented image')
     plt.imshow(I_maxreg, cmap='gray')
