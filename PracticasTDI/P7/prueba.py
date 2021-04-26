@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     
-    img = cv2.imread('cells.jpg',0)
+    img = cv2.imread('I_rec.png',0)
     
     marker = np.int32(img) -1
     I_rec = reconstruction(marker, img)

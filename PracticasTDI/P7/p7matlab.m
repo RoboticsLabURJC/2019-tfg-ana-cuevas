@@ -6,9 +6,9 @@ clear all, close all, clc;
 I=imread('cells.jpg');
 I_gray=rgb2gray(I);
 
-EE_C1=strel('disk',1);
-EE_C2=strel('disk',2);
-EE_C3=strel('disk',3);
+EE_C1=strel('disk',2);
+EE_C2=strel('disk',4);
+EE_C3=strel('disk',6);
 
 OPN1=imopen(I_gray,EE_C1);
 CLO1=imclose(OPN1,EE_C1);
@@ -29,7 +29,7 @@ subplot(3,2,6), imshow(I_ASF3), title('Cierre r=3(I-ASF3)');
 %% 2. Segmentación por watershed
 % a. Obtención de los marcadores de célula
 I_neg=imcomplement(I_ASF3);
-I_marker=imerode(I_neg,strel('disk',9));
+I_marker=imerode(I_neg,strel('disk',21));
 I_rec=imreconstruct(I_marker,I_neg);
 I_max_reg=imregionalmax(I_rec);
 I_max_reg2=imclearborder(I_max_reg);
@@ -37,9 +37,9 @@ I_max_reg2=imclearborder(I_max_reg);
 I_max_reg3=I_max_reg2;
 cc=bwlabel(I_max_reg2);
 n_objetos=max(cc(:));
-stats=regionprops(cc,I_gray,'MeanIntensity');
+stats=regionprops(cc,I_rec,'MeanIntensity');
 for nob=1:n_objetos
-    if stats(nob).MeanIntensity >= 150
+    if stats(nob).MeanIntensity <= 75
         [r,c] = find(cc == nob);
         I_max_reg3(r,c)=0;
     end
