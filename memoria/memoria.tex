@@ -172,24 +172,44 @@ En total la asignatura consiste de 9 prácticas, 7 de imagen y 2 de video. \\
 \chapter{Prácticas de TDI}
 
 Este apartado tratará el desarrollo del proyecto, se irá analizando cada práctica de la asignatura y comparando la versión original con el resultado final en Python, se tratarán los diferentes problemas que han ido surgiendo a la hora de adaptar cada práctica y cómo se han solucionado.\\
-\section{Planteamiento de la prácticas en Jupyter Notebook}
+
+\section{Estructura de las prácticas en Jupyter Notebook}
+
+A la hora de plantear las prácticas en los cuadernillos de Jupyter lo primero que se hizo fue decidir que partes se iban a mantener igual y en qué se iban a diferenciar de las de Matlab. La estructura en si, el temario tratado, el orden de los ejercicios y en los casos que se podía las imagenes originales se intentan mantener intactas. Los más importante erra mantener el cometido de la práctica, lo que se pretendía mostrar y enseñar con ella.\\
+
+El cambio más obvio entre las dos versiones de los ejercicios tiene que ver con los enunciados, en los cuadernillos el enunciado está en inglés ya que se había planteado el TFG para subir las prácticas a Robotics Academy, esto las haría más accesible a un mayor número de personas. Otro cambio en los enunciados es que han sido ampliados, esto se debe a que las prácticas originales son un material que se apoya sobre la teoría dada en clase y asumen que esa teoría ha sido impartida, mientras que en Robotics Academy las prácticas serían el único contacto que tendría el alumno con el tema por los que los nuevos enunciados amplian un poco las explicaciones teóricas añadiendo enlaces a más recursos para ampliar conocimientos.\\
+
+Una cosa común en los enunciados originales son los trozos de código facilitados para copiar y pegar, en jupyter estas lineas de código apaercen en celdas tipo \emph{code} con indicaciones para cambiar los nombres de las variables si es necesario.\\
+
+En cuanto al desarrollo de los ejercicos el cambio principal es el lenguaje de programación, de Matlab a Python. \\
+
+Un cambio significativo en la presentación de la práctica es el uso de ventanas emergentes, cuando ejecutas las prácticas en Matlab con la cantidad de imágenes que se pide representar pueden aparecer hasta 20 pestañas nuevas  (imagen \ref{ventanas}) lo que puede ser bastante abrumador, en la versión desarrollada en este trabajo se han intentado evitar las ventanas emergentes, representando siempre que se ha podido en el propio cuadernillo, esto también hace las prácticas más fáciles de consultar una vez se ha terminado el código ya que se puede guardar el cuadernillo una vez ejecutado y las imágenes se mantienen mientras no se vacíe el output.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{imagenes/ventanas}
+\caption{Ventanas emerjentes en el apartado 2 de la práctica 8 en Matlab.}
+\label{ventanas}
+\end{figure}
+
+Por último, en los cuadernillos se ha añadido un nuevo apartado donde se muestra el aspecto que tiene que tener la imagen resultante de algunos apartados de la práctica. En una clase práctica de TDI siempre estaba la profesora, esto permitía que en caso de duda se le pudiese preguntar si iba bien la práctica enseñando la imagen resultado de un apartado en el que se tuviera duda. Las imágenes respuesta pretenden sustituir esta opción para los alumnos que accedan a las prácticas fuera del contexto de la asignatura de TDI.
+
+
 \section{Guía de instalación}
 
-Para facilitar el acceso a las prácticas se ha creado una guía de instalación en markdown directamente accesible en Github desde el repositoria en el que están la prácticas.\\
+Para facilitar el acceso a las prácticas se ha creado una guía de instalación en \emph{markdown} directamente accesible en Github desde el repositorio en el que están la prácticas.\\
 
-La guía requiere que primero se combruebe si el ordenador tiene instalado Python3, en caso negativo, se pone un link a la página oficial de Python, con la guía de instalación para los diferentes sistemas operativos.\\
+La guía requiere que primero se compruebe si el ordenador tiene instalado Python3, en caso negativo, se pone un link a la página oficial de Python con la guía de instalación para los diferentes sistemas operativos.\\
 
-A continuación se indica como instalar pip, el instalador de paquetes en Pytho,n y se indica el comando para instalar pipenv.\\
+A continuación, se indica como instalar Pip, el instalador de paquetes en Python y se indica el comando para instalar pipenv.\\
 
 La guía continúa explicando cómo acceder a la prácticas y como iniciar el entorno de Pipenv necesario para ejecutarlas.\\
 
-Por últimose explica como abrir un cuadernillo de Jupyter importando las librerías necesaria en la primera práctica para comprobar que el entorno se ha instalado correctamente.\\
+Por último, se explica como abrir un cuadernillo de Jupyter importando las librerías necesarias en la primera práctica para comprobar que el entorno se ha instalado correctamente.\\
 
-Esta guía está en inglés al igual que las prácticas y pensada para ser usada y funcionarpor igual en cualquiera de los principales sistemas operativos. Ha sido probada en Windous y Linux Ubuntu.\\
+Esta guía está en inglés, al igual que las prácticas y pensada para ser usada y funcionar por igual en cualquiera de los principales sistemas operativos. Ha sido probada en Windous y Linux Ubuntu.\\
 
 \section{ Práctica 1: Introducción}
-
-La práctica 1 es una introducción al tratamiento de imagen usando la programación. Trata cosas como funciones para representar imágenes, formas de escalar una imagen y manipulación de matrices.\\
 
 \subsection{Teoría tratada en la práctica}
 
