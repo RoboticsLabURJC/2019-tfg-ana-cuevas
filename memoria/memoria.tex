@@ -18,7 +18,6 @@
 
 \renewcommand{\abstractname}{Resumen}
 \renewcommand{\chaptername}{Capítulo}
-\renewcommand{\chaptername}{Capítulo}
 
 \begin{abstract}
 Your abstract goes here...
@@ -47,13 +46,13 @@ Python es un lenguaje de programación interpretado de alto nivel orientado a ob
 
  Python se está usando cada día más para el tratamiento de imagen, esto se debe a que es un lenguaje muy accesible, siendo gratuito y con una sintaxis sencilla. Con el tiempo han ido surgiendo bibliotecas específicas para el tratamiento de la imagen en Python como Pil (Python Imaging Library) también llamada Pillow, Scikit-image y Open-CV. Esta última será la que más se use en este proyecto.\\
 
-Otra biblioteca que facilita el tratamiento de imagen en Python es Numpy, una biblioteca para facilitar el uso de matrices y arrays en Python, así como las funciones matemáticas relacionadas.  Además, Matplotlib que permite  la representación de datos en forma de gráficos.
+Otra biblioteca que facilita el tratamiento de imagen en Python es Numpy, una biblioteca para facilitar el uso de matrices y arrays en Python, así como las funciones matemáticas relacionadas.  Además, Matplotlib permite  la representación de datos en forma de gráficos.
 
 \subsection{OpenCV}
 
-OpenCV(Open Source Computer Vision Library) es una biblioteca centrada en el tratamiento de imagen y video (Computer Vision) y en aprendizaje de máquina, con interfaces para varios lenguajes de programación como C++, Python o Java. OpenCV es la biblioteca de procesamiento de imagen más usada en el mundo con más de 18 millones de descargas. Originalmente programada en C; el resto de lenguajes usa diferentes interfaces para acceder al código. Esto permitetener un buen rendimientopor ser C unl lenguaje muy rápido en ejecución.\\
+OpenCV(Open Source Computer Vision Library) es una biblioteca centrada en el tratamiento de imagen y video (Computer Vision) y en aprendizaje de máquina, con interfaces para varios lenguajes de programación como C++, Python o Java. OpenCV es la biblioteca de procesamiento de imagen más usada en el mundo con más de 18 millones de descargas. Originalmente programada en C; el resto de lenguajes usa diferentes interfaces para acceder al código. Esto permite tener un buen rendimiento por ser C un lenguaje muy rápido en ejecución.\\
 
-OpenCV contiene  desde funciones de bajo nivel para el procesado de imagen hasta algoritmos complejos para deteccion de caras. En este trabajo, ya que trata de dar una base de tratamiento de imagen, usaremos funciones de bajo nivel como filtros o funciones para cambiar de espacio de color.\\
+OpenCV contiene desde funciones de bajo nivel para el procesado de imagen hasta algoritmos complejos para deteccion de caras. En este trabajo, ya que trata de dar una base de tratamiento de imagen, usaremos funciones de bajo nivel como filtros o funciones para cambiar de espacio de color.\\
 
 Se ha usado la versión 4.2.0 de OpenCV.\\
 
@@ -62,7 +61,7 @@ Se ha usado la versión 4.2.0 de OpenCV.\\
 
 Numpy es el paquete principal para cálculos complejos con matrices en Python, esto lo convierte en un paquete esencial en el desarrollo de código para usos ciéntificos y de robótica. La base de esta biblioteca es el objeto \emph{ndarray}, que consiste en arrays de n-dimensiones con datos de un mismo tipo y un tamaño establecido al crear la variable, esto último lo diferencia de las listas de python que son dinámicas.\\
 
-En este trabajo se ha usado la versión 1.16.5 de Numpy.
+En este trabajo se ha usado la versión 1.16.5 de Numpy.\\
 
 Numpy contiene funciones que permiten realizar operaciones con grandes cantidades de datos de una forma más eficiente en memoria y rápida que usando las funciones propias de Python. Numpy está programado y pre-compilado en C. El uso de las funciones de Numpy también permite que el código se parezca más a la notación matématica estándar, lo que lo hace más fácil de leer y entender.\\
 
@@ -85,15 +84,15 @@ En este trabajo se van a usar 2 de esos kits:\\
 
 \begin{itemize}
 
-	\item \textbf{Scikit-learn}:es un paquete con un amplio rango de algoritmos de aprendizaje de máquina para problemas de tamaño medio, tanto supervisados como no supervisados. Está programado mayoritariamente en Python aunque incorpora algunas bibliotecas de C++ e incorpora código compilado para mejorar su eficiencia.
+	\item \textbf{Scikit-learn}: Es un paquete con un amplio rango de algoritmos de aprendizaje de máquina para problemas de tamaño medio, tanto supervisados como no supervisados. Está programado mayoritariamente en Python aunque incorpora algunas bibliotecas de C++ e incorpora código compilado para mejorar su eficiencia.
 
-	\item \textbf{Scikit-image}:este paquete cuenta con una colección de algoritmos para el tratamiento de imagen construida por una comunidad de voluntarios.
+	\item \textbf{Scikit-image}: Este paquete cuenta con una colección de algoritmos para el tratamiento de imagen construida por una comunidad de voluntarios.
 \end{itemize}
 \section{ Cuadernillos de Jupyter}
 
 El cuadernillo Jupyter es una interfaz web de código libre, que permite la creación de documentos que contienen código ejecutable, ecuaciones, visualización (gráficos, imágenes) y texto. Trabajaremos sobre la versión \\
 
-El cuadernillo se guarda como un JSON la extensión .ipnyb. La aplicación es un modelo cliente-servidor que se ejecuta a través de un navegador. Se trata de un servidor local que se crea al ejecutar la aplicación lo que implica que no se necesita conexión a internet para leer o modificar un cuadernillo.  El servidor lee el documento .ipnyb y manda mensajes usando ZeroMQ (una librería que manda mensajes usando un modelo asíncrono) a un kernel que ejecuta el código Python en el cuadernillo. El cliente funciona en un navegador y es lo que permite interactuar con el cuadernillo. Según se muestra en la figura \ref{estructurajupyter}
+El cuadernillo se guarda como un JSON la extensión .ipnyb. La aplicación es un modelo cliente-servidor que se ejecuta a través de un navegador. Se trata de un servidor local que se crea al ejecutar la aplicación lo que implica que no se necesita conexión a internet para leer o modificar un cuadernillo.  El servidor lee el documento .ipnyb y manda mensajes usando ZeroMQ (una librería que manda mensajes usando un modelo asíncrono) a un kernel que ejecuta el código Python en el cuadernillo. El cliente funciona en un navegador y es lo que permite interactuar con el cuadernillo, según se muestra en la Figura \ref{estructurajupyter}
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{imagenes/estructurajupyter}
@@ -150,19 +149,19 @@ En total la asignatura consiste de 9 prácticas, 7 de imagen y 2 de video. \\
 
 \begin{itemize}
   \item [ P1.]\emph{Introducción al tratamiento de imagen:}\\
-	Esta práctica es una introducción a las herramientas de tratamiento de imagen en Matlab. Se trata como leer y representar imágenes, espacios de color, escalado e histogramas. El último apartado se centra en imágenes RGB.
+	Esta práctica es una introducción a las herramientas de tratamiento de imagen en Matlab. Se trata cómo leer y representar imágenes, espacios de color, escalado e histogramas. El último apartado se centra en imágenes RGB.
   \item [P2.]\emph{ Filtrado de imágenes en el dominio espacial:}\\
-	Esta práctica demuestra el funcionamiento de diferentes tipos de filtros sobre imágenes contaminadas con varios ruidos. En la segunda parte se tratan filtros de realce de contorno y se demuestra su uso para para extraerlos bordes de unas monedas.
+	Esta práctica demuestra el funcionamiento de diferentes tipos de filtros sobre imágenes contaminadas con varios ruidos. En la segunda parte se tratan filtros de realce de contorno y se demuestra su uso para extraer los bordes de unas monedas.
   \item [P3.]\emph{Filtrado de imágenes en el dominio espectral:}\\
-	En esta práctica se demuestran las propiedades de la transformada de Fourier y como afectan las transformaciones en el espacio a la representación en frecuencia de la imagen. También se tratan filtros en el dominio frecuencial.
-  \item [P4.]\emph{Segmentación de image:}\\
+	En esta práctica se demuestran las propiedades de la transformada de Fourier y cómo afectan las transformaciones en el espacio a la representación en frecuencia de la imagen. También se tratan filtros en el dominio frecuencial.
+  \item [P4.]\emph{Segmentación de imagen:}\\
 	Esta práctica es diferente a las anteriores ya que en lugar de ejercicios individuales se centra en el tratamiendo de una imagen en concreto con un objetivo claro. Se trata  la imagen de una calculadora con el objetivo de conseguir una nueva imagen en la que solo se vea la letra Enter de la calculadora. Para esto se usa segmentación binaria que es el tema de la asignatura que se corresponde con esta práctica.
   \item [P5.]\emph{Segmentación de imagen II:}\\
-	Esta prácctica sigue el esquema de la anterior centrándose en la segmentación de una imagen, en este caso un pájaro. Para la segmentación de este pájaro se va a usar aprendizaje de máquina, específicamente el algoritmo K-medias, la mayor parte de la práctica se centra en en realizar diferentes transformaciones sobre la imagen para facilitar el uso del algoritmo.Entre estas transformaciones se encuentran cambios de espacio de color y filtros de textura.
+	Esta prácctica sigue el esquema de la anterior centrándose en la segmentación de una imagen, en este caso un pájaro. Para la segmentación de este pájaro se va a usar aprendizaje de máquina, específicamente el algoritmo K-medias, la mayor parte de la práctica se centra en realizar diferentes transformaciones sobre la imagen para facilitar el uso del algoritmo. Entre estas transformaciones se encuentran cambios de espacio de color y filtros de textura.
   \item [P6.]\emph{Morfología binaria:}\\
 	Este ejercicio aplica operaciones de morfología matemática para segmentar los chips de una placa y separarlos de acuerdo a su forma.
-  \item [P7.]\emph{Segmentación opr watershed:}\\
-	El objetivo de esta práctica es segmentar una imagen con células para contarlas. Para conseguir esto se plantea el uso del algoritmo de watershed con arcadores. Primero se extraen los marcadores internos de las células usando herramientas como la reconstrucción morfológica y conseguir los máximos regionales de una imagen, operaciones estudiadas en la parte correspondiente a esta práctica del temario, lo mismo ocurre con los marcadores exteriores y el uso de la transformada de distancia. Esta práctica además tiene el objetivo de demostrar que la segmentación de este tipo de elementos que muchas veces se encuentran superpuestos en a imagen es muy complicada y siguen dando bastante error.
+  \item [P7.]\emph{Segmentación por watershed:}\\
+	El objetivo de esta práctica es segmentar una imagen con células para contarlas. Para conseguir esto se plantea el uso del algoritmo de \emph{watershed} con marcadores. Primero se extraen los marcadores internos de las células usando herramientas como la reconstrucción morfológica y conseguir los máximos regionales de una imagen, operaciones estudiadas en la parte correspondiente a esta práctica del temario. Lo mismo ocurre con los marcadores exteriores y el uso de la transformada de distancia. Esta práctica además tiene el objetivo de demostrar que la segmentación de este tipo de elementos que muchas veces se encuentran superpuestos en una imagen es muy complicada y siguen dando bastante error.
   \item [P8]\emph{Manejo de vídeos en MATLAB. Detección y estimación de movimiento:}\\
 	Esta es la primera de las prácticas de video, está dividida en dos secciones claras. La primera es una introducción a las herramientas de video en Matlab, estructura de video, como reproducir y guardar videos. La segunda parte trata 3 algoritmos de estimación de movimiento: EBMA, HBMA y correlación de fase.
   \item [P9]\emph{Mejora y restauración de vídeo. Filtrado interframe:}\\
@@ -676,7 +675,39 @@ Ahora recorremos la lista de píxeles borde de región comprobando si los píxel
 
 \section{ Práctica 8}
 \subsection{Teoría tratada en la práctica}
+
+Esta práctica es la primera práctica de video, tiene dos partes muy marcadas.\\
+
+La primera es una introducción a las herramientas de video. Se demuestra cómo leer un video, visualizar los \emph{frames}, en qué consiste el \emph{frame rate} y cómo afecta a la reproducción de video. Se pide que se modifiquen un par de \emph{frames} con transformacionas como filtros y pasar a negativo para comprobar qué transformación es más perceptible.\\
+
+La segunda parte de la práctica se centra en demostrar la estimación de movimiento basada en bloques, específicamente 3 algoritmos: EBMA, HBMA y correlación de fase.\\
+
+La estimación de movimiento basada en bloques se utiliza para codificación de vídeo. Estos algoritmos se dividen en dos grupos: algoritmos en el dominio del tiempo (EBMA y HBMA) y algoritmos en el dominio de la frecuencia (correlación de fase).\\
+
+EBMA (\emph{exhaustive block-matching algorithm}) consiste en una búsqueda exhaustiva por bloques comparando en el frame actúal el bloque más similar al del bloque de referencia. Es el menos eficiente de los algoritmos pero el más preciso.\\
+
+HBMA(\emph{hierarchical block-matching algorithm}) funciona de una manera similar a EBMA pero primero busca cambios en bloques más grandes y una vez localizadas las áreas de cambio reduce el tamaño de los bloques a comparar en esta nueva área. Esto hace que sea un algoritmo más eficiente.\\
+
+El último algoritmo que se demuestra en esta práctica es el de correlación de fase, que trabaja en frecuencia comparando las fases de los dos frames.\\
+
+Para comparar el funcionamiento de los algoritmos se calcula el MSE (\emph{mean stimation error}) de cada uno.\\
+
 \subsection{Comparativa Matlab vs Python}
+
+En la primera mitad de esta práctica lo que genera la mayor diferencia es la forma de tratar el video entre los dos lenguajes de programación. Cuando lees un video en Matlab, usando la función \textbf{videoreader}, esta devuelve una variable que contiene todos los frames del video y otra información como el número de frames, el framerate y el tamaño del video. Al llamar a la función \textbf{VideoCapture} de OpenCV lo que se crea es un objeto de la clase VideoCapture con una serie de métodos que en algunos casos devuelven la misma información que contiene la variable de video de Matlab.\\
+
+En Matlab, lo primero que se pide es leer el video e inspeccionar la variable que se crea en el \emph{workspace}. Para simular esto en Python se crea una instancia de la clase VideoCapture y se van guardando los frames en un array usando la función \textbf{read()}. \textbf{VideoCapture} en OpenCv permite capturar directamente video de la cámara que esté conectada al ordenador pero, en este caso, se usa el video 'shopping\_center.mpg' que es el mismo que se usa en la versión de la práctica en Matlab.\\
+
+A continuación, en la práctica de Matlab se piden una serie de características del video que se pueden optener de la variable. En Python, se puede averiguar llamando al método \textbf{get()} de la clase VideoReader. Esto nos permite saber el ancho y alto de cada frame y el framerate. Conseguir el número de frames es algo más complejo ya que el contador de frames del método \emph{get()} es bastante inexacto y tiende a fallar. La mejor forma de saber el número de frames es mirando la longitud del array guardado en el apartado anterior.\\
+
+Posteriormente, se inspecciona el primer frame. En esto no hay diferencia con como se representan imágenes en prácticas anteriores.\\
+
+A la hora de reproducir el video se puede usar \textbf{imshow} de OpenCV en un bucle pero esto abre una nueva ventana. Se intenta el mismo método con Matplotlib pero la reproducción no es fluida. Para solucionar esto, se usa una nueva librería: Bokeh. Es una librería de representación de gráficos que permite embebirlos en el cuadernillo. La reproducción de video queda fluida pero, esta librería lee las imágenes con el eje girado y en el espacio de color RGBA por lo que hay que transformar cada frame antes de reproducirlo. Se usa un buble while y la función \textbf{time.sleep()} de Python para que se pinte un nuevo frame cada 1/25 segundo, lo indicado por el framerate del video.\\
+
+El siguiente punto del ejercicio pide reproducir el video con un framerate distinto.\\
+
+En la parte de estimación de movimiento en Matlab se utilizan 3 funciones programadas para la asignatura, en Pytho se hace lo mismo consiguiendo los mismos resultados. Las diferencias vienen al la hora de representar los vectores de movimiento, la función \textbf{quiver} de Matplotlib representa mapas vectoriales pero a no ser que se le indique de otro modo el tamaño de las flechas varias para que la representacioón quede más visualmente interesante
+
 \subsection{Desarrollo de funciones}
 
 \section{ Práctica 9}
