@@ -5,6 +5,12 @@
 \usepackage[spanish]{babel}
 \usepackage{subfig}
 \usepackage{biblatex}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\rhead{\leftmark}
 \addbibresource{biblio.bib}
 
 \begin{document}
@@ -42,7 +48,7 @@ En esta sección se detallan tanto el software empleado para la realización del
 
 \section{Python tratamiento de imagen y visualización}
 
-Python es un lenguaje de programación interpretado de alto nivel orientado a objetos, creado en los años 80 por Guido van Rossum. Se caracteriza por tener una sintaxis sencilla, fácil de leer, lo que facilita el mantenimiento de programas y lo hace accesible para principiantes. Tiene una amplia biblioteca base y además permite el uso de módulos y paquetes. Al ser interpretado en lugar de compilado el proceso de depuración es más rápido. En este trabajo se ha usado la versión 3.7.4 de Python.\\
+Python\footnote{https://www.python.org/} es un lenguaje de programación interpretado de alto nivel orientado a objetos, creado en los años 80 por Guido van Rossum. Se caracteriza por tener una sintaxis sencilla, fácil de leer, lo que facilita el mantenimiento de programas y lo hace accesible para principiantes. Tiene una amplia biblioteca base y además permite el uso de módulos y paquetes. Al ser interpretado en lugar de compilado el proceso de depuración es más rápido. En este trabajo se ha usado la versión 3.7.4 de Python.\\
 
  Python se está usando cada día más para el tratamiento de imagen, esto se debe a que es un lenguaje muy accesible, siendo gratuito y con una sintaxis sencilla. Con el tiempo han ido surgiendo bibliotecas específicas para el tratamiento de la imagen en Python como Pil (Python Imaging Library) también llamada Pillow, Scikit-image y Open-CV. Esta última será la que más se use en este proyecto.\\
 
@@ -50,7 +56,7 @@ Otra biblioteca que facilita el tratamiento de imagen en Python es Numpy, una bi
 
 \subsection{OpenCV}
 
-OpenCV(Open Source Computer Vision Library) es una biblioteca centrada en el tratamiento de imagen y video (Computer Vision) y en aprendizaje de máquina, con interfaces para varios lenguajes de programación como C++, Python o Java. OpenCV es la biblioteca de procesamiento de imagen más usada en el mundo con más de 18 millones de descargas. Originalmente programada en C; el resto de lenguajes usa diferentes interfaces para acceder al código. Esto permite tener un buen rendimiento por ser C un lenguaje muy rápido en ejecución.\\
+OpenCV(Open Source Computer Vision Library)\footnote{https://opencv.org/} es una biblioteca centrada en el tratamiento de imagen y video (Computer Vision) y en aprendizaje de máquina, con interfaces para varios lenguajes de programación como C++, Python o Java. OpenCV es la biblioteca de procesamiento de imagen más usada en el mundo con más de 18 millones de descargas. Originalmente programada en C; el resto de lenguajes usa diferentes interfaces para acceder al código. Esto permite tener un buen rendimiento por ser C un lenguaje muy rápido en ejecución.\\
 
 OpenCV contiene desde funciones de bajo nivel para el procesado de imagen hasta algoritmos complejos para deteccion de caras. En este trabajo, ya que trata de dar una base de tratamiento de imagen, usaremos funciones de bajo nivel como filtros o funciones para cambiar de espacio de color.\\
 
@@ -59,7 +65,7 @@ Se ha usado la versión 4.2.0 de OpenCV.\\
 
 \subsection{Numpy}
 
-Numpy es el paquete principal para cálculos complejos con matrices en Python, esto lo convierte en un paquete esencial en el desarrollo de código para usos ciéntificos y de robótica. La base de esta biblioteca es el objeto \emph{ndarray}, que consiste en arrays de n-dimensiones con datos de un mismo tipo y un tamaño establecido al crear la variable, esto último lo diferencia de las listas de python que son dinámicas.\\
+Numpy\footnote{https://numpy.org/} es el paquete principal para cálculos complejos con matrices en Python, esto lo convierte en un paquete esencial en el desarrollo de código para usos ciéntificos y de robótica. La base de esta biblioteca es el objeto \emph{ndarray}, que consiste en arrays de n-dimensiones con datos de un mismo tipo y un tamaño establecido al crear la variable, esto último lo diferencia de las listas de python que son dinámicas.\\
 
 En este trabajo se ha usado la versión 1.16.5 de Numpy.\\
 
@@ -67,7 +73,7 @@ Numpy contiene funciones que permiten realizar operaciones con grandes cantidade
 
 \subsection{Matplotlib}
 
-Matplotlib es una biblioteca para la creación de gráficos en Python. También permite la representacion de imágenes. Matplotlib está construido usando Numpy para funcionar con el paquete general de Scipy. Permite interactúar con los gráficos de una forma muy similar a la representación de Matlab. Matplotlib funciona sobre cualquier sistema operativo. \\
+Matplotlib\footnote{https://matplotlib.org/} es una biblioteca para la creación de gráficos en Python. También permite la representacion de imágenes. Matplotlib está construido usando Numpy para funcionar con el paquete general de Scipy. Permite interactúar con los gráficos de una forma muy similar a la representación de Matlab. Matplotlib funciona sobre cualquier sistema operativo. \\
 
 Una de las razones por las que se ha elegido esta biblioteca para representar las diferentes imágenes y gráficos de las prácticas de TDI es por cómo interactúa con los cuadernillos de Jupyter, ya que permite la visualización de los gráficos incrustrada en el propio cuadernillo sin crear otra ventana. \\
 
@@ -77,20 +83,20 @@ Se ha usado la versión 3.1.1.\\
 
 \subsection{Scikits}
 
-Abreviatura de Scipy Toolkits son una serie de paquetes añadidos para scipy separados de su distribución principal. Estos paquetes se separan de scipy cuando se consideran demasiado específicos para el propio Scipy, por una licencia incompatible con la de Scipy o si aún están en desarrollo.\\
+Abreviatura de Scipy Toolkits\footnote{https://www.scipy.org/scikits.html} son una serie de paquetes añadidos para scipy separados de su distribución principal. Estos paquetes se separan de scipy cuando se consideran demasiado específicos para el propio Scipy, por una licencia incompatible con la de Scipy o si aún están en desarrollo.\\
 
 En este trabajo se van a usar 2 de esos kits:\\
 
 
 \begin{itemize}
 
-	\item \textbf{Scikit-learn}: Es un paquete con un amplio rango de algoritmos de aprendizaje de máquina para problemas de tamaño medio, tanto supervisados como no supervisados. Está programado mayoritariamente en Python aunque incorpora algunas bibliotecas de C++ e incorpora código compilado para mejorar su eficiencia.
+	\item \textbf{Scikit-learn}\footnote{https://scikit-learn.org/stable/}: Es un paquete con un amplio rango de algoritmos de aprendizaje de máquina para problemas de tamaño medio, tanto supervisados como no supervisados. Está programado mayoritariamente en Python aunque incorpora algunas bibliotecas de C++ e incorpora código compilado para mejorar su eficiencia.
 
-	\item \textbf{Scikit-image}: Este paquete cuenta con una colección de algoritmos para el tratamiento de imagen construida por una comunidad de voluntarios.
+	\item \textbf{Scikit-image}\footnote{https://scikit-image.org/}: Este paquete cuenta con una colección de algoritmos para el tratamiento de imagen construida por una comunidad de voluntarios.
 \end{itemize}
 \section{ Cuadernillos de Jupyter}
 
-El cuadernillo Jupyter es una interfaz web de código libre, que permite la creación de documentos que contienen código ejecutable, ecuaciones, visualización (gráficos, imágenes) y texto. Trabajaremos sobre la versión \\
+El cuadernillo Jupyter\footnote{https://jupyter.org/} es una interfaz web de código libre, que permite la creación de documentos que contienen código ejecutable, ecuaciones, visualización (gráficos, imágenes) y texto. Trabajaremos sobre la versión \\
 
 El cuadernillo se guarda como un JSON la extensión .ipnyb. La aplicación es un modelo cliente-servidor que se ejecuta a través de un navegador. Se trata de un servidor local que se crea al ejecutar la aplicación lo que implica que no se necesita conexión a internet para leer o modificar un cuadernillo.  El servidor lee el documento .ipnyb y manda mensajes usando ZeroMQ (una librería que manda mensajes usando un modelo asíncrono) a un kernel que ejecuta el código Python en el cuadernillo. El cliente funciona en un navegador y es lo que permite interactuar con el cuadernillo, según se muestra en la Figura \ref{estructurajupyter}
 \begin{figure}[h]
@@ -102,7 +108,14 @@ El cuadernillo se guarda como un JSON la extensión .ipnyb. La aplicación es un
 
 Los cuadernillos de Jupyter consisten principalmente en dos tipos de celdas: \emph{code} y \emph{markdown}.\emph{ Code }son las celdas ejecutables en las que se escribe código de Python, mientras que \emph{markdown} son las celdas de texto. Para estilizar el texto se usa  la sintaxis de markdown, que permite desde poner texto en negrita hasta insertar imágenes o fórmulas matemáticas complejas.\\
 
+En la Figura \ref{versionjupyter} se pueden var las versiones de los diferentes paquetes necesarios para ejecutar un cuadernillo de Jupyter.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{imagenes/versionjupyter}
+\caption{Imagen de una terminal que muestra las versiones de los paquetes de Jupyter usados en este trabajo.}
+\label{versionjupyter}
+\end{figure}
 
 
 \section{Prácticas de TDI en Matlab}
@@ -656,23 +669,7 @@ Y se vuelve a aplicar  \emph{Watershed}, esta vez la diferencia entre los mínim
 
 \subsection{Desarrollo de funciones}
 
-Para esta práctica se ha tenido que desarrollar la función \textbf{imregionalmax}, que es una función que toma una imagen en escala de grises y devuelve una imagen binaria con los máximos regionales en primer plano. La problemática de esta función es que requiere ir iterando por cada pixel de la imagen y realizando varias operaciones, esto hace que sea imposible de programar directamente en Python ya que el tiempo de ejecución sería demasiado elevado, por ello se han tenido que buscar formas de acortar el proceso lo máximo posible, aunque sigue tardando más que su equivalente en Matlab programado en C.
-
-Para poder ir comprobando el funcionamiento de la función mientras se programaba se creó una imagen simple [\ref{minimos}] en la que se podían ver a primera vista los máximos regoinales .\\
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\textwidth]{imagenes/minimos}
-\caption{Imagen utilizada en el desarrollo de Imregionalmax}
-\label{minimos} 
-\end{figure}
-
-Primero se usa la función \textbf{peak\_local\_max}  que devuelve una imagen binaria con los máximos locales en primer plano, a continuación se usa \textbf{connectedcomponents} de OpenCv para etiquetar las regiones de mismo nivel. A continuación se sacan los bordes de las regiones con la función \textbf{findborder}, esto se hace para no ir comparando pixel a pixel, solo se miran los que estén al rededor de un cambio de nivel de intensidad. Aquí es donde se puede ver el primer problema que hay que solucionar, las regiones no son correctas, ya que al usar \textbf{peak\_local\_max} algunos píxeles que son parte de una región pegada a otra de mayor nivel los devuelve como fondo ya que no son máximos locales y esto crea un que da problemas a la hora de comparra píxeles más adelante, para solucionarlo se crea una función \textbf{correctregions} que comprueba si las regiones son correctas o se pueden extender un pixel más que se haya dejado fuera. Se usa esta función entre Connected components y findborders.\\
-
-Ahora recorremos la lista de píxeles borde de región comprobando si los píxeles de su alrededor son del mismo nivel o menores, en el caso de que un pixel sea mayor, esa región no es un máximo regional, por lo que se pone a 0 en la imagen de marcadores y podemos dejar de comprobar el resto de sus bordes. Al final las regiones que quedan son los máximos regionales.
-
-
+Para esta práctica se ha tenido que desarrollar la función \textbf{imregionalmax},
 \section{ Práctica 8}
 \subsection{Teoría tratada en la práctica}
 
@@ -706,16 +703,96 @@ A la hora de reproducir el video se puede usar \textbf{imshow} de OpenCV en un b
 
 El siguiente punto del ejercicio pide reproducir el video con un framerate distinto.\\
 
-En la parte de estimación de movimiento en Matlab se utilizan 3 funciones programadas para la asignatura, en Pytho se hace lo mismo consiguiendo los mismos resultados. Las diferencias vienen al la hora de representar los vectores de movimiento, la función \textbf{quiver} de Matplotlib representa mapas vectoriales pero a no ser que se le indique de otro modo el tamaño de las flechas varias para que la representacioón quede más visualmente interesante
+En la parte de estimación de movimiento en Matlab se utilizan 3 funciones programadas para la asignatura, en Python se hace lo mismo consiguiendo los mismos resultados. \\
 
+En este apartadose pide usar el algoritmoEBMA con 3 tamaños diferentes de bloque (8, 16 y 32), representar el frame estimado, el mapa vectorial que devuelve la función y calcular el MSE para cada una de las 3 instancias. La siguiente figura \ref{ebma32} muestra el frame estima en Matlab y en Python con un tamaño de bloque de 32.\\
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Matlab]{\includegraphics[width=0.4\textwidth]{imagenes/ebma32ml}\label{fig:f1}}
+  \hfill
+  \subfloat[Python]{\includegraphics[width=0.4\textwidth]{imagenes/ebma32py}\label{fig:f2}}
+  \caption{Comparativa de resultados EBMA con bloque 32.}
+  \label{ebma32}
+\end{figure}
+A continuación se pide ejecutar HBMA con un bloque de tamaño 16 y 3 niveles.\\
+
+Por último ejecutar la función 'PhaseCorrelation' que automáticamente representa el frame estimado, el mapa vectorial y devuelve el MSE.
+
+Las diferencias en este apartado vienen al la hora de representar los vectores de movimiento, la función \textbf{quiver} de Matplotlib representa mapas vectoriales pero a no ser que se le indique de otro modo el tamaño de las flechas varía para que la representacioón quede más visualmente interesante. En la figura \ref{arrow} se puede ver una comparación de la representación  de los vectores de movimiento del algoritmo EBMA con bloques de tamaño 8 en Matlab, en Matplotlib con los valores por defecto y en Matplotlib con los valores corregido. Los vectores utilizados son exactamente iguales.\\
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Matlab]{\includegraphics[width=0.3\textwidth]{imagenes/arrowml}\label{fig:f1}}
+  \hfill
+  \subfloat[Python sin modificar]{\includegraphics[width=0.3\textwidth]{imagenes/arrowpymala}\label{fig:f2}}
+  \hfill
+  \subfloat[Python mejorado]{\includegraphics[width=0.3\textwidth]{imagenes/arrowpybuena}\label{fig:f3}}
+  \caption{Diferencias en el mapa de vectores de movimiento.}
+  \label{arrow}
+\end{figure}
 \subsection{Desarrollo de funciones}
+
+En esta práctica se han desarrollado 3 funciones, los algoritmos de estimación de movimiento.\\
+
+\begin{itemize}
+	\item \textbf{ EBMA}: Esta función recibe 3 atributos: el frame de referencia (anchor frame), el frame actual (target frame) y el tamaño de bloque que se va a usar. La función empieza declarando variables como el ancho y alto de cada frame y los arrays que van a formar el mapa de vectores de movimiento.\\
+A continuación se iterapor la imagen de referencia en saltos del tamaño del bloque, se define el bloque dentro del frame de referencia. Para buscar movimiento se va moviendo el bloque de referenciaen diferentes posiciones sobre el frame actualbuscando el mayor parecido en un número limitado de posiciones. Una vez encontradoel bloque más parecido se guarda en una matriz del mismo tamaño que los frames, esta matriz será el frame predecido. Se guarda en el array de origen la posición del bloque de referencia y en el array de destinola posición en el nuevo frame.\\
+Esto se repite hasta que se ha iterado por toda la imagen.
+	\item \textbf{ HBMA}:
+	\item \textbf{PhaseCorrelation}:
+\end{itemize}
 
 \section{ Práctica 9}
 \subsection{Teoría tratada en la práctica}
+
+La última práctica de la asignatura trata el uso de filtros en video.\\
+
+La práctica se estructura de una forma muy similar a la práctica 2. Se empieza contaminanado el video con ruido Gaussiano y sal y pimienta para, a continuación, filtrar el video y comprobar los efectos de los filtros temporales. En la figura \ref{ruidovideo} se puede ver el frame original, el frame contaminado con ruido gaussiano y con ruido sal y pimienta.\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{imagenes/ruidovideo}
+\caption{Un frame de video contaminado con dos tipos de ruido.}
+\label{ruidovideo} 
+\end{figure}
+
+Se van a usar dos filtros temporales diferentes. Un filtro temporal es un filtro que en lugar de usar una máscara que coge píxeles del mismo frame cercanos al pixel que se está fitrando coge los píxeles en la misma posición de diferentes frames.\\
+
+El primero de los filtros que se usa es un filtro temporal de media que como indica su nombre hace la media  entre el número de frames indicado para filtrar. Al analizar el video resultante de esteos filtros se comprueba que los primeros frames no quedan filtrados esto se debe a que si, por ejemplo, estamos filtrando con 5 frames, dos anteriores al frame antual y dos posteriores no se puede empezar a filtrar hasta el tercer frame.\\
+
+El segundo filtro que usa es un filtro temporal de mediana que calcula la mediana de los frames que se estén usando. La peculiaridad en esta práctica es que no se da una función para realizar este filtro si no que se pide que se modifique la función usada para el filtro de media.\\
+
 \subsection{Comparativa Matlab vs Python}
+
+La primera diferencia entre la versión de Matlab y Python de esta práctica es el video usado, se ha escogido un video sin copyright de una libreria que almacena videos para uso didáctico.\\
+
+Al igual que pasaba en la práctica 2 no existe una función para añadir ruido en Python, de hecho en Matlab tampoco existe una función para añadir ruido a videos, se crea la función \textbf{addnoise} para contaminar una secuencia de video RGB. Los resultados son los mismos que en Matlab.\\
+
+Ni en Python ni en Matlab existen funciones para aplicar filtros temporalespor lo que se tiene que programar \textbf{tempNoiseFilter} para realizar un filtro de media temporal.\\ 
+
+Tanto la función \textbf{addnoise} como \textbf{tempNoiseFilter} crean nuevos videos que quedan guardados en la misma carpeta de la práctica como se puede ver en la figura \ref{carpetaP9}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{imagenes/carpetaP9}
+\caption{Contenido de la carpeta de la práctica 9 tras ejecutar addnoise y TempNoiseFilter.}
+\label{carpetaP9} 
+\end{figure}
+
 \subsection{Desarrollo de funciones}
 
+Esta función usa dos funciones principales: \textbf{addnoise} y \textbf{tempNoiseFilter}.\\
 
+\textbf{addnoise} recibe como argumentos el nombre del video a contaminar, el nombre que se le va a dar al video contaminado, el tipo de ruido y un array con los frames a contaminar. En el caso de que el array esté vacío se contaminan todos los frames. Esta función se sirve de varias funciones más pequeñas. Primero se usa \textbf{getframes} que recibe el nombre del video y debuelve un array con todos los frames. Tras una serie de comprobaciones (como que el array de frames no esté vacío y el número de frames a contaminar) se itera sobre cada frame llamando a la función \textbf{plusnoise} con el frame y el tipo de ruido y esta llama a la función \textbf{imnoise} usada en la práctica 2. La función \textbf{plusnoise} devuelve una imagen contaminada que se guardaen un nuevo array que formará parte de la nueva estructura de video contaminado. En la Figura \ref{addnoise} se puede ver el código de esta función.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{imagenes/addnoise}
+\caption{Imagen del código de la función addnoise.}
+\label{addnoise} 
+\end{figure}
+
+La otra función usada en esta práctica es \textbf{tempNoiseFilter}, al igual que la función anterior sus primeros argumentos son los nombres del video de entrada y de salida, el tercer argumento de la función es el número de frames que se va a usar para calcular la media. Primero se lee el video usando \textbf{getframes}. A continuación se itera por el array de frames calculando la media entre el número de frames establecido. Al igual que \textbf{addnoise} guarda un nuevo video con el nombre indicado en el segundo argumento.\\
 \chapter{Conclusiones}
 
 \nocite{*}
