@@ -21,6 +21,7 @@ import cv2
 from math import log, e
 
 def rangefilt(img):
+    
     EE = cv2.getStructuringElement(cv2.MORPH_RECT, (7,7))
     E = cv2.erode(img,EE,iterations = 1)
     D =cv2.dilate(img, EE)
@@ -77,20 +78,19 @@ def entropyfilt(img):
     F = F/F.max()
     
                 
-    return np.uint8(255*F) 
+    return F 
 
 
 def stdfilt(img):
 
     img = img / 255.0
     
-    # c = imfilter(I,h,'symmetric');
-    h = np.ones((3,3))
+    h = np.ones((7,7))
     n = h.sum()
     n1 = n - 1
     c1 = cv2.filter2D(img**2, -1, h/n1, borderType=cv2.BORDER_REFLECT)
     c2 = cv2.filter2D(img, -1, h, borderType=cv2.BORDER_REFLECT)**2 / (n*n1)
     J = np.sqrt( np.maximum(c1-c2,0) )
     
-    return np.uint8(255*J)
+    return J
 
