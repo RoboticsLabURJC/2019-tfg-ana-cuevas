@@ -478,14 +478,7 @@ En la figura \ref{segmentacionrgb} se ve el resultado de la segmentación. Se pu
 
 Para solucionar el problema anterior se prueba un nuevo método, vuelve a usar K-medias, pero en lugar  de organizar los datos en el espacio de color RGB se va a usar Lab. Lab es un espacio de color con tres componentes, la componente L indica la luminancia y las componentes a y b el tono de color.\\
 
-En este ejercicio vamos a usar solamente las componentes ab ya que estamos tratando con tonos muy distintos y la luminancia no es tan relevante. Esto además simplifica los cálculos porque pasamos de usar 3 características a 2 [\ref{cormoranlab}].\\
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\textwidth]{imagenes/cormoranlab}
-\caption{Representación de los píxeles de la imagen en gráfico con ejes a y b.}
-\label{cormoranlab}
-\end{figure}
+En este ejercicio vamos a usar solamente las componentes ab ya que estamos tratando con tonos muy distintos y la luminancia no es tan relevante. Esto además simplifica los cálculos porque pasamos de usar 3 características a 2.\\
 
 El resultado vuelve a tener problemas, esto se debe a que los valores de a y b no están estandarizados lo que provoca que una de las características domine sobre la otra. Una vez se estandarizan, el resultado es el que se puede ver en la figura \ref{segmentacionlab}\\
 
@@ -497,14 +490,20 @@ El resultado vuelve a tener problemas, esto se debe a que los valores de a y b n
 \label{segmentacionlab}
 \end{figure}
 
-En el cuarto apartado de la práctica se trata la caracterización por textura como alternativa al color. Los filtros de textura se relacionan todos con características estadísticas como la entropía, la desviación estándar o el rango. Se escogen dos de estas características para realizar la segmentación con kmedias, en este caso, la entro´pia y la desviación estándar. Los resultados no son buenos ya que segmenta los bordes del cormorán diferente del resto del cuerpo.\\
+En el cuarto apartado de la práctica se trata la caracterización por textura como alternativa al color. Los filtros de textura se relacionan todos con características estadísticas como la entropía, la desviación estándar o el rango. Se escogen dos de estas características para realizar la segmentación con kmedias, en este caso, la entropía y la desviación estándar. En la figura \ref{segmentacionse} se puede ver que los resultados no son buenos ya que segmenta los bordes del cormorán diferente del resto del cuerpo.\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{imagenes/segmentacionse}
+\caption{Resultado de realizar la segmentación K-medias sobre componentes de ctextura carcterizados por la desviación típica y la entropía.}
+\label{segmentacionse}
+\end{figure}
 
 Por último, se prueba a usar varias características de distinta naturaleza, en este caso color y textura. Se cogen las características a y b del espacio de color Lab y la entropía, se estandarizan la 3 caracteríasticas y se aplica kmedias. La imageb resultante queda sobresegmentada con pequeñas regiones dentro del cuerpo del ave mal etiquetadas. Para solucionar esto se sugiere aplicar un filtro de media sobre las características de color. El resultado de la segmentación mejora como se puede apreciar en la figura \ref{segmentacionabe}. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/segmentacionabe}
-\caption{Resultado de realizar la segmentación K-medias sobre componentes de color y textura}
+\caption{Resultado de realizar la segmentación K-medias sobre componentes de color y textura.}
 \label{segmentacionabe}
 \end{figure}
 
@@ -530,23 +529,41 @@ Para representar la capa de etiquetas hay que realizar las transformaciones inve
   \label{comprgb}
 \end{figure}
 
-En el apartado sobre segmentación en el espacio de color Lab tanto en Matlab como en Pythonse usa una función específicamente programada para este ejercicio para pasar de RGB a Lab. En ambos lenguajes existe una función que hace esta transformación, la razón por la que no se usan es el tipo de transformación Lab que utilizan. La normas que definan un espacio de color respecto a otro se han ido revisando y cambiando con el tiempo, la versión de Lab con la que se planteó esta práctica es la descrita en la norma de 1976 mientras que la función que convierte de RGB a Lab en scikit-image usa la norma de 1999. Para mantener la práctica tal y como se planteó se ha creado la función \textbf{RGB2LAB76} aunque también se ha hecho una versión de esta práctica con la función de scikit-image, en la figura \textbf{ref} se ùede ver la representación de las componentes a y b en las diferentes nornormas, y en la figura \textbf{ref} se muestra la diferencia en la segmentación con kmedias.\\
-
-En este apartado se pide la normalización de las variables, la secuencia de código necesaria viene dada en el enunciado, esto se ha replicado en el cuadernillo de Jupyter modificando el código para funcionar en Pyhthon.\\
-
-En el apartado de texturas Matlab tiene funciones para realizar los diferentes filtros necesarios. En Python existe un equivalente del filtro de entro´puia conresultados idénticos. Los otros dos filtros no tienen equivalente en Python por lo que se han tenido que programar. Los resultados son muy similares como se puede comprobar en la figura \textbf{ref}.\\
-
-El último apartado utiliza herramientas ya empleadas en en el resto de la práctica y un filtro de media explicado en la práctica 2.\\
+En el apartado sobre segmentación en el espacio de color Lab tanto en Matlab como en Pythonse usa una función específicamente programada para este ejercicio para pasar de RGB a Lab. En ambos lenguajes existe una función que hace esta transformación, la razón por la que no se usan es el tipo de transformación Lab que utilizan. La normas que definan un espacio de color respecto a otro se han ido revisando y cambiando con el tiempo, la versión de Lab con la que se planteó esta práctica es la descrita en la norma de 1976 mientras que la función que convierte de RGB a Lab en scikit-image usa la norma de 1999. Para mantener la práctica tal y como se planteó se ha creado la función \textbf{RGB2LAB76} aunque también se ha hecho una versión de esta práctica con la función de scikit-image, en la figura \textbf{normaslab} se puede ver la representación de las componentes a y b en las diferentes normas, y en la figura \textbf{comparativalab} se muestra la diferencia en la segmentación con kmedias.\\
 
 \begin{figure}[!tbp]
   \centering
-  \subfloat[Matlab]{\includegraphics[width=0.4\textwidth]{imagenes/entropyfiltml}\label{fig:f1}}
+  \subfloat[Norma de 1976.]{\includegraphics[width=0.4\textwidth]{imagenes/lab76}\label{fig:f1}}
   \hfill
-  \subfloat[Python]{\includegraphics[width=0.4\textwidth]{imagenes/entropyfiltpy}\label{fig:f2}}
-  \caption{Comparativa de resultados de aplicar el filtro de entropía}
+  \subfloat[Norma de 1999]{\includegraphics[width=0.4\textwidth]{imagenes/lab99}\label{fig:f2}}
+  \caption{Diferencias entre las componentes a y b en la diferentes normas.}
+  \label{normaslab}
+\end{figure}
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Norma de 1976.]{\includegraphics[width=0.4\textwidth]{imagenes/segmentacionlab}\label{fig:f1}}
+  \hfill
+  \subfloat[Norma de 1999]{\includegraphics[width=0.4\textwidth]{imagenes/segmentacionlab99}\label{fig:f2}}
+  \caption{Resultados de la segmentación con las diferentes normas de Lab.}
+  \label{comparativalab}
+\end{figure}
+
+En este apartado se pide la normalización de las variables, la secuencia de código necesaria viene dada en el enunciado, esto se ha replicado en el cuadernillo de Jupyter modificando el código para funcionar en Pyhthon.\\
+
+En el apartado de texturas Matlab tiene funciones para realizar los diferentes filtros necesarios. En Python existe un equivalente del filtro de entropía con resultados idénticos. Los otros dos filtros no tienen equivalente en Python por lo que se han tenido que programar. Los resultados son muy similares como se puede comprobar en la figura \textbf{ref}.\\
+
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Matlab]{\includegraphics[width=0.4\textwidth]{imagenes/texturasml}\label{fig:f1}}
+  \hfill
+  \subfloat[Python]{\includegraphics[width=0.4\textwidth]{imagenes/texturas}\label{fig:f2}}
+  \caption{Comparativa filtros de textura en Matlab y Python.}
   \label{entropyfilt}
 \end{figure}
 
+El último apartado utiliza herramientas ya empleadas en en el resto de la práctica y un filtro de media explicado en la práctica 2.\\
 
 \subsection{Desarrollo de funciones}
 
@@ -634,13 +651,37 @@ Primero se limpian los bordes, no nos interesan células que no estén enteras, 
 
 El segundo proceso, consiste en comparar la posición de nuestras regiones con la posición de los núcleos de las celdas en la imagen original basándonos en que los núcleos aparecen en un color más oscuro. Se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.\\
 
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Máximos regionales.]{\includegraphics[width=0.4\textwidth]{imagenes/Imaxreg}\label{fig:f1}}
+  \hfill
+  \subfloat[Máximos regionales procesados.]{\includegraphics[width=0.4\textwidth]{imagenes/Imaxreg3}\label{fig:f2}}
+  \caption{Proceso para conseguir los marcadores internos.}
+  \label{entropyfilt}
+\end{figure}
+
 Con eso ya tendríamos los marcadores internos. Para conseguir los marcadores externos (o de fondo) dilatamos la imagen de los marcadores internos para salir de la célula y hacemos una transformada de distancia que, es una operación que devuelve una imagen en escala de grises donde el valor de cada pixel corresponde a la distancia a la que se encuentra de un pixel de primer plano. Los píxeles de primer plano en la transformada de distancia tienen valor 0.\\
 
 Sobre la imagen de la transformada de distancia aplicamos  \emph{Watershed}. Los bordes que se forman entre regiones marcan los marcadores externos, siendo los puntos más alejados del nucleo de cada célula.\\
 
-A continuación se crea una imagen que combina los marcadores internos y externos. \\
+A continuación se crea una imagen que combina los marcadores internos y externos [\ref{marcadores}]. \\
 
-Para conseguir los bordes reales de las células se vuelve a aplicar  \emph{Watershed}, pero esta vez usando marcadores. Como imagen de referencia, en lugar de la transformada de distancia, se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores, queden como los únicos mínimos regionales y que los bordes de las células sean los puntos de mayor intensidad de la imagen mientras, que el fondo y los nucleos, al tener menos variación tienen menor intensidad.\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{imagenes/marcadores}
+\caption{Marcadores internos y externos.}
+\label{marcadores} 
+\end{figure}
+
+Para conseguir los bordes reales de las células se vuelve a aplicar  \emph{Watershed}, pero esta vez usando marcadores. Como imagen de referencia, en lugar de la transformada de distancia, se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores, queden como los únicos mínimos regionales y que los bordes de las células sean los puntos de mayor intensidad de la imagen mientras, que el fondo y los nucleos, al tener menos variación tienen menor intensidad. En la figura \ref{finalwatershed} se puede ver el resultado final de esta práctica.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{imagenes/finalwatershed}
+\caption{Resultado de la práctica de \textbf{Watershed}.}
+\label{finalwatershed} 
+\end{figure}
+
 
 
 \subsection{Comparativa Matlab vs Python}
