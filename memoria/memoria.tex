@@ -37,6 +37,11 @@ Your abstract goes here...
 \pagenumbering{arabic}
 
 \chapter{Introducción}
+
+Este trabajo se centra en dos temas principales, el primero es el tratamiento de imagen como una rama de conocimiento que está evolucionando en este momento y que se está empleando en el desarrollo de muchas investigaciones en diferentes campos. El otro tema tratado en este trabajo es la enseñanza y lo importante que es que ésta sea accesible a todo el que esté interesado en aprender sobre un tema nuevo.
+\section{Tratamiento de imagen}
+\section{La importancia de conocer las bases}
+\section{Educación accesible}
 \chapter{Objetivos}
 \section{Objetivos}
 \section{Requisitos}
@@ -97,7 +102,7 @@ En este trabajo se van a usar 2 de esos kits:\\
 \end{itemize}
 \section{ Cuadernillos de Jupyter}
 
-El cuadernillo Jupyter\footnote{https://jupyter.org/} es una interfaz web de código libre, que permite la creación de documentos que contienen código ejecutable, ecuaciones, visualización (gráficos, imágenes) y texto. Trabajaremos sobre la versión \\
+El cuadernillo Jupyter\footnote{https://jupyter.org/} es una interfaz web de código libre, que permite la creación de documentos que contienen código ejecutable, ecuaciones, visualización (gráficos, imágenes) y texto.\\
 
 El cuadernillo se guarda como un JSON la extensión .ipnyb. La aplicación es un modelo cliente-servidor que se ejecuta a través de un navegador. Se trata de un servidor local que se crea al ejecutar la aplicación lo que implica que no se necesita conexión a internet para leer o modificar un cuadernillo.  El servidor lee el documento .ipnyb y manda mensajes usando ZeroMQ (una librería que manda mensajes usando un modelo asíncrono) a un kernel que ejecuta el código Python en el cuadernillo. El cliente funciona en un navegador y es lo que permite interactuar con el cuadernillo, según se muestra en la Figura \ref{estructurajupyter}
 \begin{figure}[h]
@@ -188,20 +193,20 @@ Este apartado tratará el desarrollo del proyecto, se irá analizando cada prác
 
 \section{Estructura de las prácticas en Jupyter Notebook}
 
-A la hora de plantear las prácticas en los cuadernillos de Jupyter lo primero que se hizo fue decidir que partes se iban a mantener igual y en qué se iban a diferenciar de las de Matlab. La estructura en si, el temario tratado, el orden de los ejercicios y en los casos que se podía las imagenes originales se intentan mantener intactas. Los más importante erra mantener el cometido de la práctica, lo que se pretendía mostrar y enseñar con ella.\\
+A la hora de plantear las prácticas en los cuadernillos de Jupyter lo primero que se hizo fue decidir que partes se iban a mantener igual y en qué se iban a diferenciar de las de Matlab. La estructura en si, el temario tratado, el orden de los ejercicios y en los casos que se podía las imagenes originales se intentan mantener intactas. Lo más importante era mantener el cometido de la práctica, lo que se pretendía mostrar y enseñar con ella.\\
 
-El cambio más obvio entre las dos versiones de los ejercicios tiene que ver con los enunciados, en los cuadernillos el enunciado está en inglés ya que se había planteado el TFG para subir las prácticas a Robotics Academy, esto las haría más accesible a un mayor número de personas. Otro cambio en los enunciados es que han sido ampliados, esto se debe a que las prácticas originales son un material que se apoya sobre la teoría dada en clase y asumen que esa teoría ha sido impartida, mientras que en Robotics Academy las prácticas serían el único contacto que tendría el alumno con el tema por los que los nuevos enunciados amplian un poco las explicaciones teóricas añadiendo enlaces a más recursos para ampliar conocimientos.\\
+El cambio más obvio entre las dos versiones de los ejercicios tiene que ver con los enunciados, en los cuadernillos el enunciado está en inglés ya que se había planteado el TFG para subir las prácticas a Robotics Academy, esto las haría más accesible a un mayor número de personas. Otro cambio en los enunciados es que han sido ampliados, esto se debe a que las prácticas originales son un material que se apoya sobre la teoría dada en clase y asumen que esa teoría ha sido impartida, mientras que en Robotics Academy las prácticas serían el único contacto que tendría el alumno con el tema por lo que los nuevos enunciados ampliían un poco las explicaciones teóricas añadiendo enlaces a más recursos para ampliar conocimientos.\\
 
-Una cosa común en los enunciados originales son los trozos de código facilitados para copiar y pegar, en jupyter estas lineas de código apaercen en celdas tipo \emph{code} con indicaciones para cambiar los nombres de las variables si es necesario.\\
+Una cosa común en los enunciados originales son los trozos de código facilitados para copiar y pegar, en Jupyter estas lineas de código aparecen en celdas tipo \emph{code} con indicaciones para cambiar los nombres de las variables si es necesario.\\
 
 En cuanto al desarrollo de los ejercicos el cambio principal es el lenguaje de programación, de Matlab a Python. \\
 
-Un cambio significativo en la presentación de la práctica es el uso de ventanas emergentes, cuando ejecutas las prácticas en Matlab con la cantidad de imágenes que se pide representar pueden aparecer hasta 20 pestañas nuevas  (imagen \ref{ventanas}) lo que puede ser bastante abrumador, en la versión desarrollada en este trabajo se han intentado evitar las ventanas emergentes, representando siempre que se ha podido en el propio cuadernillo, esto también hace las prácticas más fáciles de consultar una vez se ha terminado el código ya que se puede guardar el cuadernillo una vez ejecutado y las imágenes se mantienen mientras no se vacíe el output.\\
+Un cambio significativo en la presentación de la práctica es el uso de ventanas emergentes. Cuando ejecutas las prácticas en Matlab con la cantidad de imágenes que se pide representar pueden aparecer hasta 20 pestañas nuevas  (Figura \ref{ventanas}) lo que puede ser bastante abrumador, en la versión desarrollada en este trabajo se han intentado evitar las ventanas emergentes, representando siempre que se ha podido en el propio cuadernillo, esto también hace las prácticas más fáciles de consultar una vez se ha terminado el código ya que se puede guardar el cuadernillo una vez ejecutado y las imágenes se mantienen mientras no se vacíe el output.\\
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{imagenes/ventanas}
-\caption{Ventanas emerjentes en el apartado 2 de la práctica 8 en Matlab.}
+\caption{Ventanas emergentes en el apartado 2 de la práctica 8 en Matlab.}
 \label{ventanas}
 \end{figure}
 
@@ -214,7 +219,7 @@ Para facilitar el acceso a las prácticas se ha creado una guía de instalación
 
 La guía requiere que primero se compruebe si el ordenador tiene instalado Python3, en caso negativo, se pone un link a la página oficial de Python con la guía de instalación para los diferentes sistemas operativos.\\
 
-A continuación, se indica como instalar Pip, el instalador de paquetes en Python y se indica el comando para instalar pipenv.\\
+A continuación, se indica como instalar Pip, el instalador de paquetes en Python y se indica el comando para instalar Pipenv.\\
 
 La guía continúa explicando cómo acceder a la prácticas y como iniciar el entorno de Pipenv necesario para ejecutarlas.\\
 
@@ -238,7 +243,7 @@ Por último se verá la interpretación del color y cómo realizar transformacio
 
 En este apartado vamos a mencionar las principales diferencias entre la práctica realizada en Matlab y el nuevo formato usando un cuadernillo de Jupyter.\\
 
-En el primer apartado de la práctica que se centra en la lectura y representación de imágines podemos encontrar dos diferencias:\\
+En el primer apartado de la práctica que se centra en la lectura y representación de imágenes podemos encontrar dos diferencias:\\
 
 La primera es el espacio de color sobre el que se trabaja. Matlab y Matplotlib leen las imágenes de color como RGB mientras que OpenCV usa BGR, esto genera un conflicto entre la librería que se va a usar para leer imágenes y la que se va a usar para representar. Se resuelve en el siguiente apartado que trata sobre espacios de color.\\
 
@@ -246,7 +251,7 @@ La segunda son los métodos de representación. En Matlab teníamos una única f
 
 La siguiente gran diferencia entre los dos ejercicios es en el apartado de conversión de tipos de imágenes. Como ya se mencionó, se ha añadido una transformación de espacios de color para solucionar el problema de lectura, pero la mayor diferencia tiene que ver con la falta de una función que convierta una imgen RGB a indexada que si exite en Matlab. Se probó a programar una versión equivalente en Python pero por cuestión de velocidad en la ejecución no se pudo implementar. El problema se solventó exportando las dos matrices que forman una imagen indexada desde Matlab  e implementarlas en Python aprovechando para explicar como se crean los mapas de color.\\
 
-La falta de la función RGB2ind vuelve a ser relevante en el punto sobre modificación de la resolución de intensidad de una imagen, ya que en la práctica original se usaba esta función para cambier el número de niveles de intensidad en el mapa de color. Se resuelve explicando una resolución matemática al problema sin cambiar la imagen a indexada. Al ser una imagen en escala de grises con menos información que una imagen RGB también se puede usar la versión de Python de RGB2ind ya que el tiempo de ejecución es menor para imágenes en escala de grises. En la siguiente imagen \ref{resmatematica} se puede ver la parte del enunciado en la que se explica la resolución matemática. 
+La falta de la función RGB2ind vuelve a ser relevante en el punto sobre modificación de la resolución de intensidad de una imagen, ya que en la práctica original se usaba esta función para cambier el número de niveles de intensidad en el mapa de color. Se resuelve explicando una resolución matemática al problema sin cambiar la imagen a indexada. Al ser una imagen en escala de grises con menos información que una imagen RGB también se puede usar la versión de Python de RGB2ind ya que el tiempo de ejecución es menor para imágenes en escala de grises. En la figura \ref{resmatematica} se puede ver la parte del enunciado en la que se explica la resolución matemática. 
 
 \begin{figure}[h]
 \centering
@@ -265,9 +270,9 @@ En esta práctica solamente fue necesario desarrollar una función nueva: RGB2in
 
 A la hora del desarrollo se intentó buscar el código de la función original de Matlab pero, es de las funciones precompiladas en C y su código no es accesible. Se resolvió usando el algoritmo K-medias con un número de nucleos igual al número de niveles requeridos.\\
 
- La función final tiene un problema de tiempo de ejecución. Para un número pequeño de núcleos funciona bien pero, por ejemplo para los 256 requeridos en la práctica el tiempo de ejecución interrumpiría el desarrollo cómodo del ejercicio. Para mejorarla se podría probar a usar una versión pre-compilada de Python o programar la función en C e implementarla.\\
+ La función final tiene un problema de tiempo de ejecución. Para un número pequeño de núcleos funciona bien pero, por ejemplo, para los 256 requeridos en la práctica el tiempo de ejecución interrumpiría el desarrollo cómodo del ejercicio. Para mejorarla se podría probar a usar una versión pre-compilada de Python o programar la función en C e implementarla.\\
 
-Esta imagen \ref{rgb2ind} muestra como queda la solución para una imagen indexada de 5 niveles.
+La figura \ref{rgb2ind} muestra como queda la solución para una imagen indexada de 5 niveles.
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{imagenes/rgb2ind}
@@ -308,7 +313,7 @@ Los filtros paso alto son filtros de realce de contornos. Se usan sobre todo par
 
 \subsection{Comparativa Matlab vs Python}
 
-En el primer apartado de está práctica se usan una serie de funciones que no pertenecen a Matlab y vienen entre los materiales de la práctica, estas funciones se recrean en Python con la misma funcionalidad.\\
+En el primer apartado de esta práctica se usan una serie de funciones que no pertenecen a Matlab y vienen entre los materiales de la práctica, estas funciones se recrean en Python con la misma funcionalidad.\\
 
 En el apartado de filtros lineales la función más importante es \textbf{imfilter} que tiene de parámetros de entrada la imagen a filtrar, la máscara y el tipo de \emph{padding}. El tipo de \emph{padding} indica como se va a rellenar la máscara cuando el valor del centro es un borde de la imagen, los dos tipos de \emph{padding} que se demuestran en esta práctica son \emph{zero padding} que rellena con 0 y \emph{mirror padding} que copia los píxeles cercanos al borde. La función \textbf{filter2D} de OpenCv funciona de la misma manera y con los mismos parámetros.\\
 
@@ -336,7 +341,7 @@ El último apartado de composición de imágenes requiere funciones que se usaro
 
 Para este ejercicio se han tenido que desarrollar varias funciones, todas relacionadas con la función de añadir ruido en una imagen. La función principal \textbf{imnoise} tiene 3 parámetros de entrada: la imagen a contaminar, el tipo de ruido y un parámetro genérico que indica los parámetros de cálculo del ruido (por ejemplo si el ruido es gaussiano este parámetro contiene la media y la varianza). La imagen puede ser tanto en tonos de gris como en color. Para añadir el ruido se llama a \textbf{addnoise} que es la función que realiza las operaciones matemáticas necesarias.\\
 
-Otras funciones que se han ido creando por necesidad de \textbf{imnoise} son \textbf{checkcolor} que, como su nombre indica, se encarga de comprobar si la imagen es de color y un par de funciones para cambiar el tipo de datos de la matriz de image,n por ejemplo, de unit8 a double y viceversa.
+Otras funciones que se han ido creando por necesidad de \textbf{imnoise} son \textbf{checkcolor} que, como su nombre indica, se encarga de comprobar si la imagen es de color y un par de funciones para cambiar el tipo de datos de la matriz de imagen, por ejemplo, de uint8 a double y viceversa.
 
 \section{Práctica 3: Filtrado en el dominio de la frecuencia}
 \subsection{Teoría tratada en la práctica}
@@ -345,13 +350,14 @@ En esta práctica se trata la imagen en el dominio de la frecuencia. Se intenta 
 
 El segundo apartado demuestra las propiedades de la transformada de Fourier, qué transformaciones en el espacio afectan a la fase y cuáles al módulo y de qué manera.\\
 
-El resto de la práctica se centra en el filtrado de imagen en el dominio frecuencial. Primero se explican dos filtros paso bajo: Gaussiano e ideal [\ref {gauss}]. Se trata de filtrar la imagen en frecuencia y ver como afecta en el espacio tras hacer una tranformada de fourier inversa.
+El resto de la práctica se centra en el filtrado de imagen en el dominio frecuencial. Primero se explican dos filtros paso bajo: Gaussiano e ideal [Figura \ref {gauss}]. Se trata de filtrar la imagen en frecuencia y ver como afecta en el espacio tras hacer una tranformada de Fourier inversa.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/gaussfpb}
 \caption{Representación de un filtro paso bajo Guassiano.}
 \label{gauss}
 \end{figure}
+
  Para concluir la práctica se tratan los filtros paso alto que, en el dominio de la frecuencia, son iguales que los filtros paso bajo pero invertidos.
 \subsection{Comparativa Matlab vs Python}
 
@@ -359,9 +365,9 @@ En este ejercicio se usa una imagen dada con la práctica original de un triáng
 
 La función más importante de esta práctica es \textbf{fft2}, la transformada de Fourier bidimensional. Existe un equivalente exacto en Numpy,  \textbf{numpy.fft.fft2}. También existe equivalente para la función \textbf{fftshift} que modifica la representación de la imagen en frecuencia para que las frecuencias bajas se concentren en el centro de la imagen y las altas en los extremos.\\
 
-Para las representaciones en 3D se ha usado una función sacada de Github de código abierto, que simplifica el código de forma que, para representar un gráfico, solo tienes que llamar a una función en lugar de meter todas las especificaciones de Matplotlib cada vez que se quiera representar algo. En el cuadernillo se deja el código demostrando como usar esta función.\\
+Para las representaciones en 3D se ha usado una función sacada de Github de código abierto que simplifica el código de forma que, para representar un gráfico, solo tienes que llamar a una función en lugar de meter todas las especificaciones de Matplotlib cada vez que se quiera representar algo. En el cuadernillo se deja el código demostrando como usar esta función.\\
 
-El apartado de propiedades de la transformada de Fourier se mantiene igual de Matlab a Python. Como se ve en la figura \ref{zoom}\\
+El apartado de propiedades de la transformada de Fourier se mantiene igual de Matlab a Python. Como se ve en la figura \ref{zoom}\\.
 
 \begin{figure}[!tbp]
   \centering
@@ -374,7 +380,7 @@ El apartado de propiedades de la transformada de Fourier se mantiene igual de Ma
 
 Al igual que en la práctica anterior hay una función que viene dada con los materiales de la práctica, en este caso es  \textbf{lpfilter}, una función para generar filtros de tipo Guassiano o ideal. Se recrea con el mismo funcionamiento en Python. A la hora de filtrar, lo que en el espacio era una convolución (ir moviendo una máscara sobre cada pixel) en la frecuencia es una multiplicación punto a punto que se puede realizar con \textbf{numpy.multiply}.\\
 
-El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfilter} para después invertir el filtro de modo que actúe como un filtro paso alto.Para filtrar se repite el mismo proceso[\ref{fpa}].
+El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfilter} para después invertir el filtro de modo que actúe como un filtro paso alto. Para filtrar se repite el mismo proceso[Figura \ref{fpa}].
 
 \begin{figure}[h]
 \centering
@@ -385,14 +391,14 @@ El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfil
 
 \subsection{Desarrollo de funciones}
 
-En esta práctica se ha desarrollado una función \textbf{lpfilter} que como se ha mencionado en el apartado anterior genera filtros en frecuencia de dos tipos: Gaussiano e ideal. Como parámetros de entrada recibe el tipo de filtro que se quiere, las medidas del filtro que tienen que coincidir con las de la imagen que se quiere filtrar y D0 que es la apertura del filtro.\\
+En esta práctica se ha desarrollado una función \textbf{lpfilter} que, como se ha mencionado en el apartado anterior, genera filtros en frecuencia de dos tipos: Gaussiano e ideal. Como parámetros de entrada recibe el tipo de filtro que se quiere, las medidas del filtro que tienen que coincidir con las de la imagen que se quiere filtrar y D0 que es la apertura del filtro.\\
 
 \section{ Práctica 4: Segmentación de imagen I}
 \subsection{Teoría tratada en la práctica}
 
 Esta práctica se centra en entender algunos métodos de segmentación de imágenes usando el ejemplo de una calculadora. En el proceso de segmentar una de las teclas de esta calculadora se van usando varios métodos dados en la teoría de la asignatura.\\
 
-El primero de estos métodos es umbralización usando el histograma, que consiste en elegir un valor como umbral a la hora de convertir una imagen en binaria de forma que queden en primer plano las partes de la imagen que nos interesan. En este caso, las letras de la calculadora.[\ref{thresholding}]\\
+El primero de estos métodos es umbralización usando el histograma, que consiste en elegir un valor como umbral a la hora de convertir una imagen en binaria de forma que queden en primer plano las partes de la imagen que nos interesan. En este caso, las letras de la calculadora [Figura \ref{thresholding}].\\
 
 \begin{figure}[h]
 \centering
@@ -402,22 +408,22 @@ El primero de estos métodos es umbralización usando el histograma, que consist
 \end{figure}
 A continuación se explican la segmentación y caracterización de regiones. Segmentación consiste en dividir la imagen en diferentes conjuntos de píxeles llamados regiones, esas regiones forman la capa de segmentación. A cada una de estas regiones se le asigna una etiqueta, la etiqueta 0 se le suele asignar al fondo.\\
 
-Hay varios tipos de segmentación, en este caso se va a usar segmentación binaria que busca grupos conexos de píxeles de primer plano y asigna etiquetas. No todas las regiones van a ser de interés ya que, en muchos casos la umbralización inicial no puede ser perfecta, por ejemplo, por ruido. Para decidir qué regiones son de interés se pueden mirar diferentes características como pueden ser la forma o el tamaño. En este caso se usa el área de la región para decidir cuales son de interés. Tras un proceso de filtrado la imagen queda como se puede ver en la figura \ref{filtersmallareas}\\
+Hay varios tipos de segmentación, en este caso se va a usar segmentación binaria que busca grupos conexos de píxeles de primer plano y asigna etiquetas. No todas las regiones van a ser de interés, ya que en muchos casos la umbralización inicial no puede ser perfecta, por ejemplo, por ruido. Para decidir qué regiones son de interés se pueden mirar diferentes características como pueden ser la forma o el tamaño. En este caso se usa el área de la región para decidir cuales son de interés. Tras un proceso de filtrado la imagen queda como se puede ver en la figura \ref{filtersmallareas}.\\
 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/filtersmallareas}
-\caption{Resutado de filtrar regiones de area pequeña.}
+\caption{Resultado de filtrar regiones de área pequeña.}
 \label{filtersmallareas}
 \end{figure}
 
-En este punto, cada letra es una región propia pero, lo que nos interesa segmentar son teclas. Se observa que la distancia entre letras de la misma tecla es muy inferior a la distancia entre letras en diferentes teclas. Para fundir las letras se usa un filtro paso bajo de media. Con esta nueva imagen se repiten todos los procedimientos anteriores hasta que se consigue segmentar solamente la tecla ENTER.[\ref{finp4}]
+En este punto, cada letra es una región propia pero lo que nos interesa segmentar son teclas. Se observa que la distancia entre letras de la misma tecla es muy inferior a la distancia entre letras en diferentes teclas. Para fundir las letras se usa un filtro paso bajo de media. Con esta nueva imagen se repiten todos los procedimientos anteriores hasta que se consigue segmentar solamente la tecla ENTER.[Figura \ref{finp4}].
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/finp4}
-\caption{Resutado final de la práctica 4 en Python.}
+\caption{Resultado final de la práctica 4 en Python.}
 \label{finp4}
 \end{figure}
 
@@ -426,14 +432,14 @@ En este punto, cada letra es una región propia pero, lo que nos interesa segmen
 
 En esta práctica hay muy pocas diferencias de Matlab a Python. El apartado de umbralización se mantiene igual, usando las funciones para el histograma y la umbralización que se utilizaron en la práctica 1.\\
 
-En el apartado de segmentación en Pthon nos encontramos con dos opciones, la función de segmentación de OpenCV y la del la librería scikit-image. Se usa la de scikit image ya que funciona de manera mucho más similar a la de Matlab, sobre todo a la hora de conseguir las propiedades de las etiquetas. En OpenCV la función que devuelve propiedades de etiquetas es muy limitada con muy poca información, mientras que la de Scikit devuelve casi exactas las mismas propiedades que el equivalente en MatLab.\\
+En el apartado de segmentación en Python nos encontramos con dos opciones: la función de segmentación de OpenCV y la de la librería Scikit-image. Se usa la de scikit image ya que funciona de manera mucho más similar a la de Matlab, sobre todo a la hora de conseguir las propiedades de las etiquetas. En OpenCV la función que devuelve propiedades de etiquetas es muy limitada con muy poca información, mientras que la de Scikit devuelve casi exactas las mismas propiedades que el equivalente en MatLab.\\
 
 
- Se usan dos funciones para la segmentación y la caracterización de regiones. La primera es \textbf{bwlabel} en Matlab, \textbf{bwlabel} en scikit,  que crea las regiones con píxeles vecinos y devuelve una matriz del tamaño de la imagen original en la que a cada pixel se le ha asignado un número de acuerdo a su región, esta matriz es la capa de etiquetas. La segunda función es \textbf{regionprops} , se mantiene el mismo nombre en ambas versionaes, que recibe de entrada la capa de etiquetas y devuelve medidas de algunas características de la capa de etiquetas, por ejemplo, el área de cada región, la excentricidad o la posicion de los píxeles extremos de cada región.\\
+ Se usan dos funciones para la segmentación y la caracterización de regiones. La primera es \textbf{bwlabel} en Matlab, \textbf{bwlabel} en scikit,  que crea las regiones con píxeles vecinos y devuelve una matriz del tamaño de la imagen original en la que a cada pixel se le ha asignado un número de acuerdo a su región, esta matriz es la capa de etiquetas. La segunda función es \textbf{regionprops}, se mantiene el mismo nombre en ambas versiones, que recibe de entrada la capa de etiquetas y devuelve medidas de algunas características de la capa de etiquetas, por ejemplo, el área de cada región, la excentricidad o la posicion de los píxeles extremos de cada región.\\
 
-La mayor diferencia entre label en matlab y scikit es el tratamiento de los píxeles de fondo. Matlab trata todo pixel de intensidad 0 como una única etiqueta de valor 0, mientras que scikit aunque en la imagen etiquetada pone los píxeles negros con la etiqueta 0 no lo cuenta como una etiqueta, por lo que por ejemplo en regionprops no tenemos la opción de recibir datos sobre los pñixeles de fond. A la función se le puede indicar que etiquete los píxeles negros pero no funciona igual que matlab, ya que los trata como una etiqueta más, es decir, cuneta como etiquetas diferentes los píxeles negros no conexos. Esto no supone ningún problema en la realización de esta práctica excepto una ligera incomodidad ya que en el array devuelto por \textbf{regionprops} no coinciden los índices con el número de etiqueta en la imagen etiquetada, hay que sumarle uno al índice.\\
+La mayor diferencia entre label en Matlab y Scikit es el tratamiento de los píxeles de fondo. Matlab trata todo pixel de intensidad 0 como una única etiqueta de valor 0, mientras que Scikit aunque en la imagen etiquetada pone los píxeles negros con la etiqueta 0 no lo cuenta como una etiqueta, por lo que, por ejemplo, en \textbf{regionprops} no tenemos la opción de recibir datos sobre los pixeles de fondo. A la función se le puede indicar que etiquete los píxeles negros pero no funciona igual que Matlab, ya que los trata como una etiqueta más, es decir, cuenta como etiquetas diferentes los píxeles negros no conexos. Esto no supone ningún problema en la realización de esta práctica excepto una ligera incomodidad ya que en el array devuelto por \textbf{regionprops} no coinciden los índices con el número de etiqueta en la imagen etiquetada, hay que sumarle uno al índice.\\
 
-Para representar la capa de etiquetas en color Matlab tiene una función dedicada, mientras que en Python se puede usar cualquiera de los mapas de color disponibles de Matplotlib que generan el mismo efecto. En este caso se usa 'nipy-special' porque mantiene el fondo de color negro. [\ref{color}]\\
+Para representar la capa de etiquetas en color Matlab tiene una función dedicada, mientras que en Python se puede usar cualquiera de los mapas de color disponibles de Matplotlib que generan el mismo efecto. En este caso se usa 'nipy-special' porque mantiene el fondo de color negro. [Figura \ref{color}].\\
 
 El resto de la práctica usa la función de filtrado de media de la práctica 2 y repite los mismos pasos de los apartados anteriores.
 
@@ -450,13 +456,13 @@ El resto de la práctica usa la función de filtrado de media de la práctica 2 
 
 Esta práctica continúa el tema de la práctica anterior. Intenta segmentar una imagen, en este caso es la figura de un pájaro. Para realizar este proceso de segmentación se va a usar aprendizaje de máquina Kmedias.\\
 
-Usa un sistema de ensayo/error con el objetivo de que el alumno entienda que no todos los métodos funcionan igual para todas las imágenes porque cada imagen tiene unas caracterícticas diferentes.\\
+Usa un sistema de ensayo/error con el objetivo de que el alumno entienda que no todos los métodos funcionan igual para todas las imágenes porque cada imagen tiene unas características diferentes.\\
 
-El primer método que se intenta para segmentar la imagen es el utilizado en la práctica anterior: umbralización. Al ver el histograma de la imagen del Cormorán queda claro que la umbralización no va a ser posible ya que, no hay una distinción tan clara de tonos como en la imagen de la calculadora.\\
+El primer método que se intenta para segmentar la imagen es el utilizado en la práctica anterior: umbralización. Al ver el histograma de la imagen del cormorán queda claro que la umbralización no va a ser posible, ya que no hay una distinción tan clara de tonos como en la imagen de la calculadora.\\
 
 El siguiente método que se usa es el algoritmo K-medias aplicado sobre la imagen en RGB. Cogemos una descripción sencilla del funcionamiento de K-medias de la universidad de Oviedo: "K-means es un algoritmo de clasificación no supervisada (clusterización) que agrupa objetos en k grupos basándose en sus características. El agrupamiento se realiza minimizando la suma de distancias entre cada objeto y el centroide de su grupo o cluster. Se suele usar la distancia cuadrática."[Bibliografía]\\
 
-La característica sobre la que vamos a agrupar estos datos es el color, en este caso, se ordenan en una gráfica 3D donde cada eje es una componente de color en RGB[\ref{cormoranrgb}].\\
+La característica sobre la que vamos a agrupar estos datos es el color, en este caso, se ordenan en una gráfica 3D donde cada eje es una componente de color en RGB[Figura \ref{cormoranrgb}].\\
 
 \begin{figure}[h]
 \centering
@@ -465,7 +471,7 @@ La característica sobre la que vamos a agrupar estos datos es el color, en este
 \label{cormoranrgb}
 \end{figure}
 
- Se decide usar 3 centroides ya que son los colores principales que se aprecian en la imagen (azul para el mar y cielo, amarillo para el tronco y marrón para el pájaro).\\
+ Se decide usar 3 centroides, ya que son los colores principales que se aprecian en la imagen (azul para el mar y cielo, amarillo para el tronco y marrón para el pájaro).\\
 
 \begin{figure}[h]
 \centering
@@ -494,11 +500,11 @@ En el cuarto apartado de la práctica se trata la caracterización por textura c
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/segmentacionse}
-\caption{Resultado de realizar la segmentación K-medias sobre componentes de ctextura carcterizados por la desviación típica y la entropía.}
+\caption{Resultado de realizar la segmentación K-medias sobre componentes de textura caracterizados por la desviación típica y la entropía.}
 \label{segmentacionse}
 \end{figure}
 
-Por último, se prueba a usar varias características de distinta naturaleza, en este caso color y textura. Se cogen las características a y b del espacio de color Lab y la entropía, se estandarizan la 3 caracteríasticas y se aplica kmedias. La imageb resultante queda sobresegmentada con pequeñas regiones dentro del cuerpo del ave mal etiquetadas. Para solucionar esto se sugiere aplicar un filtro de media sobre las características de color. El resultado de la segmentación mejora como se puede apreciar en la figura \ref{segmentacionabe}. 
+Por último, se prueba a usar varias características de distinta naturaleza, en este caso color y textura. Se cogen las características a y b del espacio de color Lab y la entropía, se estandarizan las 3 características y se aplica kmedias. La imagen resultante queda sobresegmentada con pequeñas regiones dentro del cuerpo del ave mal etiquetadas. Para solucionar esto se sugiere aplicar un filtro de media sobre las características de color. El resultado de la segmentación mejora como se puede apreciar en la figura \ref{segmentacionabe}.\\ 
 
 \begin{figure}[h]
 \centering
@@ -507,16 +513,16 @@ Por último, se prueba a usar varias características de distinta naturaleza, en
 \label{segmentacionabe}
 \end{figure}
 
-El pico del pájaro nunca quedará segmentado como parete del ave en este ejercicio ya que en cuestión de color el pico se parece más al tronco sobre el que se posa el ave que al cuerpo.\\
+El pico del pájaro nunca quedará segmentado como parte del ave en este ejercicio, ya que en cuestión de color el pico se parece más al tronco sobre el que se posa el ave que al cuerpo.\\
 
 
 \subsection{Comparativa Matlab vs Python}
 
-El primer apartado de la práctica se ha mantenido idéntico ya que no requiere nada más que la función de representación del histograma.\\
+El primer apartado de la práctica se ha mantenido idéntico, ya que no requiere nada más que la función de representación del histograma.\\
 
 En el siguiente apartado, lo primero que se pide es recolocar los datos de la imagen de modo que queden en una matriz con 3 columnas y tantas filas como píxeles tiene la imagen. Cada columna contiene los datos de una de las componentes de color RGB, esto nos sirve para la representación en forma de scatter plot. Para convertir una matriz de dos dimensiones en un vector Numpy tiene la función de \textbf{reshape}. \\
 
-Para aplicar kmedias vamos a usar la clase \textbf{Kmeans} de la biblioteca Scikit-learn. Primero se inicializa la clase indicando el número de centroides. Después se llama a la función \textbf{fit\_predict} con nuestra matriz de datos como parámetro. Esta función es la que ejecuta el algoritmo, por defecto se realizan un máximo de 10 iteraciones. En el atributo cluste\_centers se guarda la posición final de los centroides, y en labels la capa de etiquetas que es una matriz con la misma forma que la matriz de datos. EL resultado de esta apartado es idéntico al de Matlab. \\
+Para aplicar kmedias vamos a usar la clase \textbf{Kmeans} de la biblioteca Scikit-learn. Primero se inicializa la clase indicando el número de centroides. Después se llama a la función \textbf{fit\_predict} con nuestra matriz de datos como parámetro. Esta función es la que ejecuta el algoritmo, por defecto se realizan un máximo de 10 iteraciones. En el atributo \emph{cluster\_centers} se guarda la posición final de los centroides y en labels la capa de etiquetas que es una matriz con la misma forma que la matriz de datos. El resultado de este apartado es idéntico al de Matlab. \\
 
 Para representar la capa de etiquetas hay que realizar las transformaciones inversas a las del inicio del apartado. En la figura \ref{comprgb} se puede ver las capas de etiquetas obtenidas en Matlab y Python. \\
 
@@ -529,14 +535,16 @@ Para representar la capa de etiquetas hay que realizar las transformaciones inve
   \label{comprgb}
 \end{figure}
 
-En el apartado sobre segmentación en el espacio de color Lab tanto en Matlab como en Pythonse usa una función específicamente programada para este ejercicio para pasar de RGB a Lab. En ambos lenguajes existe una función que hace esta transformación, la razón por la que no se usan es el tipo de transformación Lab que utilizan. La normas que definan un espacio de color respecto a otro se han ido revisando y cambiando con el tiempo, la versión de Lab con la que se planteó esta práctica es la descrita en la norma de 1976 mientras que la función que convierte de RGB a Lab en scikit-image usa la norma de 1999. Para mantener la práctica tal y como se planteó se ha creado la función \textbf{RGB2LAB76} aunque también se ha hecho una versión de esta práctica con la función de scikit-image, en la figura \textbf{normaslab} se puede ver la representación de las componentes a y b en las diferentes normas, y en la figura \textbf{comparativalab} se muestra la diferencia en la segmentación con kmedias.\\
+En el apartado sobre segmentación en el espacio de color Lab tanto en Matlab como en Python se usa una función específicamente programada para este ejercicio para pasar de RGB a Lab. En ambos lenguajes existe una función que hace esta transformación, la razón por la que no se usa es el tipo de transformación Lab que utilizan. Las normas que definen un espacio de color respecto a otro se han ido revisando y cambiando con el tiempo. La versión de Lab con la que se planteó esta práctica es la descrita en la norma de 1976, mientras que la función que convierte de RGB a Lab en Scikit-image usa la norma de 1999.\\
+
+ Para mantener la práctica tal y como se planteó se ha creado la función \textbf{RGB2LAB76} aunque también se ha hecho una versión de esta práctica con la función de Scikit-image, en la figura \ref{normaslab} se puede ver la representación de las componentes a y b en las diferentes normas y en la figura \ref{comparativalab} se muestra la diferencia en la segmentación con kmedias.\\
 
 \begin{figure}[!tbp]
   \centering
   \subfloat[Norma de 1976.]{\includegraphics[width=0.4\textwidth]{imagenes/lab76}\label{fig:f1}}
   \hfill
   \subfloat[Norma de 1999]{\includegraphics[width=0.4\textwidth]{imagenes/lab99}\label{fig:f2}}
-  \caption{Diferencias entre las componentes a y b en la diferentes normas.}
+  \caption{Diferencias entre las componentes a y b en las diferentes normas.}
   \label{normaslab}
 \end{figure}
 
@@ -549,9 +557,9 @@ En el apartado sobre segmentación en el espacio de color Lab tanto en Matlab co
   \label{comparativalab}
 \end{figure}
 
-En este apartado se pide la normalización de las variables, la secuencia de código necesaria viene dada en el enunciado, esto se ha replicado en el cuadernillo de Jupyter modificando el código para funcionar en Pyhthon.\\
+En este apartado se pide la normalización de las variables. La secuencia de código necesaria viene dada en el enunciado, esto se ha replicado en el cuadernillo de Jupyter modificando el código para funcionar en Pyhthon.\\
 
-En el apartado de texturas Matlab tiene funciones para realizar los diferentes filtros necesarios. En Python existe un equivalente del filtro de entropía con resultados idénticos. Los otros dos filtros no tienen equivalente en Python por lo que se han tenido que programar. Los resultados son muy similares como se puede comprobar en la figura \textbf{ref}.\\
+En el apartado de texturas, Matlab tiene funciones para realizar los diferentes filtros necesarios. En Python existe un equivalente del filtro de entropía con resultados idénticos. Los otros dos filtros no tienen equivalente en Python por lo que se han tenido que programar. Los resultados son muy similares como se puede comprobar en la figura \ref{texturas}.\\
 
 
 \begin{figure}[!tbp]
@@ -560,20 +568,29 @@ En el apartado de texturas Matlab tiene funciones para realizar los diferentes f
   \hfill
   \subfloat[Python]{\includegraphics[width=0.4\textwidth]{imagenes/texturas}\label{fig:f2}}
   \caption{Comparativa filtros de textura en Matlab y Python.}
-  \label{entropyfilt}
+  \label{texturas}
 \end{figure}
 
-El último apartado utiliza herramientas ya empleadas en en el resto de la práctica y un filtro de media explicado en la práctica 2.\\
+El último apartado utiliza herramientas ya empleadas en el resto de la práctica y un filtro de media explicado en la práctica 2.\\
 
 \subsection{Desarrollo de funciones}
 
 En este ejercicio se desarrollan 3 funciones nuevas:
 \begin{itemize}
 
-	\item \textbf{ RGB2Lab76}:
-	\item \textbf{ stdfilt}: esta función devuelve la imagen filtrada acorde a su variación estándar. Funciona de una manera similar a un filtro de media, con una máscara por defecto de tamaño 3X3 pero, en lugar de hacer la media con los píxeles debajo de la máscara calcula su desviación estándar.
+	\item \textbf{ RGB2Lab76}: Esta función realiza el cambio de espacio de color acorde a la norma de 1976. Primero se pasa de RGB a XYZ multiplicando cada componente por una serie de índices. Para pasar de XYZ a Lab se crean una serie de índices acotando los valores de cada componente de XYZ para sacar las coordenadas en el nuevo espacio de color. En la figura \ref{colorspaces} se pueden ver los espacios de color RGb y Lab.
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[RGB]{\includegraphics[width=0.4\textwidth]{imagenes/rgb}\label{fig:f1}}
+  \hfill
+  \subfloat[CIE Lab]{\includegraphics[width=0.4\textwidth]{imagenes/lab}\label{fig:f2}}
+  \caption{Espacios de color RGB y CIE Lab.}
+  \label{colorspaces}
+\end{figure}
 
-	\item \textbf{rangefilt}: Un filtro de rango devuelve el rango de valores bajo una máscara, esto quiere decir la diferencia entre el máximo valor y el mínimo. Para programar este filtro se han empleado herramientas morfológicas. Se usa la operación de erosión como un filtro para conseguir el mínimo bajo el elemento estructural y la dilatación como un filtro de máximo. La resta de los resultados de la dilatación y erosi´pn devuelve el rango.\\
+	\item \textbf{ stdfilt}: Esta función devuelve la imagen filtrada acorde a su variación estándar. Funciona de una manera similar a un filtro de media, con una máscara por defecto de tamaño 3x3 pero, en lugar de hacer la media con los píxeles debajo de la máscara calcula su desviación estándar.
+
+	\item \textbf{rangefilt}: Un filtro de rango devuelve el rango de valores bajo una máscara que la diferencia entre el máximo valor y el mínimo. Para programar este filtro se han empleado herramientas morfológicas. Se usa la operación de erosión como un filtro para conseguir el mínimo bajo el elemento estructural y la dilatación como un filtro de máximo. La resta de los resultados de la dilatación y erosión devuelve el rango.\\
 \end{itemize}
 
 
@@ -582,11 +599,11 @@ En este ejercicio se desarrollan 3 funciones nuevas:
 
 Esta práctica se centra en el uso de la morfología matemática para la segmentación de una imagen. Los operadores morfológicos son una serie de operadores no lineales relacionados con la forma de los objetos en la imagen. Como en las dos prácticas anteriores se va a usar la segmentación de una imagen en concreto para demostrar el funcionamiento de estos operadores. En este caso la imagen es de un circuito impreso, el objetivo es segmentar los 7 chips.\\
 
-Al igual que en la práctica anterior, lo primero que se va a hacer es decidir en qué espacio de color es más cómodo trabajar para esta segmentación. Tras probar en RGB se decide usar HSI, que es un espacio de color que define tono, saturación e intensidad. Mientras que en RGB las tres componentes se veían igual debido a la prominencia de tonos grises en la imagen, en HSI podemos apreciar una gran diferencia entre componentes. En la componente S se ven claramente diferenciados los chips, así que es la que se escoge para continuar el proceso de segmentación.\\
+Al igual que en la práctica anterior, lo primero que se va a hacer es decidir en qué espacio de color es más cómodo trabajar para esta segmentación. Tras probar en RGB se decide usar HSI, que es un espacio de color que define tono, saturación e intensidad. Mientras que en RGB las tres componentes se veían igual debido a la prominencia de tonos grises en la imagen en HSI podemos apreciar una gran diferencia entre componentes. En la componente S se ven claramente diferenciados los chips, así que es la que se escoge para continuar el proceso de segmentación.\\
 
 A continuación, se usa la umbralización para trabajar sobre una imagen binaria. Tras este proceso queda algún pixel blanco dentro de los chips que nos interesa eliminar. Se usa un filtro de mediana para homogeneizar la superficie de los chips.\\
 
-En el siguiente apartado, se empiezan a usar operadores morfológicos. Contamos con 4 operadores morfológicos diferentes: erosión, dilatación, apertura y cierre. Para aplicar un operador morfológico se debe usar un elemento estructural. Los operadores morfológicos modifican los píxeles debajo del elemento estructural, la dilatación, por ejemplo, se queda con el máximo valor bajo el elemento estructural, la erosión el mínimo. La apertura y el cierre son elementos compuestos. La apertura es realizar una dilatación tras una erosión y el cierre lo opuesto.[\ref{erosion}]\\
+En el siguiente apartado, se empiezan a usar operadores morfológicos. Contamos con 4 operadores morfológicos diferentes: erosión, dilatación, apertura y cierre. Para aplicar un operador morfológico se debe usar un elemento estructural. Los operadores morfológicos modifican los píxeles debajo del elemento estructural. La dilatación, por ejemplo, se queda con el máximo valor bajo el elemento estructural, la erosión el mínimo. La apertura y el cierre son elementos compuestos. La apertura es realizar una dilatación tras una erosión y el cierre lo opuesto.[\ref{erosion}]\\
 
 \begin{figure}[h]
 \centering
@@ -614,9 +631,9 @@ A la hora de desarrollar el cuadernillo, la primera complicación se encuentra a
 
 OpenCV tiene una función con un amplio rango de opciones para operadores morfológicos.  Para la erosión y la apertura se usan funciones dedicadas (\textbf{erode} y \textbf{dilate}), mientras que para la apertura, cierre y otros operadores se usa la misma funcion (\textbf{morphologyEx}) indicando la operación a realizar con un parámetro. Para el elemento estructural se usa una matriz de Numpy.\\
 
-Para diferenciar los chips cuadrados de los rectangulares se mantiene igual, ya que, la función \textbf{regionprops} de scikit también tiene la característica de excentricidad.\\
+Para diferenciar los chips cuadrados de los rectangulares se mantiene igual, ya que la función \textbf{regionprops} de scikit también tiene la característica de excentricidad.\\
 
-En el último apartado, que el objetivo es la detección de bordes, se usa un elemento estructural circular. Matlab  tiene una función para crear elementos  estructurantes de diferentes tamaños. OpenCV tiene una equivalente. El operador morfológico para detección de bordes se llama gradiente y la función \textbf{morphologyEx} permite aplicarlo directamente pero, ya que, la práctica original pide que se razone cómo se obtendrían los bordes, se ha decidido mantener el proceso tal y como estaba. Al final del cuadernillo se menciona la existencia de esta función como información adicional.
+En el último apartado, cuyo objetivo es la detección de bordes, se usa un elemento estructural circular. Matlab  tiene una función para crear elementos  estructurantes de diferentes tamaños. OpenCV tiene una equivalente. El operador morfológico para detección de bordes se llama gradiente y la función \textbf{morphologyEx} permite aplicarlo directamente pero, ya que la práctica original pide que se razone cómo se obtendrían los bordes, se ha decidido mantener el proceso tal y como estaba. Al final del cuadernillo se menciona la existencia de esta función como información adicional.
 
 \subsection{Desarrollo de funciones}
 
@@ -651,20 +668,22 @@ Primero se limpian los bordes, no nos interesan células que no estén enteras, 
 
 El segundo proceso, consiste en comparar la posición de nuestras regiones con la posición de los núcleos de las celdas en la imagen original basándonos en que los núcleos aparecen en un color más oscuro. Se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.\\
 
+El resultado de estos dos procesos se puede ver en la figura \ref{procesos}
+
 \begin{figure}[!tbp]
   \centering
   \subfloat[Máximos regionales.]{\includegraphics[width=0.4\textwidth]{imagenes/Imaxreg}\label{fig:f1}}
   \hfill
   \subfloat[Máximos regionales procesados.]{\includegraphics[width=0.4\textwidth]{imagenes/Imaxreg3}\label{fig:f2}}
   \caption{Proceso para conseguir los marcadores internos.}
-  \label{entropyfilt}
+  \label{procesos}
 \end{figure}
 
-Con eso ya tendríamos los marcadores internos. Para conseguir los marcadores externos (o de fondo) dilatamos la imagen de los marcadores internos para salir de la célula y hacemos una transformada de distancia que, es una operación que devuelve una imagen en escala de grises donde el valor de cada pixel corresponde a la distancia a la que se encuentra de un pixel de primer plano. Los píxeles de primer plano en la transformada de distancia tienen valor 0.\\
+Con eso ya tendríamos los marcadores internos. Para conseguir los marcadores externos (o de fondo) dilatamos la imagen de los marcadores internos para salir de la célula y hacemos una transformada de distancia que es una operación que devuelve una imagen en escala de grises donde el valor de cada pixel corresponde a la distancia a la que se encuentra de un pixel de primer plano. Los píxeles de primer plano en la transformada de distancia tienen valor 0.\\
 
 Sobre la imagen de la transformada de distancia aplicamos  \emph{Watershed}. Los bordes que se forman entre regiones marcan los marcadores externos, siendo los puntos más alejados del nucleo de cada célula.\\
 
-A continuación se crea una imagen que combina los marcadores internos y externos [\ref{marcadores}]. \\
+A continuación se crea una imagen que combina los marcadores internos y externos [figura \ref{marcadores}]. \\
 
 \begin{figure}[h]
 \centering
@@ -673,7 +692,7 @@ A continuación se crea una imagen que combina los marcadores internos y externo
 \label{marcadores} 
 \end{figure}
 
-Para conseguir los bordes reales de las células se vuelve a aplicar  \emph{Watershed}, pero esta vez usando marcadores. Como imagen de referencia, en lugar de la transformada de distancia, se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores, queden como los únicos mínimos regionales y que los bordes de las células sean los puntos de mayor intensidad de la imagen mientras, que el fondo y los nucleos, al tener menos variación tienen menor intensidad. En la figura \ref{finalwatershed} se puede ver el resultado final de esta práctica.\\
+Para conseguir los bordes reales de las células se vuelve a aplicar  \emph{Watershed}, pero esta vez usando marcadores. Como imagen de referencia, en lugar de la transformada de distancia, se usa el gradiente de la imagen reconstruido de forma que nuestros marcadores queden como los únicos mínimos regionales y que los bordes de las células sean los puntos de mayor intensidad de la imagen mientras que, el fondo y los nucleos, al tener menos variación tienen menor intensidad. En la figura \ref{finalwatershed} se puede ver el resultado final de esta práctica.\\
 
 \begin{figure}[h]
 \centering
@@ -686,35 +705,38 @@ Para conseguir los bordes reales de las células se vuelve a aplicar  \emph{Wate
 
 \subsection{Comparativa Matlab vs Python}
 
-La primera diferencia en esta práctica entre Matlap y Python es la imagen empleada . La imagen original fue sacada de un artículo que no se ha podido localizar y se desconoce su licencia de copyright. Se ha encontrado otra imagen también de celulas muy cercanas las unas a las otras, en este caso de cebolla.\\
+La primera diferencia en esta práctica entre Matlap y Python es la imagen empleada. La imagen original fue sacada de un artículo que no se ha podido localizar y se desconoce su licencia de copyright. Se ha encontrado otra imagen también de celulas muy cercanas las unas a las otras, en este caso de cebolla.\\
 
-El primer apartado se mantiene igual, en cuanto a funciones empleadas pero los resultados no son los mismos. Esto se debe al tipo de padding que usan las funcioones de apertura y cierre en Matlab y Python y que no se permiten modificar. En el caso de Matlab cuando hace erosión usa padding 1, mientras que para dilatar usa ceros. En la función de OpenCV no indica el padding que usa pero, por los resultados parece que usan mirror padding, esto crea una diferencia en los valores cercanos al borde que en este caso no genera problemas pero que se tiene que tener en cuenta para otros casos.\\
+El primer apartado se mantiene igual en cuanto a funciones empleadas pero, los resultados no son los mismos. Esto se debe al tipo de padding que usan las funcioones de apertura y cierre en Matlab y Python y que no se permiten modificar. En el caso de Matlab cuando hace erosión usa padding 1, mientras que para dilatar usa ceros. En la función de OpenCV no indica el padding que usa pero, por los resultados, parece que usan mirror padding, esto crea una diferencia en los valores cercanos al borde que en este caso no genera problemas pero que se tiene que tener en cuenta para otros casos.\\
 
 Debido al cambio de imagen algunos de los valores empleados como elemento estructural se han tenido que cambiar, es el caso del elemento estructural usado para la erosión antes de la reconstrucción. Para la reconstrucción se encuentra una función en Scikit-image que funciona exactamente igual al equivalente en Matlab. \textbf{Imreconstruct} en los dos casos recibe una imagen de máscara y una de marcadores.\\
 
-[Añadir imregionalmax]
+\textbf{ImregionalMax} es una función de Matlab que devuelve los máximos regionales de una imagen. En Python no existe ninguna función equivalente por lo que se ha tenido que programar. La nueva función devuelve exactamente el mismo resultado que la de Matlab.\\
+
 A continuación, se eliminan los marcadores que corresponden a las células del borde de la imagen que no están completas, en Matlab se usa la función \textbf{imclearborder}. En Python no hay versión en ninguna librería oficial, pero se ha encontrado una versión en Github subida por el usuario hatamiarash7 que cumple la misma función.\\
 
-Lo siguiente es eliminar los marcadores que no coincidan con un núcleo en la imagen original, en Matlab se usa la función\textbf{ regionprops} con el atributo \emph{mean intensity}, \textbf{regionprops} en scipy-image tiene el mismo atributo con el mismo funcionamiento.\\
+Lo siguiente es eliminar los marcadores que no coincidan con un núcleo en la imagen original. En Matlab se usa la función\textbf{ regionprops} con el atributo \emph{mean intensity}, \textbf{regionprops} en scipy-image tiene el mismo atributo con el mismo funcionamiento.\\
 
-Para obtener los marcadores externos se usa la función de dilatar ya mencionada en la práctica anterior y la transformada de distancia, para realizalar Matlab tiene la función \textbf{bwdist} mientras que OpenCV tiene \textbf{distancetransform}. La principal diferencia entre estas dos funciones es que trabajan al revés, la de Matlab devuelve la distancia al punto de primer plano más cercano, mientras que la versión OpenCv devuelve la distancia a 0. Esto se resuelve pasando el negativo de los marcadores a la función en el cuadernillo de Jupyter.\\
+Para obtener los marcadores externos se usa la función de dilatar ya mencionada en la práctica anterior y la transformada de distancia, para realizarla Matlab tiene la función \textbf{bwdist} mientras que OpenCV tiene \textbf{distancetransform}. La principal diferencia entre estas dos funciones es que trabajan al revés: la de Matlab devuelve la distancia al punto de primer plano más cercano, mientras que la versión OpenCv devuelve la distancia a 0. Esto se resuelve pasando el negativo de los marcadores a la función en el cuadernillo de Jupyter.\\
 
-A continuación, se aplica \emph{Watershed} sobre esta imagen, en Matlab la función de \textbf{Watershed} recibe como argumento la imagen a segmentar. En Python tenemos dos opciones aunque ninguna funciona exactamente igual que la de Matlab.\\
+A continuación, se aplica \emph{Watershed} sobre esta imagen. En Matlab la función de \textbf{Watershed} recibe como argumento la imagen a segmentar. En Python tenemos dos opciones aunque ninguna funciona exactamente igual que la de Matlab.\\
 
-La primera que se prueba es la versión de OpenCV que se descarta inmediatamente ya que requiere una imagen RGB como primer argumento y la imagen que queremos pasar nosotros es en escala de grises.\\
+La primera que se prueba es la versión de OpenCV que se descarta inmediatamente, ya que requiere una imagen RGB como primer argumento y la imagen que queremos pasar nosotros es en escala de grises.\\
 
-La segunda opción es la de Scikit-image, también llamada \textbf{Watershed}. Esta si que permite imágenes en escala de grises; la principal diferencia con Matlab es que como segundo argumento pide una imagen binaria de marcadores y si no viene especificada como marcadores se eligen los mínimos locales de la imagen, en la versión de Matlab se cogen los mínimos regionales. En este primer uso de watershed la diferencia no es relevante ya que coinciden los mínimos.\\
+La segunda opción es la de Scikit-image, también llamada \textbf{watershed}. Esta sí que permite imágenes en escala de grises. La principal diferencia con Matlab es que como segundo argumento pide una imagen binaria de marcadores y si no viene especificada como marcadores se eligen los mínimos locales de la imagen, en la versión de Matlab se cogen los mínimos regionales. En este primer uso de \emph{Watershed} la diferencia no es relevante ya que coinciden los mínimos.\\
 
  Otra diferencia, ya menor, es que la versión de Matlab automáticamente devuelve las fronteras señaladas en la imagen con un 0 de etiqueta, mientras que en la versión de Scikit-image se tiene que especificar que se requiere etiqueta para las líneas de \emph{Watershed}.\\
 
-Con esto ya tenemos los marcadores tanto internos como externos. A continuación se usa un filtro paso alto para sacar el gradiente del mismo modo que se hizo en la práctica 2. 
+Con esto ya tenemos los marcadores, tanto internos como externos. A continuación se usa un filtro paso alto para sacar el gradiente del mismo modo que se hizo en la práctica 2. \\
 
-Y se vuelve a aplicar  \emph{Watershed}, esta vez la diferencia entre los mínimos si que es relevante así que, en la versión de la práctica en Python, a la función de \textbf{watershed} además de pasarle el gradiente con marcadores como segundo argumento se pasa la imagen binaria de marcadores.\\
+Y se vuelve a aplicar  \emph{Watershed}, esta vez la diferencia entre los mínimos sí que es relevante así que, en la versión de la práctica en Python, a la función de \textbf{watershed} además de pasarle el gradiente con marcadores como segundo argumento se pasa la imagen binaria de marcadores.\\
 
 
 \subsection{Desarrollo de funciones}
 
-Para esta práctica se ha tenido que desarrollar la función \textbf{imregionalmax}. Esta funcióntoma la imagen de la que se quieren conseguir los máximos regionales y se le resta 1. A continuación, se hace reconstrucción con la imagen original como máscara y la imagen a la que hemos restado 1 de marcador sobre el que se va realizando la dilatación repetida de la reconstrucción. Esto genera una imagen cuya única diferencia con la original son las regiones de mñaximos. i restamos el resultado de pla reconstrucción a la imagen original obtenemos una imagen en la que los únicosvalores diferentes de cero son los máximos regionales. Esta imagen se pasa a binario y es lo que devuelve la función imregionalmax.
+Para esta práctica se ha tenido que desarrollar la función \textbf{imregionalmax}. Esta función toma la imagen de la que se quiere conseguir los máximos regionales y se le resta 1. A continuación, se hace reconstrucción con la imagen original como máscara y la imagen a la que hemos restado 1 de marcador sobre el que se va realizando la dilatación repetida de la reconstrucción. Esto genera una imagen cuya única diferencia con la original son las regiones de máximos. Si restamos el resultado de la reconstrucción a la imagen original obtenemos una imagen en la que los únicos valores diferentes de cero son los máximos regionales. Esta imagen se pasa a binario y es lo que devuelve la función imregionalmax.
+
+
 \section{ Práctica 8}
 \subsection{Teoría tratada en la práctica}
 
@@ -722,7 +744,7 @@ Esta práctica es la primera práctica de video. Tiene dos partes muy marcadas.\
 
 La primera es una introducción a las herramientas de video. Se demuestra cómo leer un video, visualizar los \emph{frames}, en qué consiste el \emph{frame rate} y cómo afecta a la reproducción de video. Se pide que se modifiquen un par de \emph{frames} con transformaciones como filtros y pasar a negativo para comprobar qué transformación es más perceptible.\\
 
-La segunda parte de la práctica se centra en demostrar la estimación de movimiento basada en bloques, específicamente 3 algoritmos: EBMA, HBMA y correlación de fase.\\
+La segunda se centra en demostrar la estimación de movimiento basada en bloques, específicamente 3 algoritmos: EBMA, HBMA y correlación de fase.\\
 
 La estimación de movimiento basada en bloques se utiliza para codificación de vídeo. Estos algoritmos se dividen en dos grupos: algoritmos en el dominio del tiempo (EBMA y HBMA) y algoritmos en el dominio de la frecuencia (correlación de fase).\\
 
@@ -740,17 +762,17 @@ En la primera mitad de esta práctica lo que genera la mayor diferencia es la fo
 
 En Matlab, lo primero que se pide es leer el video e inspeccionar la variable que se crea en el \emph{workspace}. Para simular esto en Python se crea una instancia de la clase VideoCapture y se van guardando los frames en un array usando la función \textbf{read()}. \textbf{VideoCapture} en OpenCv permite capturar directamente video de la cámara que esté conectada al ordenador pero, en este caso, se usa el video 'shopping\_center.mpg' que es el mismo que se usa en la versión de la práctica en Matlab.\\
 
-A continuación, en la práctica de Matlab se piden una serie de características del video que se pueden obtener de la variable. En Python, se puede averiguar llamando al método \textbf{get()} de la clase VideoReader. Esto nos permite saber el ancho y alto de cada frame y el framerate. Conseguir el número de frames es algo más complejo, ya que, el contador de frames del método \emph{get()} es bastante inexacto y tiende a fallar. La mejor forma de saber el número de frames es mirando la longitud del array guardado en el apartado anterior.\\
+A continuación, en la práctica de Matlab se piden una serie de características del video que se pueden obtener de la variable. En Python, se puede averiguar llamando al método \textbf{get()} de la clase VideoReader. Esto nos permite saber el ancho y alto de cada frame y el framerate. Conseguir el número de frames es algo más complejo, ya que el contador de frames del método \emph{get()} es bastante inexacto y tiende a fallar. La mejor forma de saber el número de frames es mirando la longitud del array guardado en el apartado anterior.\\
 
 Posteriormente, se inspecciona el primer frame. En esto no hay diferencia con como se representan imágenes en prácticas anteriores.\\
 
-A la hora de reproducir el video se puede usar \textbf{imshow} de OpenCV en un bucle pero esto abre una nueva ventana. Se intenta el mismo método con Matplotlib pero la reproducción no es fluida. Para solucionar esto, se usa una nueva librería: Bokeh. Es una librería de representación de gráficos que permite embebirlos en el cuadernillo. La reproducción de video queda fluida pero, esta librería lee las imágenes con el eje girado y en el espacio de color RGBA por lo que hay que transformar cada frame antes de reproducirlo. Se usa un buble while y la función \textbf{time.sleep()} de Python para que se pinte un nuevo frame cada 1/25 segundo, lo indicado por el framerate del video.\\
+A la hora de reproducir el video se puede usar \textbf{imshow} de OpenCV en un bucle pero esto abre una nueva ventana. Se intenta el mismo método con Matplotlib pero la reproducción no es fluida. Para solucionar esto, se usa una nueva librería: Bokeh. Es una librería de representación de gráficos que permite embebirlos en el cuadernillo. La reproducción de video queda fluida pero esta librería lee las imágenes con el eje girado y en el espacio de color RGBA por lo que hay que transformar cada frame antes de reproducirlo. Se usa un buble while y la función \textbf{time.sleep()} de Python para que se pinte un nuevo frame cada 1/25 segundo, lo indicado por el framerate del video.\\
 
 El siguiente punto del ejercicio pide reproducir el video con un framerate distinto.\\
 
 En la parte de estimación de movimiento, en Matlab, se utilizan 3 funciones programadas para la asignatura. En Python se hace lo mismo consiguiendo los mismos resultados. \\
 
-En este apartado se pide usar el algoritmo EBMA con 3 tamaños diferentes de bloque (8, 16 y 32), representar el frame estimado, el mapa vectorial que devuelve la función y calcular el MSE para cada una de las 3 instancias. La siguiente figura \ref{ebma32} muestra el frame estimado en Matlab y en Python con un tamaño de bloque de 32.\\
+En este apartado se pide usar el algoritmo EBMA con 3 tamaños diferentes de bloque (8, 16 y 32), representar el frame estimado, el mapa vectorial que devuelve la función y calcular el MSE para cada una de las 3 instancias. La figura \ref{ebma32} muestra el frame estimado en Matlab y en Python con un tamaño de bloque de 32.\\
 
 \begin{figure}[!tbp]
   \centering
@@ -764,7 +786,7 @@ A continuación se pide ejecutar HBMA con un bloque de tamaño 16 y 3 niveles.\\
 
 Por último, ejecutar la función 'PhaseCorrelation' que, automáticamente, representa el frame estimado, el mapa vectorial y devuelve el MSE.\\
 
-Las diferencias en este apartado vienen a la hora de representar los vectores de movimiento. La función \textbf{quiver} de Matplotlib representa mapas vectoriales pero, a no ser que se le indique de otro modo, el tamaño de las flechas varía para que la representacioón quede más visualmente interesante. En la figura \ref{arrow} se puede ver una comparación de la representación  de los vectores de movimiento del algoritmo EBMA con bloques de tamaño 8 en Matlab, en Matplotlib con los valores por defecto y en Matplotlib con los valores corregidos. Los vectores utilizados son exactamente iguales.\\
+Las diferencias en este apartado vienen a la hora de representar los vectores de movimiento. La función \textbf{quiver} de Matplotlib representa mapas vectoriales pero, a no ser que se le indique de otro modo, el tamaño de las flechas varía para que la representación quede más visualmente interesante. En la figura \ref{arrow} se puede ver una comparación de la representación  de los vectores de movimiento del algoritmo EBMA con bloques de tamaño 8 en Matlab, en Matplotlib con los valores por defecto y en Matplotlib con los valores corregidos. Los vectores utilizados son exactamente iguales.\\
 
 \begin{figure}[!tbp]
   \centering
@@ -783,16 +805,15 @@ En esta práctica se han desarrollado 3 funciones, los algoritmos de estimación
 \begin{itemize}
 	\item \textbf{EBMA}: Esta función recibe 3 atributos: el frame de referencia (anchor frame), el frame actual (target frame) y el tamaño de bloque que se va a usar. La función empieza declarando variables como el ancho y alto de cada frame y los arrays que van a formar el mapa de vectores de movimiento.\\
  
-A continuación, se itera por la imagen de referencia en saltos del tamaño del bloque, se define el bloque dentro del frame de referencia. Para buscar movimiento se va desplazando el bloque de referencia en diferentes posiciones sobre el frame actual buscando el mayor parecido en un número limitado de posiciones. Una vez encontrado el bloque más parecido se guarda en una matriz del mismo tamaño que los frames. Esta matriz será el frame estimado. Se guarda en el array de origen la posición del bloque de referencia y en el array de destino la posición en el nuevo frame.\\
-Esto se repite hasta que se ha iterado por toda la imagen.\\
+A continuación, se itera por la imagen de referencia en saltos del tamaño del bloque, se define el bloque dentro del frame de referencia. Para buscar movimiento se va desplazando el bloque de referencia en diferentes posiciones sobre el frame actual buscando el mayor parecido en un número limitado de posiciones. Una vez encontrado el bloque más parecido se guarda en una matriz del mismo tamaño que los frames. Esta matriz será el frame estimado. Se guarda en el array de origen la posición del bloque de referencia y en el array de destino la posición en el nuevo frame. Esto se repite hasta que se ha iterado por toda la imagen.\\
 
-	\item \textbf{HBMA}: Este algoritmo es muy parecido al anterior pero para mejorar el rendimiento se añaden unos pasos previos. La idea es primero usar bloques más grandes para descartar las áreas en las que no hay cambios. Para estos bloques grandes se crea una nueva image de la mitad de tamaño que la orginal y manteniendo el tamaño de bloque original. Se recorre esta imagen más pequeña y se guarda en un array la posición de las áreas que han cambiado.\\
+	\item \textbf{HBMA}: Este algoritmo es muy parecido al anterior pero para mejorar el rendimiento se añaden unos pasos previos. La idea es primero usar bloques más grandes para descartar las áreas en las que no hay cambios. Para estos bloques grandes se crea una nueva imagen de la mitad de tamaño que la original y manteniendo el tamaño de bloque original. Se recorre esta imagen más pequeña y se guarda en un array la posición de las áreas que han cambiado.\\
 
-A continuación se hece EBMA sobre la imagen original, con el tamaño de bloque pedido (16 en este caso) pero sólo en las áreas marcadas en el paso anterior. Esto quiere decir que en lugar de recorrer la imagen original entera como se hacía en la función anterior solo se recorren secciones específicas.\\
+A continuación, se hace EBMA sobre la imagen original con el tamaño de bloque pedido (16 en este caso) pero sólo en las áreas marcadas en el paso anterior. Esto quiere decir que en lugar de recorrer la imagen original entera como se hacía en la función anterior sólo se recorren secciones específicas.\\
 
-El tercer nivel funciona igual que el anterior, en las áreas de cambio detectadas en el paso anterior se hace EBMA sobre la imagen ampliada, esto crea la sensación de que se ha usado un bloque de la mitad de tamaño esto hace que no se cambien más pixels de los estrictamente necesarios.\\
+El tercer nivel funciona igual que el anterior: en las áreas de cambio detectadas en el paso anterior se hace EBMA sobre la imagen ampliada, esto crea la sensación de que se ha usado un bloque de la mitad de tamaño esto hace que no se cambien más pixels de los estrictamente necesarios.\\
 
-	\item \textbf{PhaseCorrelation}: 
+	\item \textbf{PhaseCorrelation}: Esta función también calcula un frame estimado a partir de dos frames diviéndolos en bloques, la diferencia con las dos anteriores es que, en este caso, se trabaja en frecuencia. Primero se define una ventana con forma de campana que se va a usar para suavizar los bordes del bloque. A continuación se va dividiendo la imagen en bloques y haciendo la transformada de Fourier de esos bloques.  Se calcula la coherencia entre el bloque actual y el bloque de referencia multiplicando el bloque actual por el conjugado del bloque de referencia y normalizando el resultado. Obtenemos la correlación de los dos bloques haciendo la transformada inversa del resultado de la operación anterior. A continuación se localizán los máximos que indican dónde se encuentra la mayor diferencia entre los bloques. Para terminar se sustituyen los valores creando una nueva matriz que será el frame estimado.
 \end{itemize}
 
 \section{ Práctica 9}
@@ -808,7 +829,7 @@ La práctica se estructura de una forma muy similar a la práctica 2. Se empieza
 \label{ruidovideo} 
 \end{figure}
 
-Se van a usar dos filtros temporales diferentes. Un filtro temporal es un filtro que en lugar de usar una máscara que coge píxeles del mismo frame cercanos al pixel que se está fitrando coge los píxeles en la misma posición de diferentes frames.\\
+Se van a usar dos filtros temporales diferentes. Un filtro temporal es un filtro que en lugar de usar una máscara que coge píxeles del mismo frame cercanos al pixel que se está filtrando coge los píxeles en la misma posición de diferentes frames.\\
 
 El primero de los filtros que se usa es un filtro temporal de media que, como indica su nombre, hace la media  entre el número de frames indicado para filtrar. Al analizar el video resultante de estos filtros se comprueba que los primeros frames no quedan filtrados; esto se debe a que si, por ejemplo, estamos filtrando con 5 frames, dos anteriores al frame actual y dos posteriores no se puede empezar a filtrar hasta el tercer frame.\\
 
