@@ -20,3 +20,7 @@ scikit-learn: https://scikit-learn.org/stable/
 k-medias: https://www.unioviedo.es/compnum/laboratorios_py/kmeans/kmeans.html
 
 watershed: https://sisbib.unmsm.edu.pe/bibvirtual/publicaciones/risi/2010_n2/v7n2/a04v7n2.pdf
+
+cielab 1976: https://web.archive.org/web/20191228145700/eilv.cie.co.at/term/157
+
+bartlane: https://amp.en.google-info.cn/25717593/1/bartlane-cable-picture-transmission-system.html
