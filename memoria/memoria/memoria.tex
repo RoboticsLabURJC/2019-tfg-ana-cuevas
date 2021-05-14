@@ -1,0 +1,45 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{graphicx} 
+\usepackage{indentfirst}
+\usepackage[spanish]{babel}
+\usepackage{subfig}
+\usepackage{biblatex}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\rhead{\leftmark}
+\cfoot{\thepage}
+\bibliography{biblio}
+
+\begin{document}
+
+\title{Curso práctico multiplataforma de Tratamiento Digital de la Imagen con Jupyter}
+\author{ Ana Cuevas Bravo}
+\maketitle
+
+\newpage
+\pagenumbering{roman}
+
+\renewcommand{\abstractname}{Resumen}
+\renewcommand{\chaptername}{Capítulo}
+
+
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+
+\include{Introduccion}
+\include{Objetivos}
+\include{Infraestructura}
+\include{Practicas}
+\include{Conclusiones}
+
+\nocite{*}
+\printbibliography
+
+\end{document}

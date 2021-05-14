@@ -1,199 +1,3 @@
-\documentclass[a4paper,12pt]{report}
-
-\usepackage{graphicx} 
-\usepackage{indentfirst}
-\usepackage[spanish]{babel}
-\usepackage{subfig}
-\usepackage{biblatex}
-\usepackage{fancyhdr}
-
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
-\rhead{\leftmark}
-\cfoot{\thepage}
-\addbibresource{biblio.bib}
-
-\begin{document}
-
-\title{Curso práctico multiplataforma de Tratamiento Digital de la Imagen con Jupyter}
-\author{ Ana Cuevas Bravo}
-\maketitle
-
-\newpage
-\pagenumbering{roman}
-
-\renewcommand{\abstractname}{Resumen}
-\renewcommand{\chaptername}{Capítulo}
-
-\begin{abstract}
-Your abstract goes here...
-...
-\end{abstract}
-
-
-\tableofcontents
-\newpage
-\pagenumbering{arabic}
-
-\chapter{Introducción}
-
-Este trabajo se centra en dos temas: el tratamiento de imagen como una rama de conocimiento que está evolucionando en este momento y que se está empleando en el desarrollo de muchas investigaciones en diferentes campos y la docencia y lo importante que es que ésta sea accesible a todo el que esté interesado en aprender sobre un tema nuevo.\\
-
-\section{Tratamiento de imagen}
-
-La disciplina del tratamiento de imagen trata de la extracción de información de una o varias imágenes usando métodos matemáticos que tratan la imagen como una señal o matriz. Estos métodos pueden centrarse en mejorar la calidad de la imagen, añadir efectos o facilitar la búsqueda de información. El tratamiento digital de imagen usa ordenadores para aplicar estas transformaciones donde una imagen digital está compuesta de un número finito de elementos, cada uno con posición y valor particular (píxel).\\
-
-Uno de los primeros ejemplos de tratamiento de imagenes digitales se dio en la década de los años 20 cuando se empezaron a envíar imágenes a través de un cable submarino de Londres a Nueva York. El sistema de transmisión de imágenes por cable de Bartlane usaba un telégrafo (Figura \ref{telegrafo}) para transmitir imágenes por el Atlántico. Inicialmente estas imágenes tenían 5 niveles de gris, pero fue ampliado a 15 niveles en 1929. Estas imágenes son consideradas las primeras imágenes digitales. La Figura \ref{1digital} muestra una imagen transmitida usando este sistema. Ya desde esta época se pudo ver que el principal problema que surgía con la imagen digital es la cantidad de espacio y capacidad computacional que requieren.\\
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{imagenes/telegrafo}
-\caption{Tira de Baudot.}
-\label{telegrafo}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{imagenes/1digital}
-\caption{Imagen transmitida usando el sistema de Bartlane.}
-\label{1digital}
-\end{figure}
-
-Los avances en este campo en los primeros años dependían completamente del avance de los ordenadores y su capacidad tanto de almacenamiento como computacional.\\
-
-Los primeros avances en el tratamiento digital de imágenes se dieron en los años 70 en el campo de la medicina y en astronomía. En medicina lo que impulsó esta necesidad para analizar imágenes digitales fué la invención del TAC (tomografía axial computarizada) que consiste en una serie de algoritmos que toman varias fotografías realizadas con rayos x para construir una imagen tridimensional. Se usan varias operaciones de tratamiento de imagen para mejorar el contraste de la imagen o pasar los diferentes niveles de gris a color para facilitar la interpretación.\\
-
-Una de las razones principales que hacen que este campo sea tan complejo es la diferencia en cómo vemos imágenes nosotros y cómo las ``ve'' un ordenador. Nuestro cerebro analiza imágenes siempre en un contexto y conreferencias para comparar, mientras que un ordenador recibe una serie de datos finitos en los que se ha perdido por el camino mucha información, por ejemplo si el objeto de la imagen es tridimensional, de dónde viene la imagen y el contexto de esa imagen. Esto hace que cosas que para la vista humana son obvias para un ordenador sean operaciones muy complejas que requieran múltiples transformaciones y algoritmos para extraer ciertas características que se puedan contrastar con una base de datos.\\
-
-El tratamiento de imagen se puede dividir en 3 procesos diferentes que se pueden dar secuencialmente en el análisis de una imagen o a la vez. Estos procesos son: pre-procesado, segmentación y análisis. La asignatura de TDI se centra sobre todo en métodos de pre-procesado y segmentación de imágenes.\\ 
-
-\subsection{Aplicaciones}
-El tratamiento digital de imagen tiene aplicaciones en una amplia variedad de campos desde medicina a diseño, pasando por astronomía y robótica.  Estos son algunos ejemplos de campos en los que se usan herramientas de tratamiento de imagen:
-\begin{itemize}
-\item \textbf{Medicina y biología}: El tratamiento de imágenes digital se usa para una gran cantidad de análisis. Un ejemplo serían las imágenes médicas que es el proceso de crear una representación visual de la estructura interior de un cuerpo antes de una intervención. También crea una representación visual de cómo funcionan varios órganos o tejidos. Esto se consigue gracias a varios avances en métodos como las tomografías computarizadas o las resonancias magnéticas.\\
-
-También dentro del campo de la biología el tratamiento de imagen se está empleando para analizar imágenes sacadas de microscopio por ejemplo para automatizar el cómputo de células en una imagen.\\
-
-\item \textbf{Visión artificial y robótica}: Este campo consiste en intentar emular la visión humana usando el tratamiento de imagen. Su objetivo es reconocer objetos e información relevante de una forma similar a como lo hacemos los humanos. Se está aplicando sobre todo en el campo de la robótica, por ejemplo para casos como la conducción automática de los coches o robots.\\
-
-\item \textbf{Restauración}: Otro campo en el que se usan las herramientas de tratamiento de imágenes es en la restauración de imágenes (figura \ref{restauracion} o videos dañados, ya sea por antigüedad o cualquier otra causa. \\
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{imagenes/restauracion}
-\caption{Imagen restaurada y coloreada usando tratamiento de imagen.}
-\label{restauracion}
-\end{figure}
-
-\item \textbf{Geografía}: El tratamiento de imagen también se usa para crear mapas analizando imágenes de satélite y otros muchos análisis del terreno. Por ejemplo en agricultura Artizzu et al.\footnote{X. P. B. Artizzu, A. Ribeiro, A. Tellaeche, G.Pajares, C. F. Quintanilla (2009), Improving weed pressure assessment using digital images from an experience-based reasoning approach, Computers and Electronics in Agriculture, 65, pp. 176–185,
-2009} diseñó un sistema que analiza imágenes del suelo y utiliza el color y la textura de la imagen para averiguar qué está plantado en esa zona.\\
-
-\item \textbf{Seguridad}: Un tema por el que el tratamiento de imagen está recientemente en la noticias es su uso en seguridad, específicamente por la identificación facial en cámaras de seguridad. Este no es el único caso en el que se usa el tratamiento de imagen para seguridad, también se emplea en otras verificaciones biométricas, por ejemplo las huellas dactilares.\\
-
-Otro ámbito de la seguridad en el que se usa el tratamiento de imagen es en la estenografía y la encriptación, por ejemplo para crear firmas digitales irremovibles en obras de arte o documentos.\\
-
-\item \textbf{Transmisión y codificación}: Herramientas de tratamiento de imagen como el análisis de imágenes en frecuencia o  la reducción de niveles se usan amenudo para la codificación de imágenes y videos con el objetivo de que ocupen menos espacio y facilitar su transmisión.\\
-
-\item \textbf{Diseño}: Por último mencionar el que seguramente sea el uso más común del tratamiento de imagen que es el diseño. Cualquier programa de uso común, como puede ser Photoshop, lo que tiene detrás de su interfaz son herramientas de tratamiento como filtros Gaussianos o filtros de detección de ejes.\\
-
-\end{itemize}
-
-
-\section{La importancia de conocer las bases}
-
-La razón por la que escogí 
-\section{Educación accesible}
-
-
-\chapter{Objetivos}
-
-\section{Objetivos}
-
-\section{Requisitos}
-
-\section{Metodología}
-
-
-\chapter{Infraestructura}
-
-En esta sección se detallan tanto el software empleado para la realización del trabajo, como la estructura previa que existía en la asignatura y que ha servido como base para las nuevas prácticas. \\
-
- El lenguaje de programación utilizado ha sido Python. Profundizaremos en las bibliotecas que tiene este lenguaje para el tratamiento de imagen que han sido necesarias para el desarrollo del trabajo. Esta sección también explicará en que consiste la plataforma Jupyter Notebook y las ventajas que tiene en su uso para la docencia. Por último, se hablará de Matlab, la plataforma original que se usa en la asignatura de Tratamiento Digital de la Imagen y la estructura general que tienen las prácticas de esta asignatura.
-
-\section{Python tratamiento de imagen y visualización}
-
-Python\footnote{https://www.python.org/} es un lenguaje de programación interpretado de alto nivel orientado a objetos, creado en los años 80 por Guido van Rossum. Se caracteriza por tener una sintaxis sencilla, fácil de leer, lo que facilita el mantenimiento de programas y lo hace accesible para principiantes. Tiene una amplia biblioteca base y además permite el uso de módulos y paquetes. Al ser interpretado en lugar de compilado el proceso de depuración es más rápido. En este trabajo se ha usado la versión 3.7.4 de Python.\\
-
- Python se está usando cada día más para el tratamiento de imagen, esto se debe a que es un lenguaje muy accesible, siendo gratuito y con una sintaxis sencilla. Con el tiempo han ido surgiendo bibliotecas específicas para el tratamiento de la imagen en Python como Pil (Python Imaging Library) también llamada Pillow, Scikit-image y Open-CV. Esta última será la que más se use en este proyecto.\\
-
-Otra biblioteca que facilita el tratamiento de imagen en Python es Numpy, una biblioteca para facilitar el uso de matrices y arrays en Python, así como las funciones matemáticas relacionadas.  Además, Matplotlib permite  la representación de datos en forma de gráficos.
-
-\subsection{OpenCV}
-
-OpenCV(Open Source Computer Vision Library)\footnote{https://opencv.org/} es una biblioteca centrada en el tratamiento de imagen y video (Computer Vision) y en aprendizaje de máquina, con interfaces para varios lenguajes de programación como C++, Python o Java. OpenCV es la biblioteca de procesamiento de imagen más usada en el mundo con más de 18 millones de descargas. Originalmente programada en C; el resto de lenguajes usa diferentes interfaces para acceder al código. Esto permite tener un buen rendimiento por ser C un lenguaje muy rápido en ejecución.\\
-
-OpenCV contiene desde funciones de bajo nivel para el procesado de imagen hasta algoritmos complejos para deteccion de caras. En este trabajo, ya que trata de dar una base de tratamiento de imagen, usaremos funciones de bajo nivel como filtros o funciones para cambiar de espacio de color.\\
-
-Se ha usado la versión 4.2.0 de OpenCV.\\
-
-
-\subsection{Numpy}
-
-Numpy\footnote{https://numpy.org/} es el paquete principal para cálculos complejos con matrices en Python, esto lo convierte en un paquete esencial en el desarrollo de código para usos ciéntificos y de robótica. La base de esta biblioteca es el objeto \emph{ndarray}, que consiste en arrays de n-dimensiones con datos de un mismo tipo y un tamaño establecido al crear la variable, esto último lo diferencia de las listas de python que son dinámicas.\\
-
-En este trabajo se ha usado la versión 1.16.5 de Numpy.\\
-
-Numpy contiene funciones que permiten realizar operaciones con grandes cantidades de datos de una forma más eficiente en memoria y rápida que usando las funciones propias de Python. Numpy está programado y pre-compilado en C. El uso de las funciones de Numpy también permite que el código se parezca más a la notación matématica estándar, lo que lo hace más fácil de leer y entender.\\
-
-\subsection{Matplotlib}
-
-Matplotlib\footnote{https://matplotlib.org/} es una biblioteca para la creación de gráficos en Python. También permite la representacion de imágenes. Matplotlib está construido usando Numpy para funcionar con el paquete general de Scipy. Permite interactúar con los gráficos de una forma muy similar a la representación de Matlab. Matplotlib funciona sobre cualquier sistema operativo. \\
-
-Una de las razones por las que se ha elegido esta biblioteca para representar las diferentes imágenes y gráficos de las prácticas de TDI es por cómo interactúa con los cuadernillos de Jupyter, ya que permite la visualización de los gráficos incrustrada en el propio cuadernillo sin crear otra ventana. \\
-
-Otro punto a favor de Matplotlib es la capacidad para interactuar con los gráficos, cómo ya se ha mencionado antes, esto es algo que permite Matlab e interesaba mantener en las prácticas, ya que puede ayudar mucho a la hora de entender algunos de los ejercicios. Esta interactividad consiste en la posibilidad de hacer zoom en los gráficos y un cursor que indica el valor del pixel sobre el que está.
-
-Se ha usado la versión 3.1.1.\\
-
-\subsection{Scikits}
-
-Abreviatura de Scipy Toolkits\footnote{https://www.scipy.org/scikits.html} son una serie de paquetes añadidos para scipy separados de su distribución principal. Estos paquetes se separan de scipy cuando se consideran demasiado específicos para el propio Scipy, por una licencia incompatible con la de Scipy o si aún están en desarrollo.\\
-
-En este trabajo se van a usar 2 de esos kits:\\
-
-
-\begin{itemize}
-
-	\item \textbf{Scikit-learn}\footnote{https://scikit-learn.org/stable/}: Es un paquete con un amplio rango de algoritmos de aprendizaje de máquina para problemas de tamaño medio, tanto supervisados como no supervisados. Está programado mayoritariamente en Python aunque incorpora algunas bibliotecas de C++ e incorpora código compilado para mejorar su eficiencia.
-
-	\item \textbf{Scikit-image}\footnote{https://scikit-image.org/}: Este paquete cuenta con una colección de algoritmos para el tratamiento de imagen construida por una comunidad de voluntarios.
-\end{itemize}
-\section{ Cuadernillos de Jupyter}
-
-El cuadernillo Jupyter\footnote{https://jupyter.org/} es una interfaz web de código libre, que permite la creación de documentos que contienen código ejecutable, ecuaciones, visualización (gráficos, imágenes) y texto.\\
-
-El cuadernillo se guarda como un JSON la extensión .ipnyb. La aplicación es un modelo cliente-servidor que se ejecuta a través de un navegador. Se trata de un servidor local que se crea al ejecutar la aplicación lo que implica que no se necesita conexión a internet para leer o modificar un cuadernillo.  El servidor lee el documento .ipnyb y manda mensajes usando ZeroMQ (una librería que manda mensajes usando un modelo asíncrono) a un kernel que ejecuta el código Python en el cuadernillo. El cliente funciona en un navegador y es lo que permite interactuar con el cuadernillo, según se muestra en la Figura \ref{estructurajupyter}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.0\textwidth]{imagenes/estructurajupyter}
-\caption{Estructura de Jupyter Notebook.}
-\label{estructurajupyter}
-\end{figure}
-
-Los cuadernillos de Jupyter consisten principalmente en dos tipos de celdas: \emph{code} y \emph{markdown}.\emph{ Code }son las celdas ejecutables en las que se escribe código de Python, mientras que \emph{markdown} son las celdas de texto. Para estilizar el texto se usa  la sintaxis de markdown, que permite desde poner texto en negrita hasta insertar imágenes o fórmulas matemáticas complejas.\\
-
-En la Figura \ref{versionjupyter} se pueden var las versiones de los diferentes paquetes necesarios para ejecutar un cuadernillo de Jupyter.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{imagenes/versionjupyter}
-\caption{Imagen de una terminal que muestra las versiones de los paquetes de Jupyter usados en este trabajo.}
-\label{versionjupyter}
-\end{figure}
-
-
 \section{Prácticas de TDI en Matlab}
 
 
@@ -302,7 +106,7 @@ Esta guía está en inglés, al igual que las prácticas y pensada para ser usad
 
 \subsection{Teoría tratada}
 
-En esta práctica se opera sobre la matriz de la imagen, también se explica de forma práctica la diferencia entre una imagen \emph{true color} y una imagen indexada. Se pone un énfasis especial en los diferentes tipos de datos en matrices (double, uint64, float...) ya que a la hora de operar puede dar lugar a error.\\
+En esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P1/1_Introduction.ipynb}} se opera sobre la matriz de la imagen, también se explica de forma práctica la diferencia entre una imagen \emph{true color} y una imagen indexada. Se pone un énfasis especial en los diferentes tipos de datos en matrices (double, uint64, float...) ya que a la hora de operar puede dar lugar a error.\\
 
 El segundo punto de la práctica se centra en la conversión de imágenes de color a gris y binario. A continuación se usan diferentes métodos para modificar la resolución de una imagen actuando tanto sobre la resolución espacial como sobre la intensidad.\\
 
@@ -339,7 +143,7 @@ Por último, en los cuadernillos se ha añadido un nuevo apartado donde se muest
 
 \subsection{Desarrollo de funciones}
 
-En esta práctica solamente fue necesario desarrollar una función nueva: \texttt{RGB2ind}. Esta función se usa para convertir una imagen \emph{true color} RGB en una imagen indexada con el número de niveles como parámetro. \\
+En esta práctica solamente fue necesario desarrollar una función nueva: \texttt{RGB2ind}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P1/rgb2ind.py}}. Esta función se usa para convertir una imagen \emph{true color} RGB en una imagen indexada con el número de niveles como parámetro. \\
 
 A la hora del desarrollo se intentó buscar el código de la función original de Matlab, pero es de las funciones precompiladas en C y su código no es accesible. Se resolvió usando el algoritmo K-medias con un número de núcleos igual al número de niveles requeridos.\\
 
@@ -359,7 +163,7 @@ La figura \ref{rgb2ind} muestra cómo queda la solución para una imagen indexad
 
 \subsection{Teoría tratada}
 
-Este segundo ejercicio se centra en el filtrado de imágenes en el espacio, se irán demostrando diferentes tipos de filtro y sus usos más comunes en la práctica.\\
+Este segundo ejercicio\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P2/2_Spatialfiltering.ipynb}} se centra en el filtrado de imágenes en el espacio, se irán demostrando diferentes tipos de filtro y sus usos más comunes en la práctica.\\
 
 El primer apartado enseña diferentes tipos de ruido y cómo contaminar una imagen, los tipos de ruido tratados son: ruido gaussiano, ruido de sal y pimienta y ruido granular.\\
 
@@ -412,14 +216,14 @@ El último apartado de composición de imágenes requiere funciones que se usaro
 
 \subsection{Desarrollo de funciones}
 
-Para este ejercicio se han tenido que desarrollar varias funciones, todas relacionadas con la función de añadir ruido en una imagen. La función principal \texttt{imnoise} tiene 3 parámetros de entrada: la imagen a contaminar, el tipo de ruido y un parámetro genérico que indica los parámetros de cálculo del ruido (por ejemplo si el ruido es gaussiano este parámetro contiene la media y la varianza). La imagen puede ser tanto en tonos de gris como en color. Para añadir el ruido se llama a \texttt{addnoise} que es la función que realiza las operaciones matemáticas necesarias.\\
+Para este ejercicio se han tenido que desarrollar varias funciones, todas relacionadas con la función de añadir ruido en una imagen. Todas se encuentran en un único documento 'imfunctions.py'\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P2/imfunctions.py}} que es importado al empezar la práctica. La función principal \texttt{imnoise} tiene 3 parámetros de entrada: la imagen a contaminar, el tipo de ruido y un parámetro genérico que indica los parámetros de cálculo del ruido (por ejemplo si el ruido es gaussiano este parámetro contiene la media y la varianza). La imagen puede ser tanto en tonos de gris como en color. Para añadir el ruido se llama a \texttt{addnoise} que es la función que realiza las operaciones matemáticas necesarias.\\
 
 Otras funciones que se han ido creando por necesidad de \texttt{imnoise} son \texttt{checkcolor} que, como su nombre indica, se encarga de comprobar si la imagen es de color y un par de funciones para cambiar el tipo de datos de la matriz de imagen, por ejemplo, de \texttt{uint8} a \texttt{double} y viceversa.
 
 \section{Práctica 3: Filtrado en el dominio de la frecuencia}
 \subsection{Teoría tratada}
 
-En esta práctica se trata la imagen en el dominio de la frecuencia. Se intenta mostrar de forma práctica cómo se ve una imagen en frecuencia y en qué consiste la transformada de Fourier bidimensional. Se explica porqué se necesitan dos representaciones diferentes para una misma imagen (módulo y fase) y qué representa cada una.\\
+En esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P3/3_frequency.ipynb}} se trata la imagen en el dominio de la frecuencia. Se intenta mostrar de forma práctica cómo se ve una imagen en frecuencia y en qué consiste la transformada de Fourier bidimensional. Se explica porqué se necesitan dos representaciones diferentes para una misma imagen (módulo y fase) y qué representa cada una.\\
 
 El segundo apartado demuestra las propiedades de la transformada de Fourier, qué transformaciones en el espacio afectan a la fase y cuáles al módulo y de qué manera.\\
 
@@ -438,7 +242,8 @@ En este ejercicio se usa una imagen dada con la práctica original de un triáng
 
 La función más importante de esta práctica es \texttt{fft2}, la transformada de Fourier bidimensional. Existe un equivalente exacto en Numpy,  \texttt{numpy.fft.fft2}. También existe equivalente para la función \texttt{fftshift} que modifica la representación de la imagen en frecuencia para que las frecuencias bajas se concentren en el centro de la imagen y las altas en los extremos.\\
 
-Para las representaciones en 3D se ha usado una función sacada de Github\footnote{https://gist.github.com/CMCDragonkai/dd420c0800cba33142505eff5a7d2589} de código abierto que simplifica el código de forma que, para representar un gráfico, solo tienes que llamar a una función en lugar de meter todas las especificaciones de Matplotlib cada vez que se quiera representar algo. En el cuadernillo se deja el código demostrando cómo usar esta función.\\
+Para las representaciones en 3D se ha usado una función sacada de Github\footnote{\url{https://gist.github.com/CMCDragonkai/dd420c0800cba33142505eff5a7d2589
+}} de código abierto que simplifica el código de forma que, para representar un gráfico, solo tienes que llamar a una función en lugar de meter todas las especificaciones de Matplotlib cada vez que se quiera representar algo. En el cuadernillo se deja el código demostrando cómo usar esta función.\\
 
 El apartado de propiedades de la transformada de Fourier se mantiene igual de Matlab a Python. Como se ve en la Figura \ref{zoom}\\.
 
@@ -464,12 +269,12 @@ El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfil
 
 \subsection{Desarrollo de funciones}
 
-En esta práctica se ha desarrollado una función \texttt{lpfilter} que, como se ha mencionado en el apartado anterior, genera filtros en frecuencia de dos tipos: Gaussiano e ideal. Como parámetros de entrada recibe el tipo de filtro que se quiere, las medidas del filtro que tienen que coincidir con las de la imagen que se quiere filtrar y D0 que es la apertura del filtro.\\
+En esta práctica se ha desarrollado una función \texttt{lpfilter}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P3/lpfilter.py}} que, como se ha mencionado en el apartado anterior, genera filtros en frecuencia de dos tipos: Gaussiano e ideal. Como parámetros de entrada recibe el tipo de filtro que se quiere, las medidas del filtro que tienen que coincidir con las de la imagen que se quiere filtrar y D0 que es la apertura del filtro.\\
 
 \section{ Práctica 4: Segmentación de imagen I}
 \subsection{Teoría tratada}
 
-Esta práctica se centra en entender algunos métodos de segmentación de imágenes usando el ejemplo de una calculadora. En el proceso de segmentar una de las teclas de esta calculadora se van usando varios métodos dados en la teoría de la asignatura.\\
+Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P4/4_Segmentation.ipynb}} se centra en entender algunos métodos de segmentación de imágenes usando el ejemplo de una calculadora. En el proceso de segmentar una de las teclas de esta calculadora se van usando varios métodos dados en la teoría de la asignatura.\\
 
 El primero de estos métodos es umbralización usando el histograma, que consiste en elegir un valor como umbral a la hora de convertir una imagen en binaria de forma que queden en primer plano las partes de la imagen que nos interesan. En este caso, las letras de la calculadora [Figura \ref{thresholding}].\\
 
@@ -527,7 +332,7 @@ El resto de la práctica usa la función de filtrado de media de la práctica 2 
 \section{ Práctica 5: Segmentación de imagen II}
 \subsection{Teoría tratada}
 
-Esta práctica continúa el tema de la práctica anterior. Intenta segmentar una imagen, en este caso es la figura de un pájaro que se puede ver en la Figura \ref{cormoran}. Para realizar este proceso de segmentación se va a usar aprendizaje de máquina K-medias.\\
+Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P5/5_Segmentation2.ipynb}} continúa el tema de la práctica anterior. Intenta segmentar una imagen, en este caso es la figura de un pájaro que se puede ver en la Figura \ref{cormoran}. Para realizar este proceso de segmentación se va a usar aprendizaje de máquina K-medias.\\
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/cormoran_rgb}
@@ -657,7 +462,7 @@ El último apartado utiliza herramientas ya empleadas en el resto de la práctic
 En este ejercicio se desarrollan 3 funciones nuevas:
 \begin{itemize}
 
-	\item \texttt{ RGB2Lab76}: Esta función realiza el cambio de espacio de color acorde a la norma de 1976. Primero se pasa de RGB a XYZ multiplicando cada componente por una serie de índices. Para pasar de XYZ a Lab se crean una serie de índices acotando los valores de cada componente de XYZ para sacar las coordenadas en el nuevo espacio de color. En la Figura \ref{colorspaces} se pueden ver los espacios de color RGb y Lab.
+	\item \texttt{ RGB2Lab76}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P5/colorspacefunctions.py}}: Esta función realiza el cambio de espacio de color acorde a la norma de 1976. Primero se pasa de RGB a XYZ multiplicando cada componente por una serie de índices. Para pasar de XYZ a Lab se crean una serie de índices acotando los valores de cada componente de XYZ para sacar las coordenadas en el nuevo espacio de color. En la Figura \ref{colorspaces} se pueden ver los espacios de color RGb y Lab.
 \begin{figure}[!tbp]
   \centering
   \subfloat[RGB]{\includegraphics[width=0.5\textwidth]{imagenes/rgb}\label{fig:f1}}
@@ -672,11 +477,12 @@ En este ejercicio se desarrollan 3 funciones nuevas:
 	\item \texttt{rangefilt}: Un filtro de rango devuelve el rango de valores bajo una máscara, que es la diferencia entre el máximo valor y el mínimo. Para programar este filtro se han empleado herramientas morfológicas. Se usa la operación de erosión como un filtro para conseguir el mínimo bajo el elemento estructural y la dilatación como un filtro de máximo. La resta de los resultados de la dilatación y erosión devuelve el rango.\\
 \end{itemize}
 
+Las 3 funciones de textura se encuentran en el mismo documento: 'texturefilters.py\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P5/texturefilters.py}}
 
 \section{ Práctica 6: Morfología binaria}
 \subsection{Teoría tratada}
 
-Esta práctica se centra en el uso de la morfología matemática para la segmentación de una imagen. Los operadores morfológicos son una serie de operadores no lineales relacionados con la forma de los objetos en la imagen. Como en las dos prácticas anteriores se va a usar la segmentación de una imagen en concreto para demostrar el funcionamiento de estos operadores. En este caso la imagen es de un circuito impreso, el objetivo es segmentar los 7 chips que se pueden ver en la Figura \ref{placa}\\
+Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P6/6_Morphology.ipynb}} se centra en el uso de la morfología matemática para la segmentación de una imagen. Los operadores morfológicos son una serie de operadores no lineales relacionados con la forma de los objetos en la imagen. Como en las dos prácticas anteriores se va a usar la segmentación de una imagen en concreto para demostrar el funcionamiento de estos operadores. En este caso la imagen es de un circuito impreso, el objetivo es segmentar los 7 chips que se pueden ver en la Figura \ref{placa}\\
 
 \begin{figure}[h]
 \centering
@@ -723,7 +529,7 @@ En el último apartado, cuyo objetivo es la detección de bordes, se usa un elem
 
 \subsection{Desarrollo de funciones}
 
-Este ejercicio ha requerido el desarrollo de una función para cambiar del espacio de color RGB a HSI. Solo tiene un parámetro de entrada y uno de salida: la propia imagen en \texttt{uint8}. No es una función demasiado compleja ya que solamente aplica las fórmulas matemáticas necesarias para esta transformación, como se muestra en la Figura \ref{rgb2hsi}.
+Este ejercicio ha requerido el desarrollo de una función para cambiar del espacio de color RGB a HSI\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P6/RGB2HSI.py}}. Solo tiene un parámetro de entrada y uno de salida: la propia imagen en \texttt{uint8}. No es una función demasiado compleja ya que solamente aplica las fórmulas matemáticas necesarias para esta transformación, como se muestra en la Figura \ref{rgb2hsi}.
 
 \begin{figure}[h]
 \centering
@@ -735,7 +541,7 @@ Este ejercicio ha requerido el desarrollo de una función para cambiar del espac
 \section{ Práctica 7: Segmentación con \emph{Watershed}}
 \subsection{Teoría tratada}
 
-Esta práctica trata el método de segmentación por \emph{Watershed} con marcadores para contar el número de células enteras que hay en una imagen.\emph{ Watershed} es un algoritmo de segmentación basado en morfología matemática que trata la imagen como una serie de desniveles topográficos que forman picos y valles (Figura \ref{watershed}) que se van inundando. Se cogen las depresiones de intensidad como marcadores de los que crece el agua (la etiqueta). El proceso de inundación continúa hasta que toda la imagen está ``inundada'' y donde se toca el agua de diferentes regiones se forman las líneas de  \emph{Watershed} que limitan las regiones.\\
+Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P7/7_Watershed.ipynb}} trata el método de segmentación por \emph{Watershed} con marcadores para contar el número de células enteras que hay en una imagen.\emph{ Watershed} es un algoritmo de segmentación basado en morfología matemática que trata la imagen como una serie de desniveles topográficos que forman picos y valles (Figura \ref{watershed}) que se van inundando. Se cogen las depresiones de intensidad como marcadores de los que crece el agua (la etiqueta). El proceso de inundación continúa hasta que toda la imagen está ``inundada'' y donde se toca el agua de diferentes regiones se forman las líneas de  \emph{Watershed} que limitan las regiones.\\
 
 \begin{figure}[h]
 \centering
@@ -797,7 +603,7 @@ Debido al cambio de imagen algunos de los valores empleados como elemento estruc
 
 \texttt{ImregionalMax} es una función de Matlab que devuelve los máximos regionales de una imagen. En Python no existe ninguna función equivalente por lo que se ha tenido que programar. La nueva función devuelve exactamente el mismo resultado que la de Matlab.\\
 
-A continuación, se eliminan los marcadores que corresponden a las células del borde de la imagen que no están completas. En Matlab se usa la función \texttt{imclearborder}. En Python no hay versión en ninguna librería oficial, pero se ha encontrado una versión en Github subida por el usuario hatamiarash7\footnote{https://github.com/hatamiarash7/Python-Projects/blob/master/OpenCV/} que cumple la misma función.\\
+A continuación, se eliminan los marcadores que corresponden a las células del borde de la imagen que no están completas. En Matlab se usa la función \texttt{imclearborder}. En Python no hay versión en ninguna librería oficial, pero se ha encontrado una versión en Github subida por el usuario hatamiarash7\footnote{\url{https://github.com/hatamiarash7/Python-Projects/blob/master/OpenCV/}} que cumple la misma función.\\
 
 Lo siguiente es eliminar los marcadores que no coincidan con un núcleo en la imagen original. En Matlab se usa la función\texttt{ regionprops} con el atributo \emph{mean intensity}, \texttt{regionprops} en Scipy-image tiene el mismo atributo con el mismo funcionamiento.\\
 
@@ -816,13 +622,13 @@ Con esto ya tenemos los marcadores, tanto internos como externos. A continuació
 
 \subsection{Desarrollo de funciones}
 
-Para esta práctica se ha tenido que desarrollar la función \texttt{imregionalmax}. Esta función toma la imagen de la que se quiere conseguir los máximos regionales y se le resta 1. A continuación, se hace reconstrucción con la imagen original como máscara y la imagen a la que hemos restado 1 de marcador sobre el que se va realizando la dilatación repetida de la reconstrucción. Esto genera una imagen cuya única diferencia con la original son las regiones de máximos. Si restamos el resultado de la reconstrucción a la imagen original obtenemos una imagen en la que los únicos valores diferentes de cero son los máximos regionales. Esta imagen se pasa a binario y es lo que devuelve la función \texttt{imregionalmax}.
+Para esta práctica se ha tenido que desarrollar la función \texttt{imregionalmax}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P7/imregionalmax.py}}. Esta función toma la imagen de la que se quiere conseguir los máximos regionales y se le resta 1. A continuación, se hace reconstrucción con la imagen original como máscara y la imagen a la que hemos restado 1 de marcador sobre el que se va realizando la dilatación repetida de la reconstrucción. Esto genera una imagen cuya única diferencia con la original son las regiones de máximos. Si restamos el resultado de la reconstrucción a la imagen original obtenemos una imagen en la que los únicos valores diferentes de cero son los máximos regionales. Esta imagen se pasa a binario y es lo que devuelve la función \texttt{imregionalmax}.
 
 
 \section{ Práctica 8: Video y estimación de movimiento}
 \subsection{Teoría tratada}
 
-Esta práctica es la primera práctica de video. Tiene dos partes muy marcadas.\\
+Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P8/P8_Video.ipynb}} es la primera práctica de video. Tiene dos partes muy marcadas.\\
 
 La primera es una introducción a las herramientas de video. Se muestra cómo leer un video, visualizar los fotogramas, en qué consiste el \emph{frame rate} y cómo afecta a la reproducción de video. Se pide que se modifiquen un par de fotogramas con transformaciones como filtros y pasar a negativo para comprobar qué transformación es más perceptible.\\
 
@@ -882,7 +688,7 @@ Las diferencias en este apartado vienen a la hora de representar los vectores de
 \end{figure}
 \subsection{Desarrollo de funciones}
 
-En esta práctica se han desarrollado 3 funciones, los algoritmos de estimación de movimiento.\\
+En esta práctica se han desarrollado 3 funciones, los algoritmos de estimación de movimiento. Los tres se encuantran en el mismo documento: 'motionalgorithms.py'\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P8/motionalgorithms.py}}\\
 
 \begin{itemize}
 	\item \textbf{EBMA}: Esta función recibe 3 atributos: el fotograma de referencia (\emph{anchor frame}), el fotograma actual (\emph{target frame}) y el tamaño de bloque que se va a usar. La función empieza declarando variables como el ancho y alto de cada fotograma y los arrays que van a formar el mapa de vectores de movimiento.\\
@@ -901,7 +707,7 @@ El tercer nivel funciona igual que el anterior: en las áreas de cambio detectad
 \section{ Práctica 9: Filtrado en video}
 \subsection{Teoría tratada}
 
-La última práctica de la asignatura trata el uso de filtros en video.\\
+La última práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P9/9_Videorestoration.ipynb}} de la asignatura trata el uso de filtros en video.\\
 
 La práctica se estructura de una forma muy similar a la práctica 2. Se empieza contaminando el video con ruido Gaussiano y sal y pimienta para, a continuación, filtrar el video y comprobar los efectos de los filtros temporales. En la figura \ref{ruidovideo} se puede ver el fotograma original, el fotograma contaminado con ruido gaussiano y con ruido sal y pimienta.\\
 \begin{figure}[h]
@@ -936,7 +742,7 @@ Tanto la función \texttt{addnoise} como \texttt{tempNoiseFilter} crean nuevos v
 
 \subsection{Desarrollo de funciones}
 
-Esta práctica usa dos funciones principales: \texttt{addnoise} y \texttt{tempNoiseFilter}.\\
+Esta práctica usa dos funciones principales: \texttt{addnoise} y \texttt{tempNoiseFilter}. Las dos guardades en el documento 'videofunctions.py'\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P9/videofunctions.py}}\\
 
 La función \texttt{addnoise} recibe como argumentos: el nombre del video a contaminar, el nombre que se le va a dar al video contaminado, el tipo de ruido y un array con los fotogramas a contaminar. En el caso de que el array esté vacío se contaminan todos los fotogramas. Esta función se sirve de varias funciones más pequeñas. Primero se usa \texttt{getfotogramas} que recibe el nombre del video y devuelve un array con todos los fotogramas. Tras una serie de comprobaciones (como que el array de fotogramas no esté vacío y el número de fotogramas a contaminar) se itera sobre cada fotograma llamando a la función \texttt{plusnoise} con el fotograma y el tipo de ruido y esta llama a la función \texttt{imnoise} usada en la práctica 2. La función \texttt{plusnoise} devuelve una imagen contaminada que se guarda en un nuevo array que formará parte de la nueva estructura de video contaminado. En la Figura \ref{addnoise} se puede ver el código de esta función.\\
 
@@ -948,11 +754,3 @@ La función \texttt{addnoise} recibe como argumentos: el nombre del video a cont
 \end{figure}
 
 La otra función \texttt{tempNoiseFilter}, al igual que en \texttt{addnoise}, sus primeros argumentos son los nombres del video de entrada y de salida. El tercer argumento de la función es el número de fotogramas que se va a usar para calcular la media. Primero se lee el video usando \texttt{getfotogramas}. A continuación se itera por el array de fotogramas calculando la media entre el número de fotogramas establecido. Al igual que \texttt{addnoise} guarda un nuevo video con el nombre indicado en el segundo argumento.\\
-
-
-\chapter{Conclusiones}
-
-\nocite{*}
-\printbibliography[heading=bibintoc,title={Bibliography}]
-
-\end{document}
