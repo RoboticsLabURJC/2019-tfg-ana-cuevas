@@ -1,67 +1,3 @@
-\section{Prácticas de TDI en Matlab}
-
-
-Las prácticas originales para la asignatura de Tratamiento Digital de la Imagen consisten en una carpeta zip que se pone a disposición de los alumnos en el aula virtual de la asignatura. Dentro de esta carpeta están las imágenes que se van a utilizar en la práctica (cuando no eran imágenes internas de MatLab), funciones adicionales necesarias en caso de que no existieran previamente y un enunciado en pdf. En la imagen \ref{carpetapracticas} se puede ver un ejemplo de una de estas carpetas.
- 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{imagenes/carpetapracticas}
-\caption{Ejemplo de carpeta de prácticas.}
-\label{carpetapracticas}
-\end{figure}
-
-Las prácticas se realizaban en hora de clase en uno de los laboratorios de Windows del campus. Se podían realizar enteras en la duración de la clase. \\
-
-La profesora daba una breve explicación inicial sobre el tema de la práctica, siempre relacionado con lo que se hubiera dado en las clases de teoría recientes. El resto de la práctica se podía seguir de forma libre con el enunciado, con la profesora respondiendo las dudas que surgieran en el desarrollo del ejercicio. \\
-
-Los enunciados son instrucciones detalladas sobre los pasos a seguir para realizar la práctica, con poco o nada de teoría, ya que se asume que el alumno ha recibido las clases de teoría previas. El alumno debe crear un nuevo documento en Matlab e ir ejecutando paso a paso lo que pide el enunciado. \\
-
-Los enunciados suelen comenzar con un breve párrafo explicando el objetivo de la práctica. Por ejemplo en la práctica 4 que trata el tema de segmentación de Imagen, la introducción dice:\emph{``El objetivo de esta práctica es comenzar a familiarizar al alumno con las herramientas básicas de segmentación de imagen en entorno MATLAB. Para ello se trabajará con la imagen en escala de
-grises ‘calculadora.tif’, que acompaña al material de esta práctica. "}\\
-
-A partir de esta breve introducción la práctica suele estar dividida en secciones normalmente relacionadas con diferentes puntos tratados en la teoría y cómo llevarlos a cabo.\\
-
-Los pasos a seguir en MatLab, por lo general, vienen dados en el enunciado que indica qué función usar y cómo llamar a las diferentes variables para mantener una consistencia en los nombres a lo largo de la práctica. En algunos casos se indican las variables necesarias para llamar a la función que se va a usar en esa sección del ejercicio, mientras que en otros se pide al alumno que use el comando \textsl{+help} para informarse sobre el funcionamiento de la función. Del mismo modo si una función requiere de un valor a decidir, dependiendo de lo que se quiera conseguir con su uso, unas veces se da con el enunciado y otras se deja a criterio del alumno para que pruebe cómo cambian los resultados con diferentes variables y cuál sería la mejor solución para el problema planteado.\\
-
-Otra característica común de los enunciados de TDI son las preguntas para responder, aunque no se pide una memoria en sí de las prácticas en los enunciados hay preguntas con el objetivo de que el alumno se plantee las respuestas y las razones de los pasos que se han ido realizando durante el ejercicio.  La siguiente imagen \ref{preguntasp4} muestra un ejemplo de estas preguntas del principio de la práctica 4.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\textwidth]{imagenes/preguntasp4}
-\caption{Ejemplo de preguntas realizadas en los enunciados de TDI.}
-\label{preguntasp4}
-\end{figure}
-
-Algunos de los enunciados tienen imágenes del aspecto que tendría que tener la imagen sobre la que se está trabajando después de ciertos pasos para que el alumno pueda ver si el ejercicio progresa adecuadamente o si debería modificar alguna variable o revisar el código.\\
-
-Si se pide un algoritmo un poco más complejo, en los enunciados aparece dado un trozo de ese código como ejemplo o directamente para copiar en Matlab ya que el objetivo de estas prácticas no era aprender a programar en MatLab sino ilustrar de forma práctica lo dado en teoría de la asignatura.\\
-
-Las prácticas se suelen centrar en el tratamiento de una imagen en específico, elegida para ilustar el tema del que trata la práctica. Por ejemplo en la práctica 1, en el apartado que trata sobre color se escoge una imagen con diferentes verduras que muestran una variedad de colores para ilustrar la mezcla aditiva de color al representarse individualmente las matrices de cada color del sistema de representación RGB. Debido a que algunas de las imágenes usadas en las prácticas originales pertenecen a Matlab o se desconoce su origen se ha tenido que buscar imágenes nuevas, siempre intentando mantener las características de la imagen original.\\
-
-En total la asignatura consiste de 9 prácticas, 7 de imagen y 2 de video. \\
-
-\begin{itemize}
-  \item [ P1.]\emph{Introducción al tratamiento de imagen:}\\
-	Esta práctica es una introducción a las herramientas de tratamiento de imagen en Matlab. Se trata cómo leer y representar imágenes, espacios de color, escalado e histogramas. El último apartado se centra en imágenes RGB.
-  \item [P2.]\emph{ Filtrado de imágenes en el dominio espacial:}\\
-	Esta práctica demuestra el funcionamiento de diferentes tipos de filtros sobre imágenes contaminadas con varios ruidos. En la segunda parte se tratan filtros de realce de contorno y se demuestra su uso para extraer los bordes de unas monedas.
-  \item [P3.]\emph{Filtrado de imágenes en el dominio espectral:}\\
-	En esta práctica se demuestran las propiedades de la transformada de Fourier y cómo afectan las transformaciones en el espacio a la representación en frecuencia de la imagen. También se tratan filtros en el dominio frecuencial.
-  \item [P4.]\emph{Segmentación de imagen:}\\
-	Esta práctica es diferente a las anteriores ya que en lugar de ejercicios individuales se centra en el tratamiendo de una imagen en concreto con un objetivo claro. Se trata  la imagen de una calculadora con el objetivo de conseguir una nueva imagen en la que solo se vea la letra Enter de la calculadora. Para esto se usa segmentación binaria que es el tema de la asignatura que se corresponde con esta práctica.
-  \item [P5.]\emph{Segmentación de imagen II:}\\
-	Esta prácctica sigue el esquema de la anterior centrándose en la segmentación de una imagen, en este caso un pájaro. Para la segmentación de este pájaro se va a usar aprendizaje de máquina, específicamente el algoritmo K-medias, la mayor parte de la práctica se centra en realizar diferentes transformaciones sobre la imagen para facilitar el uso del algoritmo. Entre estas transformaciones se encuentran cambios de espacio de color y filtros de textura.
-  \item [P6.]\emph{Morfología binaria:}\\
-	Este ejercicio aplica operaciones de morfología matemática para segmentar los chips de una placa y separarlos de acuerdo a su forma.
-  \item [P7.]\emph{Segmentación por watershed:}\\
-	El objetivo de esta práctica es segmentar una imagen con células para contarlas. Para conseguir esto se plantea el uso del algoritmo de \emph{watershed} con marcadores. Primero se extraen los marcadores internos de las células usando herramientas como la reconstrucción morfológica y conseguir los máximos regionales de una imagen, operaciones estudiadas en la parte correspondiente a esta práctica del temario. Lo mismo ocurre con los marcadores exteriores y el uso de la transformada de distancia. Esta práctica además tiene el objetivo de demostrar que la segmentación de este tipo de elementos que muchas veces se encuentran superpuestos en una imagen es muy complicada y siguen dando bastante error.
-  \item [P8]\emph{Manejo de vídeos en MATLAB. Detección y estimación de movimiento:}\\
-	Esta es la primera de las prácticas de video, está dividida en dos secciones claras. La primera es una introducción a las herramientas de video en Matlab, estructura de video, como reproducir y guardar videos. La segunda parte trata 3 algoritmos de estimación de movimiento: EBMA, HBMA y correlación de fase.
-  \item [P9]\emph{Mejora y restauración de vídeo. Filtrado interfotograma:}\\
-	La segunda práctica de vídeo y la última de la asignatura trata la restauración de video contaminado con ruido de una forma muy similar a la práctica 2 de imagen. Primero se centra en el filtrado fotograma a fotograma y después en el filtrado interfotograma, es decir usando varios fotogramas para compararlos entre si y así filtrar.
-\end{itemize}
-
-
 \chapter{Prácticas de TDI}
 
 Este apartado trata el desarrollo y resultado del proyecto, se irá analizando cada práctica de la asignatura y comparando la versión original con el resultado final en Python. Se tratarán también los diferentes problemas que han ido surgiendo a la hora de adaptar cada práctica y cómo se han solucionado.\\
@@ -102,7 +38,7 @@ Por último, se explica cómo abrir un cuadernillo de Jupyter importando las lib
 
 Esta guía está en inglés, al igual que las prácticas y pensada para ser usada y funcionar por igual en cualquiera de los principales sistemas operativos. Ha sido probada en Windows de Microsoft y Linux Ubuntu.\\
 
-\section{ Práctica 1: Introducción}
+\section{Práctica 1: Introducción}
 
 \subsection{Teoría tratada}
 
@@ -159,7 +95,7 @@ La figura \ref{rgb2ind} muestra cómo queda la solución para una imagen indexad
 \end{figure}
 
 
-\section{ Práctica 2: Filtrado espacial}
+\section{Práctica 2: Filtrado espacial}
 
 \subsection{Teoría tratada}
 
@@ -271,7 +207,7 @@ El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfil
 
 En esta práctica se ha desarrollado una función \texttt{lpfilter}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P3/lpfilter.py}} que, como se ha mencionado en el apartado anterior, genera filtros en frecuencia de dos tipos: Gaussiano e ideal. Como parámetros de entrada recibe el tipo de filtro que se quiere, las medidas del filtro que tienen que coincidir con las de la imagen que se quiere filtrar y D0 que es la apertura del filtro.\\
 
-\section{ Práctica 4: Segmentación de imagen I}
+\section{Práctica 4: Segmentación de imagen I}
 \subsection{Teoría tratada}
 
 Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P4/4_Segmentation.ipynb}} se centra en entender algunos métodos de segmentación de imágenes usando el ejemplo de una calculadora. En el proceso de segmentar una de las teclas de esta calculadora se van usando varios métodos dados en la teoría de la asignatura.\\
@@ -329,7 +265,7 @@ El resto de la práctica usa la función de filtrado de media de la práctica 2 
 \end{figure}
 
 
-\section{ Práctica 5: Segmentación de imagen II}
+\section{Práctica 5: Segmentación de imagen II}
 \subsection{Teoría tratada}
 
 Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P5/5_Segmentation2.ipynb}} continúa el tema de la práctica anterior. Intenta segmentar una imagen, en este caso es la figura de un pájaro que se puede ver en la Figura \ref{cormoran}. Para realizar este proceso de segmentación se va a usar aprendizaje de máquina K-medias.\\
@@ -479,7 +415,7 @@ En este ejercicio se desarrollan 3 funciones nuevas:
 
 Las 3 funciones de textura se encuentran en el mismo documento: 'texturefilters.py\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P5/texturefilters.py}}
 
-\section{ Práctica 6: Morfología binaria}
+\section{Práctica 6: Morfología binaria}
 \subsection{Teoría tratada}
 
 Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P6/6_Morphology.ipynb}} se centra en el uso de la morfología matemática para la segmentación de una imagen. Los operadores morfológicos son una serie de operadores no lineales relacionados con la forma de los objetos en la imagen. Como en las dos prácticas anteriores se va a usar la segmentación de una imagen en concreto para demostrar el funcionamiento de estos operadores. En este caso la imagen es de un circuito impreso, el objetivo es segmentar los 7 chips que se pueden ver en la Figura \ref{placa}\\
@@ -538,7 +474,7 @@ Este ejercicio ha requerido el desarrollo de una función para cambiar del espac
 \label{rgb2hsi} 
 \end{figure}
 
-\section{ Práctica 7: Segmentación con \emph{Watershed}}
+\section{Práctica 7: Segmentación con \emph{Watershed}}
 \subsection{Teoría tratada}
 
 Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P7/7_Watershed.ipynb}} trata el método de segmentación por \emph{Watershed} con marcadores para contar el número de células enteras que hay en una imagen.\emph{ Watershed} es un algoritmo de segmentación basado en morfología matemática que trata la imagen como una serie de desniveles topográficos que forman picos y valles (Figura \ref{watershed}) que se van inundando. Se cogen las depresiones de intensidad como marcadores de los que crece el agua (la etiqueta). El proceso de inundación continúa hasta que toda la imagen está ``inundada'' y donde se toca el agua de diferentes regiones se forman las líneas de  \emph{Watershed} que limitan las regiones.\\
@@ -625,7 +561,7 @@ Con esto ya tenemos los marcadores, tanto internos como externos. A continuació
 Para esta práctica se ha tenido que desarrollar la función \texttt{imregionalmax}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P7/imregionalmax.py}}. Esta función toma la imagen de la que se quiere conseguir los máximos regionales y se le resta 1. A continuación, se hace reconstrucción con la imagen original como máscara y la imagen a la que hemos restado 1 de marcador sobre el que se va realizando la dilatación repetida de la reconstrucción. Esto genera una imagen cuya única diferencia con la original son las regiones de máximos. Si restamos el resultado de la reconstrucción a la imagen original obtenemos una imagen en la que los únicos valores diferentes de cero son los máximos regionales. Esta imagen se pasa a binario y es lo que devuelve la función \texttt{imregionalmax}.
 
 
-\section{ Práctica 8: Video y estimación de movimiento}
+\section{Práctica 8: Video y estimación de movimiento}
 \subsection{Teoría tratada}
 
 Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P8/P8_Video.ipynb}} es la primera práctica de video. Tiene dos partes muy marcadas.\\
@@ -701,10 +637,10 @@ A continuación, se hace EBMA sobre la imagen original con el tamaño de bloque 
 
 El tercer nivel funciona igual que el anterior: en las áreas de cambio detectadas en el paso anterior se hace EBMA sobre la imagen ampliada. Esto crea la sensación de que se ha usado un bloque de la mitad de tamaño esto hace que no se cambien más píxeles de los estrictamente necesarios.\\
 
-	\item \textbf{PhaseCorrelation}: Esta función también calcula un fotograma estimado a partir de dos fotogramas diviéndolos en bloques, la diferencia con las dos anteriores es que, en este caso, se trabaja en frecuencia. Primero se define una ventana con forma de campana que se va a usar para suavizar los bordes del bloque. A continuación se va dividiendo la imagen en bloques y haciendo la transformada de Fourier de esos bloques.  Se calcula la coherencia entre el bloque actual y el bloque de referencia multiplicando el bloque actual por el conjugado del bloque de referencia y normalizando el resultado. Obtenemos la correlación de los dos bloques haciendo la transformada inversa del resultado de la operación anterior. A continuación se localizán los máximos que indican dónde se encuentra la mayor diferencia entre los bloques. Para terminar se sustituyen los valores creando una nueva matriz que será el fotograma estimado.
+	\item \textbf{PhaseCorrelation}: Esta función también calcula un fotograma estimado a partir de dos fotogramas diviéndolos en bloques, la diferencia con las dos anteriores es que, en este caso, se trabaja en frecuencia. Primero se define una ventana con forma de campana que se va a usar para suavizar los bordes del bloque. A continuación se va dividiendo la imagen en bloques y haciendo la transformada de Fourier de esos bloques.  Se calcula la coherencia entre el bloque actual y el bloque de referencia multiplicando el bloque actual por el conjugado del bloque de referencia y normalizando el resultado. Obtenemos la correlación de los dos bloques haciendo la transformada inversa del resultado de la operación anterior. A continuación se localizan los máximos que indican dónde se encuentra la mayor diferencia entre los bloques. Para terminar se sustituyen los valores creando una nueva matriz que será el fotograma estimado.
 \end{itemize}
 
-\section{ Práctica 9: Filtrado en video}
+\section{Práctica 9: Filtrado en video}
 \subsection{Teoría tratada}
 
 La última práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P9/9_Videorestoration.ipynb}} de la asignatura trata el uso de filtros en video.\\
