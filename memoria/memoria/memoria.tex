@@ -8,6 +8,7 @@
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 
+
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
@@ -17,16 +18,17 @@
 
 \begin{document}
 
-\title{Curso práctico multiplataforma de Tratamiento Digital de la Imagen con Jupyter}
-\author{ Ana Cuevas Bravo}
-\maketitle
+\include{portada}
 
 \newpage
+
 \pagenumbering{roman}
+\include{agradecimientos}
+\include{resumen}
+\cleardoublepage
 
-\renewcommand{\abstractname}{Resumen}
+
 \renewcommand{\chaptername}{Capítulo}
-
 
 \tableofcontents
 \newpage

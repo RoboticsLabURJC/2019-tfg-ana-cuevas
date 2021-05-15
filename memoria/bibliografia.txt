@@ -1,21 +1,3 @@
-Tratamiento de imagen en python: https://books.google.es/books?hl=es&lr=&id=TzTrDwAAQBAJ&oi=fnd&pg=PT14&dq=python+image+processing&ots=gj6RJNSb0p&sig=upklMHqnlVbV4cbmrTWWnPd2cJA#v=onepage&q=python%20image%20processing&f=false
-
-OpenCV: https://dl.acm.org/doi/10.1145/2181796.2206309
-	https://opencv.org/about/
-
-Python: https://www.python.org/doc/essays/blurb/ 
-
-Jupyter: https://jupyter.readthedocs.io/en/latest/projects/architecture/content-architecture.html
-	https://jupyter.readthedocs.io/en/latest/
-
-Numpy: https://numpy.org/devdocs/user/whatisnumpy.html
-
-Matpltlob: https://matplotlib.org/
-	https://ipython.readthedocs.io/en/stable/interactive/plotting.html
-	https://jakevdp.github.io/PythonDataScienceHandbook/04.00-introduction-to-matplotlib.html
-
-scikit-learn: https://scikit-learn.org/stable/
-	https://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html
 
 k-medias: https://www.unioviedo.es/compnum/laboratorios_py/kmeans/kmeans.html
 
@@ -23,4 +5,3 @@ watershed: https://sisbib.unmsm.edu.pe/bibvirtual/publicaciones/risi/2010_n2/v7n
 
 cielab 1976: https://web.archive.org/web/20191228145700/eilv.cie.co.at/term/157
 
-bartlane: https://amp.en.google-info.cn/25717593/1/bartlane-cable-picture-transmission-system.html
