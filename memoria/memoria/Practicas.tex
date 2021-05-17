@@ -163,7 +163,7 @@ En esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-
 
 El segundo apartado demuestra las propiedades de la transformada de Fourier, qué transformaciones en el espacio afectan a la fase y cuáles al módulo y de qué manera.\\
 
-El resto de la práctica se centra en el filtrado de imagen en el dominio frecuencial. Primero se explican dos filtros paso bajo: Gaussiano e ideal [Figura \ref {gauss}]. Se trata de filtrar la imagen en frecuencia y ver cómo afecta en el espacio tras hacer una tranformada de Fourier inversa.
+El resto de la práctica se centra en el filtrado de imagen en el dominio frecuencial. Primero se explican dos filtros paso bajo: Gaussiano e ideal [Figura \ref {gauss}]. Se trata de filtrar la imagen en frecuencia y ver cómo afecta en el espacio tras hacer una transformada de Fourier inversa.\\
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/gaussfpb}
@@ -178,8 +178,7 @@ En este ejercicio se usa una imagen dada con la práctica original de un triáng
 
 La función más importante de esta práctica es \texttt{fft2}, la transformada de Fourier bidimensional. Existe un equivalente exacto en Numpy,  \texttt{numpy.fft.fft2}. También existe equivalente para la función \texttt{fftshift} que modifica la representación de la imagen en frecuencia para que las frecuencias bajas se concentren en el centro de la imagen y las altas en los extremos.\\
 
-Para las representaciones en 3D se ha usado una función sacada de Github\footnote{\url{https://gist.github.com/CMCDragonkai/dd420c0800cba33142505eff5a7d2589
-}} de código abierto que simplifica el código de forma que, para representar un gráfico, solo tienes que llamar a una función en lugar de meter todas las especificaciones de Matplotlib cada vez que se quiera representar algo. En el cuadernillo se deja el código demostrando cómo usar esta función.\\
+Para las representaciones en 3D se ha usado una función sacada de Github\footnote{\url{https://gist.github.com/CMCDragonkai/dd420c0800cba33142505eff5a7d2589}} de código abierto que simplifica el código de forma que, para representar un gráfico, solo tienes que llamar a una función en lugar de meter todas las especificaciones de Matplotlib cada vez que se quiera representar algo. En el cuadernillo se deja el código demostrando cómo usar esta función.\\
 
 El apartado de propiedades de la transformada de Fourier se mantiene igual de Matlab a Python. Como se ve en la Figura \ref{zoom}\\.
 
@@ -194,7 +193,7 @@ El apartado de propiedades de la transformada de Fourier se mantiene igual de Ma
 
 Al igual que en la práctica anterior hay una función que viene dada con los materiales de la práctica, en este caso es  \texttt{lpfilter}, una función para generar filtros de tipo Guassiano o ideal. Se recrea con el mismo funcionamiento en Python. A la hora de filtrar, lo que en el espacio era una convolución (ir moviendo una máscara sobre cada pixel) en la frecuencia es una multiplicación punto a punto que se puede realizar con \texttt{numpy.multiply}.\\
 
-El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfilter} para después invertir el filtro de modo que actúe como un filtro paso alto. Para filtrar se repite el mismo proceso, como muestra la Figura \ref{fpa}].
+El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfilter} para después invertir el filtro de modo que actúe como un filtro paso alto. Para filtrar se repite el mismo proceso, como muestra la Figura \ref{fpa}.
 
 \begin{figure}[h]
 \centering
@@ -251,7 +250,7 @@ En el apartado de segmentación en Python nos encontramos con dos opciones: la f
 
  Se usan dos funciones para la segmentación y la caracterización de regiones. La primera es \texttt{bwlabel} en Matlab, \texttt{bwlabel} en scikit,  que crea las regiones con píxeles vecinos y devuelve una matriz del tamaño de la imagen original en la que a cada píxel se le ha asignado un número de acuerdo a su región, esta matriz es la capa de etiquetas. La segunda función es \texttt{regionprops}, se mantiene el mismo nombre en ambas versiones, que recibe de entrada la capa de etiquetas y devuelve medidas de algunas características de la capa de etiquetas, por ejemplo el área de cada región, la excentricidad o la posicion de los píxeles extremos de cada región.\\
 
-La mayor diferencia entre label en Matlab y Scikit-image es el tratamiento de los píxeles de fondo. Matlab trata todo pixel de intensidad 0 como una única etiqueta de valor 0, mientras que Scikit-image, aunque en la imagen etiquetada pone los píxeles negros con la etiqueta 0, no lo cuenta como una etiqueta, por lo que, por ejemplo, en \texttt{regionprops} no tenemos la opción de recibir datos sobre los píxeles de fondo. A la función se le puede indicar que etiquete los píxeles negros pero no funciona igual que Matlab, ya que los trata como una etiqueta más, es decir, cuenta como etiquetas diferentes los píxeles negros no conexos. Esto no supone ningún problema en la realización de esta práctica excepto una ligera incomodidad ya que en el array devuelto por \texttt{regionprops} no coinciden los índices con el número de etiqueta en la imagen etiquetada, hay que sumarle uno al índice.\\
+La mayor diferencia entre label en Matlab y Scikit-image es el tratamiento de los píxeles de fondo. Matlab trata todo pixel de intensidad 0 como una única etiqueta de valor 0, mientras que Scikit-image, aunque en la imagen etiquetada pone los píxeles negros con la etiqueta 0, no lo cuenta como una etiqueta, por lo que, por ejemplo en \texttt{regionprops} no tenemos la opción de recibir datos sobre los píxeles de fondo. A la función se le puede indicar que etiquete los píxeles negros pero no funciona igual que Matlab, ya que los trata como una etiqueta más, es decir, cuenta como etiquetas diferentes los píxeles negros no conexos. Esto no supone ningún problema en la realización de esta práctica excepto una ligera incomodidad ya que en el array devuelto por \texttt{regionprops} no coinciden los índices con el número de etiqueta en la imagen etiquetada, hay que sumarle uno al índice.\\
 
 Para representar la capa de etiquetas en color Matlab tiene una función dedicada, mientras que en Python se puede usar cualquiera de los mapas de color disponibles de Matplotlib que generan el mismo efecto. En este caso se usa \emph{'nipy-special'} porque mantiene el fondo de color negro, tal y como se aprecia en la Figura \ref{color}.\\
 
@@ -494,7 +493,7 @@ El siguiente paso es extraer los mínimos regionales. Un mínimo regional es una
 
 Primero se limpian los bordes, no nos interesan células que no estén enteras, ya que, podrían aparecer en la siguiente imagen de microscopio y ser contadas dos veces.\\
 
-El segundo proceso consiste en comparar la posición de nuestras regiones con la posición de los núcleos de las celdas en la imagen original basándonos en que los núcleos aparecen en un color más oscuro. Se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.El resultado de estos dos procesos se puede ver en la Figura \ref{procesos}
+El segundo proceso consiste en comparar la posición de nuestras regiones con la posición de los núcleos de las celdas en la imagen original basándonos en que los núcleos aparecen en un color más oscuro. Se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.El resultado de estos dos procesos se puede ver en la Figura \ref{procesos}\\
 
 \begin{figure}[!tbp]
   \centering
@@ -637,7 +636,7 @@ A continuación, se hace EBMA sobre la imagen original con el tamaño de bloque 
 
 El tercer nivel funciona igual que el anterior: en las áreas de cambio detectadas en el paso anterior se hace EBMA sobre la imagen ampliada. Esto crea la sensación de que se ha usado un bloque de la mitad de tamaño esto hace que no se cambien más píxeles de los estrictamente necesarios.\\
 
-	\item \textbf{PhaseCorrelation}: Esta función también calcula un fotograma estimado a partir de dos fotogramas diviéndolos en bloques, la diferencia con las dos anteriores es que, en este caso, se trabaja en frecuencia. Primero se define una ventana con forma de campana que se va a usar para suavizar los bordes del bloque. A continuación se va dividiendo la imagen en bloques y haciendo la transformada de Fourier de esos bloques.  Se calcula la coherencia entre el bloque actual y el bloque de referencia multiplicando el bloque actual por el conjugado del bloque de referencia y normalizando el resultado. Obtenemos la correlación de los dos bloques haciendo la transformada inversa del resultado de la operación anterior. A continuación se localizan los máximos que indican dónde se encuentra la mayor diferencia entre los bloques. Para terminar se sustituyen los valores creando una nueva matriz que será el fotograma estimado.
+	\item \textbf{PhaseCorrelation}: Esta función también calcula un fotograma estimado a partir de dos fotogramas diviéndolos en bloques, la diferencia con las dos anteriores es que, en este caso, se trabaja en frecuencia. Primero se define una ventana con forma de campana que se va a usar para suavizar los bordes del bloque. A continuación se va dividiendo la imagen en bloques y haciendo la transformada de Fourier de esos bloques.  Se calcula la coherencia entre el bloque actual y el bloque de referencia multiplicando el bloque actual por el conjugado del bloque de referencia y normalizando el resultado. Obtenemos la correlación de los dos bloques haciendo la transformada inversa del resultado de la operación anterior. A continuación, se localizan los máximos que indican dónde se encuentra la mayor diferencia entre los bloques. Para terminar se sustituyen los valores creando una nueva matriz que será el fotograma estimado.
 \end{itemize}
 
 \section{Práctica 9: Filtrado en video}

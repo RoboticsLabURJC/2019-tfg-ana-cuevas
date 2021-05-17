@@ -1,4 +1,49 @@
 \chapter{Conclusiones}
+En este capítulo se exponen la conclusiones obtenidas tras completar las 9 prácticas propuestas por la asignatura y los posibles trabajos futuros que pueden surgir a partir de este trabajo de fin de grado. 
 
 \section{Resultados}
+El objetivo principal planteado en el apartado 2 se ha cumplido, se han creado versiones en Python de las 9 prácticas de la asignatura de Tratamiento digital de la imagen.\\
+
+Se han ampliado los enunciados tal y como se propuso intentando mantenerlos claros y amenos de forma que sean lo más didácticos posible y se han traducido al inglés.\\
+
+El código se mantiene bastante similar y cuando no es exacto se ha mantenido lo que se pretendía demostrar con la práctica.\\
+
+Las prácticas que más similares han quedado a su equivalente en Matlab son:
+\begin{itemize}
+    \item La práctica 2 de filtros en el espacio que, la única modificación, fue la creación de las funciones de ruido.
+    \item La práctica 3 de imágenes en frecuencia cuya mayor diferencia es meramente estética, las representaciones 3D de Matplotlib crean un efecto más cuadriculado que las de Matlab pero cumplen la misma función.
+    \item La práctica 4 que obtiene exactamente el mismo resultado aunque en el apartado sobre la capa de etiquetas hay una pequeña diferencia en el tratamiento del fondo.
+    \item Las prácticas 5 y 6 ambas de segmentación han quedado exactamente igual.
+\end{itemize}
+
+El resto de prácticas tienen todas alguna gran diferencia para la que se ha tenido que encontrar una solución que mantenga la intención del ejercicio:
+\begin{itemize}
+    \item La práctica 1 es la que tiene una mayor desviación de la original en un apartado concreto: las imágenes indexadas. No se pudo encontrar una función equivalente y la programada tenía un tiempo de ejecución demasiado alto, por lo que, en lugar de crear imágenes indexadas en la práctica se importan y así se puede ver en qué consisten en el cuadernillo. También se tuvieron que cambiar dos de las imágenes utilizadas.
+    
+    \item Todas las diferencias en la práctica 7 surgen de tener que cambiar la imagen utilizada. Al ser una imagen diferente se han tenido que ir modificando pasos importantes. 
+   
+    \item Las dos prácticas de vídeo (8 y 9) tienen la misma diferencia con la original: la estructura de la variable en la que se guardan los vídeos en Matlab no existe en Python por lo que se han tenido que sustituir varios puntos que en la práctica original consistían en mirar la variable por apartados con nuevas funciones. 
+\end{itemize}
+
+
+En cuanto a que las prácticas sean multiplataforma se ha conseguido con el uso de herramientas como Pipnv.\\
+
+Por último, a un nivel personal este trabajo me ha permitido expandir mi conocimiento sobre la asignatura y el campo de tratamiento de imagen, también el uso de Python en este campo. He descubierto cosas nuevas como Pipnv o las librerías especializadas de Scipy. \\
+
+Además me ha ayudado a mejorar en otras áreas más amplias como la búsqueda de información o la redacción. Es muy importante redactar bien, de una manera que ayude a entender un concepto y no complicarlo más. Me ha ayudado mucho a valorar el trabajo de los traductores de campos técnicos al tener que redactar tanto en inglés como en español.
+
 \section{Trabajos futuros}
+
+En cuanto a trabajos futuros hay varias opciones ya abiertas.\\
+
+Para empezar, se ha planteado un estudio comparativo con varios alumnos para la implementación de estas nuevas prácticas en la asignatura de Tratamiento Digital de la Imagen  en el que unos realizarían las prácticas en Matlab y otros en Python. Después se evaluaría si esta nueva versión de las prácticas supone una mejora en el desarrollo de la asignatura. Para que este estudio se pueda llevar a cabo se tendrían que modificar los enunciados para que sean lo más parecido posible a los de Matlab. Esto se debe a que no todos los alumnos cursando la asignatura en la URJC tienen la misma facilidad para entender inglés que español y que la ampliación de los enunciados podría suponer una ventaja para los alumnos del grupo realizando las prácticas nuevas.\\
+
+Otra opción se basa en crear la opción de una implementación web, usando la ``implementación mixta" propuesta por Carlos Awadallah en su trabajo de fin de master\footnote{\url{https://gsyc.urjc.es/jmplaza/students/tfm-academy-carlos_awadallah-2020.pdf}}. Esto permitiría ejecutar las prácticas con un navegador en un servidor remoto lo que ahorraría el paso de instalación de las prácticas.\\
+
+Otros posibles trabajos futuros tienen que ver con algunas mejoras en el código. Por ejemplo, la función \textttt{RGB2ind} se podría programar en C e implementar en Python para mejorar la velocidad de ejecución que es la razón por la que se tuvo que descartar.\\
+
+Otra opción sería crear un mejor reproductor de video que se pueda implementar directamente en el cuadernillo de Jupyter. Como se ha comentado en las dos prácticas de video la reproducción de video con Matplotlib va dando tirones y es muy incómoda, aunque Bokeh lo mejora un poco sigue basándose en ir representado los diferentes fotogramas sobre la misma figura con un bucle \texttt{while}. La idea sería crear una función que directamente representase video y tuviera opciones típicas como parar, moverte fotograma a fotograma, adelantar o retroceder.\\
+
+Cabe también la opción de contribuir a una biblioteca oficial con las nuevas funciones creadas. Scikit-image permite a usuarios incorporar nuevas funciones a la biblioteca pero para eso se tendrían que depurar un poco más, ya que tienen que pasar por un extenso proceso de revisión.\\
+
+Por último, expandir el número de prácticas y el tema hacia campos más específicos. Por ejemplo crear una nueva práctica que use conocimiento de las anteriores pero orientarla más hacia el campo de la robótica de forma que se puedan apreciar más los usos reales de este campo.\\
