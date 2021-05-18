@@ -8,25 +8,19 @@
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 
-
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
-\rhead{\leftmark}
-\cfoot{\thepage}
 \bibliography{biblio}
 
 \begin{document}
 
+\pagestyle{empty}
 \include{portada}
 
-\newpage
-
+\clearpage\null\newpage
 \pagenumbering{roman}
 \include{agradecimientos}
 \include{resumen}
 \cleardoublepage
-
+\clearpage\null\newpage
 
 \renewcommand{\chaptername}{Capítulo}
 
@@ -34,6 +28,11 @@
 \newpage
 \pagenumbering{arabic}
 
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\rhead{\leftmark}
+\cfoot{\thepage}
 
 \include{Introduccion}
 \include{Objetivos}

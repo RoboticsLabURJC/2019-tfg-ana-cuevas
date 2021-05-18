@@ -32,7 +32,7 @@ La guía requiere que primero se compruebe si el ordenador tiene instalado Pytho
 
 A continuación, se indica cómo instalar Pip, el instalador de paquetes en Python y se indica el comando para instalar Pipenv.\\
 
-La guía continúa explicando cómo acceder a la prácticas y como iniciar el entorno de Pipenv necesario para ejecutarlas.\\
+La guía continúa explicando cómo acceder a las prácticas y como iniciar el entorno de Pipenv necesario para ejecutarlas.\\
 
 Por último, se explica cómo abrir un cuadernillo de Jupyter importando las librerías necesarias en la primera práctica para comprobar que el entorno se ha instalado correctamente.\\
 
@@ -48,7 +48,7 @@ El segundo punto de la práctica se centra en la conversión de imágenes de col
 
 La práctica también explica cómo representar el histograma de una imagen y el efecto que tiene la ecualización del histograma sobre el contraste de la imagen.\\
 
-Por último se ve la interpretación del color y cómo realizar transformaciones puntuales.\\
+Por último, se ve la interpretación del color y cómo realizar transformaciones puntuales.\\
 
 \subsection{Comparativa Matlab vs Python}
 
@@ -64,7 +64,7 @@ En el primer apartado de la práctica, que se centra en la lectura y representac
 
 La siguiente gran diferencia entre los dos ejercicios es en el apartado de conversión de tipos de imágenes. Como ya se mencionó, se ha añadido una transformación de espacios de color para solucionar el problema de lectura, pero la mayor diferencia tiene que ver con la falta de una función que convierta una imgen RGB a indexada que sí existe en Matlab. Se probó a programar una versión equivalente en Python pero por cuestión de velocidad en la ejecución no se pudo implementar. El problema se solventó exportando las dos matrices que forman una imagen indexada desde Matlab  e implementarlas en Python aprovechando para explicar cómo se crean los mapas de color.\\
 
-La falta de la función \texttt{RGB2ind} vuelve a ser relevante en el punto sobre modificación de la resolución de intensidad de una imagen, ya que en la práctica original se usaba esta función para cambier el número de niveles de intensidad en el mapa de color. Se resuelve explicando una resolución matemática al problema sin cambiar la imagen a indexada. Al ser una imagen en escala de grises con menos información que una imagen RGB también se puede usar la versión de Python de \texttt{RGB2ind} ya que el tiempo de ejecución es menor para imágenes en escala de grises. En la figura \ref{resmatematica} se puede ver la parte del enunciado en la que se explica la resolución matemática. 
+La falta de la función \texttt{RGB2ind} vuelve a ser relevante en el punto sobre modificación de la resolución de intensidad de una imagen, ya que en la práctica original se usaba esta función para cambiar el número de niveles de intensidad en el mapa de color. Se resuelve explicando una resolución matemática al problema sin cambiar la imagen a indexada. Al ser una imagen en escala de grises con menos información que una imagen RGB también se puede usar la versión de Python de \texttt{RGB2ind} ya que el tiempo de ejecución es menor para imágenes en escala de grises. En la figura \ref{resmatematica} se puede ver la parte del enunciado en la que se explica la resolución matemática. 
 
 \begin{figure}[h]
 \centering
@@ -85,7 +85,7 @@ A la hora del desarrollo se intentó buscar el código de la función original d
 
  La función final tiene un problema de tiempo de ejecución. Para un número pequeño de núcleos funciona bien, pero por ejemplo para los 256 requeridos en la práctica el tiempo de ejecución interrumpiría el desarrollo cómodo del ejercicio. Para mejorarla se podría probar a usar una versión pre-compilada de Python o programar la función en C e implementarla.\\
 
-La figura \ref{rgb2ind} muestra cómo queda la solución para una imagen indexada de 5 niveles.
+La Figura \ref{rgb2ind} muestra cómo queda la solución para una imagen indexada de 5 niveles.
 
 \begin{figure}[h]
 \centering
@@ -103,7 +103,7 @@ Este segundo ejercicio\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg
 
 El primer apartado enseña diferentes tipos de ruido y cómo contaminar una imagen, los tipos de ruido tratados son: ruido gaussiano, ruido de sal y pimienta y ruido granular.\\
 
-Los filtros se dividen en dos categorías: filtros paso bajo y filtros paso alto. En esta práctica se explican dos filtros paso bajos diferentes. El primero es el filtro de media que es un filtro lineal. Consiste en ir colocando una máscara sobre la imagen y calculando la media de los píxeles bajo la máscara, este filtro genera un suavizado de la imagen según se aprecia en la figura \ref{filtromedia}.
+Los filtros se dividen en dos categorías: filtros paso bajo y filtros paso alto. En esta práctica se explican dos filtros paso bajos diferentes. El primero es el filtro de media que es un filtro lineal. Consiste en ir colocando una máscara sobre la imagen y calculando la media de los píxeles bajo la máscara, este filtro genera un suavizado de la imagen según se aprecia en la Figura \ref{filtromedia}.\\
 
 \begin{figure}[h]
 \centering
@@ -114,7 +114,7 @@ Los filtros se dividen en dos categorías: filtros paso bajo y filtros paso alto
 
 El otro filtro paso bajo es el filtro de mediana que es un filtro no lineal. Este filtro coge los valores de debajo de la máscara y  hace la mediana con esos valores, esto permite que se mantengan mejor los valores originales de la imagen, se usa para quitar ruido de sal y pimienta en la práctica.\\
 
-Los filtros paso alto son filtros de realce de contornos. Se usan sobre todo para detectar bordes de objetos en la imagen. En esta práctica se dan dos tipos de filtro paso alto dependiendo de la máscara que usan: Prewitt e Isotrópico. Según se aprecia en la figura \ref{fpa}.
+Los filtros paso alto son filtros de realce de contornos. Se usan sobre todo para detectar bordes de objetos en la imagen. En esta práctica se dan dos tipos de filtro paso alto dependiendo de la máscara que usan: Prewitt e Isotrópico. Según se aprecia en la Figura \ref{fpa}.
 
 \begin{figure}[!tbp]
   \centering
@@ -137,7 +137,7 @@ Para el filtro de mediana también existe una función en OpenCV \texttt{medianb
 
 La mayor diferencia en el apartado de realce de contornos la encontramos en la función \texttt{fspecial} de Matlab que genera máscaras específicas para los diferentes filtros paso alto. Esta función no existe en OpenCV, se usa Numpy para generar las matrices y se van metiendo los valores correctos de acuerdo con el tipo de filtro que se quiere usar. Para hacer el filtrado en sí se usa la misma función que para los filtros lineales paso bajo.\\
 
-El último apartado de composición de imágenes requiere funciones que se usaron ya en la práctica 1 y una función nueva de Numpy para realizar sumas punto a punto de matrices de más de dos dimensiones. La solución final queda muy parecida a la original de Matlab. Según se aprecia en la figura \ref {p2final}\\
+El último apartado de composición de imágenes requiere funciones que se usaron ya en la práctica 1 y una función nueva de Numpy para realizar sumas punto a punto de matrices de más de dos dimensiones. La solución final queda muy parecida a la original de Matlab. Según se aprecia en la Figura \ref {p2final}\\
 
 
 \begin{figure}[!tbp]
@@ -163,11 +163,11 @@ En esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-
 
 El segundo apartado demuestra las propiedades de la transformada de Fourier, qué transformaciones en el espacio afectan a la fase y cuáles al módulo y de qué manera.\\
 
-El resto de la práctica se centra en el filtrado de imagen en el dominio frecuencial. Primero se explican dos filtros paso bajo: Gaussiano e ideal [Figura \ref {gauss}]. Se trata de filtrar la imagen en frecuencia y ver cómo afecta en el espacio tras hacer una transformada de Fourier inversa.\\
+El resto de la práctica se centra en el filtrado de imagen en el dominio frecuencial. Primero se explican dos filtros paso bajo: Gaussiano e ideal (Figura \ref {gauss}). Se trata de filtrar la imagen en frecuencia y ver cómo afecta en el espacio tras hacer una transformada de Fourier inversa.\\
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{imagenes/gaussfpb}
-\caption{Representación gráfica de un filtro paso bajo Guassiano.}
+\caption{Representación gráfica de un filtro paso bajo Gaussiano.}
 \label{gauss}
 \end{figure}
 
@@ -191,7 +191,7 @@ El apartado de propiedades de la transformada de Fourier se mantiene igual de Ma
   \label{zoom}
 \end{figure}
 
-Al igual que en la práctica anterior hay una función que viene dada con los materiales de la práctica, en este caso es  \texttt{lpfilter}, una función para generar filtros de tipo Guassiano o ideal. Se recrea con el mismo funcionamiento en Python. A la hora de filtrar, lo que en el espacio era una convolución (ir moviendo una máscara sobre cada pixel) en la frecuencia es una multiplicación punto a punto que se puede realizar con \texttt{numpy.multiply}.\\
+Al igual que en la práctica anterior hay una función que viene dada con los materiales de la práctica, en este caso es  \texttt{lpfilter}, una función para generar filtros de tipo Gaussiano o ideal. Se recrea con el mismo funcionamiento en Python. A la hora de filtrar, lo que en el espacio era una convolución (ir moviendo una máscara sobre cada pixel) en la frecuencia es una multiplicación punto a punto que se puede realizar con \texttt{numpy.multiply}.\\
 
 El último apartado de filtros paso alto vuelve a usar la función \textbf{lpfilter} para después invertir el filtro de modo que actúe como un filtro paso alto. Para filtrar se repite el mismo proceso, como muestra la Figura \ref{fpa}.
 
@@ -211,7 +211,7 @@ En esta práctica se ha desarrollado una función \texttt{lpfilter}\footnote{\ur
 
 Esta práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P4/4_Segmentation.ipynb}} se centra en entender algunos métodos de segmentación de imágenes usando el ejemplo de una calculadora. En el proceso de segmentar una de las teclas de esta calculadora se van usando varios métodos dados en la teoría de la asignatura.\\
 
-El primero de estos métodos es umbralización usando el histograma, que consiste en elegir un valor como umbral a la hora de convertir una imagen en binaria de forma que queden en primer plano las partes de la imagen que nos interesan. En este caso, las letras de la calculadora [Figura \ref{thresholding}].\\
+El primero de estos métodos es umbralización usando el histograma, que consiste en elegir un valor como umbral a la hora de convertir una imagen en binaria de forma que queden en primer plano las partes de la imagen que nos interesan. En este caso, las letras de la calculadora (Figura \ref{thresholding}).\\
 
 \begin{figure}[h]
 \centering
@@ -245,7 +245,7 @@ En este punto, cada letra es una región propia pero lo que nos interesa segment
 
 En esta práctica hay muy pocas diferencias de Matlab a Python. El apartado de umbralización se mantiene igual, usando las funciones para el histograma y la umbralización que se utilizaron en la práctica 1.\\
 
-En el apartado de segmentación en Python nos encontramos con dos opciones: la función de segmentación de OpenCV y la de la librería Scikit-image. Se usa la de Scikit-image ya que funciona de manera mucho más similar a la de Matlab, sobre todo a la hora de conseguir las propiedades de las etiquetas. En OpenCV la función que devuelve propiedades de etiquetas es muy limitada con muy poca información, mientras que la de Scikit-image devuelve casi exactas las mismas propiedades que el equivalente en MatLab.\\
+En el apartado de segmentación en Python nos encontramos con dos opciones: la función de segmentación de OpenCV y la de la librería Scikit-image. Se usa la de Scikit-image ya que funciona de manera mucho más similar a la de Matlab, sobre todo a la hora de conseguir las propiedades de las etiquetas. En OpenCV la función que devuelve propiedades de etiquetas es muy limitada con muy poca información, mientras que la de Scikit-image devuelve casi exactas las mismas propiedades que el equivalente en Matlab.\\
 
 
  Se usan dos funciones para la segmentación y la caracterización de regiones. La primera es \texttt{bwlabel} en Matlab, \texttt{bwlabel} en scikit,  que crea las regiones con píxeles vecinos y devuelve una matriz del tamaño de la imagen original en la que a cada píxel se le ha asignado un número de acuerdo a su región, esta matriz es la capa de etiquetas. La segunda función es \texttt{regionprops}, se mantiene el mismo nombre en ambas versiones, que recibe de entrada la capa de etiquetas y devuelve medidas de algunas características de la capa de etiquetas, por ejemplo el área de cada región, la excentricidad o la posicion de los píxeles extremos de cada región.\\
@@ -397,7 +397,7 @@ El último apartado utiliza herramientas ya empleadas en el resto de la práctic
 En este ejercicio se desarrollan 3 funciones nuevas:
 \begin{itemize}
 
-	\item \texttt{ RGB2Lab76}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P5/colorspacefunctions.py}}: Esta función realiza el cambio de espacio de color acorde a la norma de 1976. Primero se pasa de RGB a XYZ multiplicando cada componente por una serie de índices. Para pasar de XYZ a Lab se crean una serie de índices acotando los valores de cada componente de XYZ para sacar las coordenadas en el nuevo espacio de color. En la Figura \ref{colorspaces} se pueden ver los espacios de color RGb y Lab.
+	\item \texttt{RGB2Lab76}\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P5/colorspacefunctions.py}}: Esta función realiza el cambio de espacio de color acorde a la norma de 1976. Primero se pasa de RGB a XYZ multiplicando cada componente por una serie de índices. Para pasar de XYZ a Lab se crean una serie de índices acotando los valores de cada componente de XYZ para sacar las coordenadas en el nuevo espacio de color. En la Figura \ref{colorspaces} se pueden ver los espacios de color RGb y Lab.
 \begin{figure}[!tbp]
   \centering
   \subfloat[RGB]{\includegraphics[width=0.5\textwidth]{imagenes/rgb}\label{fig:f1}}
@@ -407,7 +407,7 @@ En este ejercicio se desarrollan 3 funciones nuevas:
   \label{colorspaces}
 \end{figure}
 
-	\item \texttt{ stdfilt}: Esta función devuelve la imagen filtrada acorde a su variación estándar. Funciona de una manera similar a un filtro de media, con una máscara por defecto de tamaño 3x3 pero, en lugar de hacer la media con los píxeles debajo de la máscara, calcula su desviación estándar.
+	\item \texttt{stdfilt}: Esta función devuelve la imagen filtrada acorde a su variación estándar. Funciona de una manera similar a un filtro de media, con una máscara por defecto de tamaño 3x3 pero, en lugar de hacer la media con los píxeles debajo de la máscara, calcula su desviación estándar.
 
 	\item \texttt{rangefilt}: Un filtro de rango devuelve el rango de valores bajo una máscara, que es la diferencia entre el máximo valor y el mínimo. Para programar este filtro se han empleado herramientas morfológicas. Se usa la operación de erosión como un filtro para conseguir el mínimo bajo el elemento estructural y la dilatación como un filtro de máximo. La resta de los resultados de la dilatación y erosión devuelve el rango.\\
 \end{itemize}
@@ -491,9 +491,9 @@ A continuación, se va a usar reconstrucción, que es una operación morfológic
 
 El siguiente paso es extraer los mínimos regionales. Un mínimo regional es una región (conjunto de píxeles conexos del mismo nivel) cuyo nivel es inferior al de todos los píxeles que la rodean. Esto devuelve una imagen binaria con más regiones que células en la imagen. Para reducir el número de regiones se usan 2 procesos diferentes:\\
 
-Primero se limpian los bordes, no nos interesan células que no estén enteras, ya que, podrían aparecer en la siguiente imagen de microscopio y ser contadas dos veces.\\
+Primero se limpian los bordes, no nos interesan células que no estén enteras, ya que podrían aparecer en la siguiente imagen de microscopio y ser contadas dos veces.\\
 
-El segundo proceso consiste en comparar la posición de nuestras regiones con la posición de los núcleos de las celdas en la imagen original basándonos en que los núcleos aparecen en un color más oscuro. Se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo.El resultado de estos dos procesos se puede ver en la Figura \ref{procesos}\\
+El segundo proceso consiste en comparar la posición de nuestras regiones con la posición de los núcleos de las celdas en la imagen original basándonos en que los núcleos aparecen en un color más oscuro. Se eliminan todas las regiones cuya posición coincida con un pixel demasiado claro en la imagen original para ser un núcleo. El resultado de estos dos procesos se puede ver en la Figura \ref{procesos}\\
 
 \begin{figure}[!tbp]
   \centering
@@ -573,7 +573,7 @@ La estimación de movimiento basada en bloques se utiliza para codificación de 
 
 EBMA (\emph{exhaustive block-matching algorithm}) consiste en una búsqueda exhaustiva por bloques comparando en el fotograma actual el bloque más similar al del bloque de referencia. Es el menos eficiente de los algoritmos, pero el más preciso.\\
 
-HBMA(\emph{hierarchical block-matching algorithm}) funciona de una manera similar a EBMA, pero primero busca cambios en bloques más grandes y una vez localizadas las áreas de cambio reduce el tamaño de los bloques a comparar en esta nueva área. Esto hace que sea un algoritmo más eficiente.\\
+HBMA (\emph{hierarchical block-matching algorithm}) funciona de una manera similar a EBMA, pero primero busca cambios en bloques más grandes y una vez localizadas las áreas de cambio reduce el tamaño de los bloques a comparar en esta nueva área. Esto hace que sea un algoritmo más eficiente.\\
 
 El último algoritmo que se demuestra en esta práctica es el de correlación de fase, que trabaja en frecuencia comparando las fases de los dos fotogramas.\\
 
@@ -623,7 +623,7 @@ Las diferencias en este apartado vienen a la hora de representar los vectores de
 \end{figure}
 \subsection{Desarrollo de funciones}
 
-En esta práctica se han desarrollado 3 funciones, los algoritmos de estimación de movimiento. Los tres se encuantran en el mismo documento: 'motionalgorithms.py'\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P8/motionalgorithms.py}}\\
+En esta práctica se han desarrollado 3 funciones, los algoritmos de estimación de movimiento. Los tres se encuentran en el mismo documento: 'motionalgorithms.py'\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P8/motionalgorithms.py}}\\
 
 \begin{itemize}
 	\item \textbf{EBMA}: Esta función recibe 3 atributos: el fotograma de referencia (\emph{anchor frame}), el fotograma actual (\emph{target frame}) y el tamaño de bloque que se va a usar. La función empieza declarando variables como el ancho y alto de cada fotograma y los arrays que van a formar el mapa de vectores de movimiento.\\
@@ -644,7 +644,7 @@ El tercer nivel funciona igual que el anterior: en las áreas de cambio detectad
 
 La última práctica\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P9/9_Videorestoration.ipynb}} de la asignatura trata el uso de filtros en video.\\
 
-La práctica se estructura de una forma muy similar a la práctica 2. Se empieza contaminando el video con ruido Gaussiano y sal y pimienta para, a continuación, filtrar el video y comprobar los efectos de los filtros temporales. En la figura \ref{ruidovideo} se puede ver el fotograma original, el fotograma contaminado con ruido gaussiano y con ruido sal y pimienta.\\
+La práctica se estructura de una forma muy similar a la práctica 2. Se empieza contaminando el video con ruido Gaussiano y sal y pimienta para, a continuación, filtrar el video y comprobar los efectos de los filtros temporales. En la figura \ref{ruidovideo} se puede ver el fotograma original, el fotograma contaminado con ruido Gaussiano y con ruido sal y pimienta.\\
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{imagenes/ruidovideo}
@@ -677,7 +677,7 @@ Tanto la función \texttt{addnoise} como \texttt{tempNoiseFilter} crean nuevos v
 
 \subsection{Desarrollo de funciones}
 
-Esta práctica usa dos funciones principales: \texttt{addnoise} y \texttt{tempNoiseFilter}. Las dos guardades en el documento 'videofunctions.py'\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P9/videofunctions.py}}\\
+Esta práctica usa dos funciones principales: \texttt{addnoise} y \texttt{tempNoiseFilter}. Las dos guardadas en el documento 'videofunctions.py'\footnote{\url{https://github.com/RoboticsLabURJC/2019-tfg-ana-cuevas/blob/master/PracticasTDI/P9/videofunctions.py}}\\
 
 La función \texttt{addnoise} recibe como argumentos: el nombre del video a contaminar, el nombre que se le va a dar al video contaminado, el tipo de ruido y un array con los fotogramas a contaminar. En el caso de que el array esté vacío se contaminan todos los fotogramas. Esta función se sirve de varias funciones más pequeñas. Primero se usa \texttt{getfotogramas} que recibe el nombre del video y devuelve un array con todos los fotogramas. Tras una serie de comprobaciones (como que el array de fotogramas no esté vacío y el número de fotogramas a contaminar) se itera sobre cada fotograma llamando a la función \texttt{plusnoise} con el fotograma y el tipo de ruido y esta llama a la función \texttt{imnoise} usada en la práctica 2. La función \texttt{plusnoise} devuelve una imagen contaminada que se guarda en un nuevo array que formará parte de la nueva estructura de video contaminado. En la Figura \ref{addnoise} se puede ver el código de esta función.\\
 
