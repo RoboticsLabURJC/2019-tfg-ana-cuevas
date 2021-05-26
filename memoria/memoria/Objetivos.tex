@@ -6,24 +6,24 @@ El objetivo principal de este trabajo es crear una versión de las prácticas de
 
 El problema de utilizar Matlab surge de la necesidad de una licencia. Antes de la crisis de Covid-19 la URJC sólo pagaba licencia de Matlab para ordenadores que se encontrasen dentro del campus, esto crea un problema a la hora de consultar las prácticas cuando se está repasando para un examen o si se quieren probar diferentes partes de la teoría, sobre todo para alumnos que viven lejos del campus y no tienen vehículo propio.\\
 
-Las nuevas prácticas se plantearon para funcionar en la plataforma de Robotics Academy. Por ello surgieron nuevos objetivos alrededor de la idea de que los ejercicios los pudiera realizar alguien que no está matriculado en la asignatura y por lo tanto no ha recibido las clases de teoría que acompañan las prácticas. Estos nuevos objetivos son:
-\begin{itemize}
-    \item Ampliar enunciados: Para que las prácticas se entiendan sin ir a clase de teoría se propone ampliar los enunciados con definiciones de conceptos básicos y enlaces a más recursos donde se explica en mayor profundidad cualquier elemento teórico.
+Las nuevas prácticas se plantearon para funcionar en la plataforma de Robotics Academy. Por ello surgieron nuevos subobjetivos alrededor de la idea de que los ejercicios los pudiera realizar alguien que no está matriculado en la asignatura y por lo tanto no ha recibido las clases de teoría que acompañan las prácticas. El objetivo principal lo hemos articulado en tres subojetivos:
+\begin{enumerate}
+    \item Migrar las prácticas a cuadernillos de Jupyter
+    \item Ampliar enunciados y explicaciones teóricas: Para que las prácticas se entiendan sin ir a clase de teoría se propone ampliar los enunciados con definiciones de conceptos básicos y enlaces a más recursos donde se explica en mayor profundidad cualquier elemento teórico.
     \item Prácticas en inglés: La plataforma de Robotics Academy está abierta para alumnos internacionales por lo que uno de los objetivos que se propuso fue traducir los enunciados de las prácticas al inglés.
-\end{itemize}
+\end{enumerate}
 
-Por último y, con la misma idea de la accesibilidad, las nuevas prácticas deben ser multiplataforma, es decir, funcionar de la misma manera independientemente del sistema operativo que se está usando.
+Por último y, con la misma idea de mejor accesibilidad, las nuevas prácticas deben ser multiplataforma, es decir, funcionar de la misma manera independientemente del sistema operativo que está usando el estudiante.
 
 \section{Requisitos}
 
 Para la realización del trabajo se imponen una serie de requisitos:
-\begin{enumerate}
+\begin{itemize}
     \item Se tiene que mantener la intención original de las prácticas, es decir, cambiar lo menos posible con el objetivo de demostrar la misma teoría que en la práctica original.
-    \item Se deben realizar en Jupyter Notebook.
     \item Debe funcionar en diferentes sistemas operativos por lo que se probará todo tanto en Windows como en Ubuntu.
-    \item Los enunciados deben ser fáciles de entender, con una gramática y estructura sencillas que no compliquen de manera innecesaria una asignatura ya de por si compleja.
-    \item Se evitarán ventanas emergentes, todo tiene que ser visible en el propio cuadernillo de manera que una vez realizado sea fácil de consultar.
-\end{enumerate}
+    \item Los enunciados deben ser fáciles de entender, con una gramática y estructura sencillas que no compliquen de manera innecesaria una asignatura ya de por sí compleja.
+    \item Se evitarán ventanas emergentes, todo tiene que ser visible en el propio cuadernillo, de manera que una vez realizado sea fácil de consultar.
+\end{itemize}
 
 \section{Metodología}
 
@@ -36,15 +36,15 @@ Las prácticas en general se fueron realizando en el mismo orden que se sigue en
     \item Se repasa la teoría para asegurar que se domina el tema. También se aprovecha este punto para ir recopilando posibles fuentes que se puedan poner de referencia en el enunciado final.
     \item Hacer la práctica en Matlab e ir haciendo capturas de los resultados que deben salir, tanto para comparar como para usar en esta memoria.
     \item Crear el cuadernillo de Jupyter. Se copia el enunciado original en español y se va subdividiendo en tareas que se puedan realizar en una celda de código sin ser abrumadoras.
-    \item Comprobar las imágenes usadas en el ejercicio. Algunas de las imágenes que se usan en las prácticas de TDI no son de libre uso, para poder subir las prácticas a una plataforma como Robotics Academy o simplemente Github es mejor asegurarse de que las imágenes se puedan usar.
+    \item Comprobar las imágenes usadas en el ejercicio. Algunas de las imágenes que se usan en las prácticas de TDI no son de libre uso, para poder subir las prácticas a una plataforma como Robotics Academy o simplemente Github es mejor asegurarse de que las imágenes se puedan usar legalmente, sin problemas de propiedad intelectual.
     \item En caso de que alguna de las imágenes no sea de libre uso buscar alternativas que sirvan para demostrar lo mismo que mostraban las imágenes originales.
-    \item Empezar a programar. Esto consiste en ir haciendo la práctica buscando funciones en diferentes librerías de Python que funcionen lo más parecido posible a las de Matlab. En este punto se pueden dar 3 situaciones diferentes:
+    \item Empezar a programar. Esto consiste en ir haciendo la práctica en Python buscando funciones en diferentes librerías de Python que funcionen lo más parecido posible a las de Matlab. En este punto se pueden dar tres situaciones diferentes:
         \begin{itemize}
             \item Que se encuentre una función con un funcionamiento exacto a la de Matlab. Este es el caso ideal.
             \item Que se encuentren una o más funciones cuyo resultado sea similar al de Matlab pero no exacto. En el caso de que sólo se encuentre una se investiga a qué se deben las diferencias y si se puede modificar el funcionamiento de la función con diferentes parámetros para que de un resultado lo más parecido posible. En caso de que se encuentre más de una función pero ninguna exacta se cogerá la más parecida.
             \item  No existe ninguna función equivalente en Python
         \end{itemize}
-    \item Si se da el caso 2 del punto anterior se pasa a evaluar la diferencias, si son muy pequeñas se usa la función de Python teniendo en cuenta las pequeñas diferencias en el resto de la práctica y se va modificando acorde a la nueva imagen. Si las diferencias son muy grandes o no existe función se pasa a programar una nueva función en Python que sí cumpla los requisitos necesarios.
+    \item Si se da el segundo caso del punto anterior se pasa a evaluar la diferencias, si son muy pequeñas se usa la función de Python teniendo en cuenta las pequeñas diferencias en el resto de la práctica y se va modificando acorde a la nueva imagen. Si las diferencias son muy grandes o no existe función se pasa a programar una nueva función en Python que sí cumpla los requisitos necesarios.
     \item A continuación se ejecuta la práctica entera comprobando los resultados con las capturas de Matlab del principio. Si no son satisfactorios se modifica el código donde sea necesario.
     \item Una vez el código da buenos resultados se procede a empezar la traducción/redacción del enunciado.
     \item Terminada una primera versión del nuevo enunciado se hace una revisión añadiendo los enlaces a fuentes y expandiendo información donde sea necesario.

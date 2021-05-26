@@ -354,7 +354,7 @@ Para representar la capa de etiquetas hay que realizar las transformaciones inve
   \label{comprgb}
 \end{figure}
 
-En el apartado sobre segmentación en el espacio de color Lab tanto en Matlab como en Python se usa una función específicamente programada para este ejercicio para pasar de RGB a Lab. En ambos lenguajes existe una función que hace esta transformación, la razón por la que no se usa es el tipo de transformación Lab que utilizan. Las normas que definen un espacio de color respecto a otro se han ido revisando y cambiando con el tiempo. La versión de Lab con la que se planteó esta práctica es la descrita en la norma de 1976\footnote{ISO 11664-4:2008(E)/ CIE S 014-4/E:2007 Colorimetry - Part 4: CIE 1976 L*a*b* Colour Space}, mientras que la función que convierte de RGB a Lab en Scikit-image usa la norma de 1999\footnote{IEC 61966-2-1:1999}.\\
+En el apartado sobre segmentación en el espacio de color Lab tanto en Matlab como en Python se usa una función específicamente programada para este ejercicio para pasar de RGB a Lab. En ambos lenguajes existe una función que hace esta transformación, la razón por la que no se usa es el tipo de transformación Lab que utilizan. Las normas que definen un espacio de color respecto a otro se han ido revisando y cambiando con el tiempo. La versión de Lab con la que se planteó esta práctica es la descrita en la norma de 1976\cite{lab76}, mientras que la función que convierte de RGB a Lab en Scikit-image usa la norma de 1999\cite{labscikit}.\\
 
  Para mantener la práctica tal y como se planteó se ha creado la función \texttt{RGB2LAB76} aunque también se ha hecho una versión de esta práctica con la función de Scikit-image. En la Figura \ref{normaslab} se puede ver la representación de las componentes a y b en las diferentes normas y en la Figura \ref{comparativalab} se muestra la diferencia en la segmentación con K-medias.\\
 
@@ -683,7 +683,7 @@ La función \texttt{addnoise} recibe como argumentos: el nombre del video a cont
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.0\textwidth]{imagenes/addnoise}
+\includegraphics[width=0.95\textwidth]{imagenes/addnoise}
 \caption{Imagen del código de la función addnoise.}
 \label{addnoise} 
 \end{figure}
