@@ -1,6 +1,6 @@
 \chapter{Introducción}
 
-Este trabajo Fin de Grado se centra en dos temas: por un lado el tratamiento de imagen como una rama de conocimiento que se está empleando en el desarrollo de muchas investigaciones en diferentes campos, y por otro la docencia y lo importante que es que ésta sea accesible a todo el que esté interesado en aprender sobre un tema nuevo.\\ 
+Este trabajo Fin de Grado se centra en dos temas: por un lado el tratamiento digital de imagen (TDI) como una rama de conocimiento que se está empleando en el desarrollo de muchas investigaciones en diferentes campos, y por otro la docencia y lo importante que es que ésta sea accesible a todo el que esté interesado en aprender sobre un tema nuevo.\\ 
 
 El trabajo consiste en la creación de un entorno de prácticas basado en cuadernillos Python para la asignatura de TDI de los grados ETSIT-URJC con el objetivo de hacerlas más accesibles, tanto a alumnos que cursan la asignatura, como a alumnos externos a la ETSIT.\\
 
@@ -18,7 +18,7 @@ El tratamiento de imagen se puede dividir en tres procesos diferentes que se pue
 
 Un elemento que ha precipitado el crecimiento y la necesidad del tratamiento digital de imagen es el crecimiento en el uso y calidad de las cámaras digitales. Antes del uso común de estas cámaras la única manera de conseguir una imagen digital era digitalizando una fotografía realizada e impresa con una cámara analógica. Este es  un proceso que conlleva bastantes problemas ya que puede contaminar la imagen con ruido, además de ser un proceso tedioso, lo que limitaba la cantidad de imágenes disponibles para usar en tratamiento de imagen. También se podían conseguir imágenes digitales con aparatos muy especializados como pueden ser aparatos usados en el campo de la medicina.\\
 
-La primera cámara digital se inventó en 1975. Una vez se comercializó expandió la librería de imágenes que se pueden usar para el tratamiento de imagen. La mejora de la calidad de imagen que producen las cámaras es importante ya que ahorra pasos de preprocesado si no se tiene que limpiar la imagen de ruido. Las cámaras personales no son la única fuente de imágenes digitales, también generan imágenes digitales los microscopios y telescopios electrónicos o las máquinas como la resonancia magnética.\\
+La primera cámara digital se inventó en 1975. Una vez se comercializó aumentó la cantidad de imágenes que se pueden usar para el tratamiento de imagen. La mejora de la calidad de imagen que producen las cámaras digitales es importante ya que ahorran pasos de preprocesado si no se tiene que limpiar la imagen de ruido. Las cámaras personales no son la única fuente de imágenes digitales, también generan imágenes digitales los microscopios y telescopios electrónicos o las máquinas como la de resonancia magnética.\\
 
 
 \subsection{Historia}
@@ -47,9 +47,9 @@ Los primeros avances en el tratamiento digital de imágenes se dieron en los añ
 \subsection{Aplicaciones}
 El tratamiento digital de imagen tiene aplicaciones en una amplia variedad de campos desde medicina a diseño, pasando por astronomía y robótica\cite{Usos}.  Estos son algunos ejemplos de campos en los que se usan herramientas de tratamiento de imagen:
 \begin{itemize}
-\item \textbf{Medicina y biología}: El tratamiento de imágenes digital se usa para una gran cantidad de análisis. Un ejemplo son las imágenes médicas que es el proceso de crear una representación visual de la estructura interior de un cuerpo antes de una intervención. También crea una representación visual de cómo funcionan varios órganos o tejidos. Esto se consigue gracias a varios avances en métodos como las tomografías computarizadas o las resonancias magnéticas.\\
+\item \textbf{Medicina y biología}: El tratamiento de imágenes digital se usa para una gran cantidad de análisis. Un ejemplo son las imágenes médicas, en el proceso de crear una representación visual de la estructura interior de un cuerpo antes de una intervención. También crea una representación visual de cómo funcionan varios órganos o tejidos. Esto se consigue gracias a varios avances en métodos como las tomografías computarizadas o las resonancias magnéticas.\\
 
-Por ejemplo ahora se está usando en la detección de tumores\cite{Tumores}. Para esto se usan imágenes obtenidas con resonancia magnética y métodos de aprendizaje de máquina que permiten comparar miles de imágenes para clasificar tumores. Para que las imágenes puedan ser usadas por el algoritmo de aprendizaje tienen que ser procesadas y se tienen que extraer características de interés, para esto se usan varios métodos de tratamiento de imagen estudiados en la asignatura como la segmentación de objetos, esto se puede ver en la figura \ref{tumores}.\\
+Por ejemplo ahora se está usando en la detección de tumores\cite{Tumores}. Para esto se usan imágenes obtenidas con resonancia magnética y métodos de aprendizaje máquina que permiten comparar miles de imágenes para clasificar tumores. Para que las imágenes puedan ser usadas por el algoritmo de aprendizaje tienen que ser procesadas y se tienen que extraer características de interés, para esto se usan varios métodos de tratamiento de imagen estudiados en la asignatura como la segmentación de objetos, esto se puede ver en la Figura \ref{tumores}.\\
 
 \begin{figure}[h]
 \centering
@@ -58,11 +58,11 @@ Por ejemplo ahora se está usando en la detección de tumores\cite{Tumores}. Par
 \label{tumores}
 \end{figure}
 
-También dentro del campo de la biología el tratamiento de imagen se está empleando para analizar imágenes sacadas de microscopio, por ejemplo para automatizar el cómputo de células en una imagen.\\
+Dentro del campo de la biología el tratamiento de imagen se está empleando para analizar imágenes sacadas de microscopio, por ejemplo para automatizar el cómputo de células en una imagen.\\
 
-\item \textbf{Robótica}: Este campo consiste en intentar emular la visión humana usando el tratamiento de imagen. Su objetivo es reconocer objetos e información relevante de una forma similar a como lo hacemos los humanos. Se está aplicando sobre todo en el campo de la robótica, por ejemplo para casos como la conducción automática de los coches o robots.\\
+\item \textbf{Robótica}: En este campo se utilizan herramientas de tratamiento digital de imagen para intentar emular la visión humana. Su objetivo es reconocer objetos e información relevante de una forma similar a como lo hacemos los humanos. Se está aplicando en el campo de la robótica para la conducción automática de coches o brazos automatizados.\\
 
-Por ejemplo se aplica en casos de control basado en visión, que consiste en el uso de información obtenida a través de una cámara para calcular el movimiento de un robot\cite{vision}. Se puede estimar la posición del robot usando la reconstrucción 3D de un espacio a partir del análisis de imágenes 2D de ese espacio. Un método para conseguir este espacio 3D es \emph{stereovision} que consiste en extraer un mismo objeto de varias imágenes (figura \ref{stereovision} y triangular su posición para esto se necesitan al menos dos cámaras\cite{stereovision}.
+Por ejemplo se aplica en casos de control basado en visión, que consiste en el uso de información obtenida a través de una cámara para calcular el movimiento de un robot\cite{vision}. Se puede estimar la posición del robot usando la reconstrucción 3D de un espacio a partir del análisis de imágenes 2D de ese espacio. Un método para conseguir este espacio 3D es \emph{stereovision} que consiste en extraer un mismo objeto de varias imágenes (Figura \ref{stereovision}) y triangular su posición, para esto se necesitan al menos dos cámaras\cite{stereovision}.
 
 \begin{figure}[h]
 \centering
@@ -71,7 +71,7 @@ Por ejemplo se aplica en casos de control basado en visión, que consiste en el 
 \label{stereovision}
 \end{figure}
 
-\item \textbf{Restauración}: Otro campo en el que se usan las herramientas de tratamiento de imágenes es en la restauración de imágenes (Figura \ref{restauracion}) o videos dañados, ya sea por antigüedad o cualquier otra causa. \\
+\item \textbf{Restauración}: Otro campo en el que se usan las herramientas de tratamiento de imágenes es la reparación de imágenes (Figura \ref{restauracion}) o videos dañados, ya sea por antigüedad o cualquier otra causa. \\
 
 \begin{figure}[h]
 \centering
@@ -87,15 +87,21 @@ El mejor ejemplo de este uso es Google Maps, ya que además de usar información
 
 \item \textbf{Seguridad}: Un tema por el que el tratamiento de imagen está recientemente en la noticias es su uso en seguridad, específicamente por la identificación facial en cámaras de seguridad. También se emplea en otras verificaciones biométricas, por ejemplo las huellas dactilares.\\
 
-Otro ámbito de la seguridad en el que se usa el tratamiento de imagen es en la estenografía y la encriptación, por ejemplo para crear firmas digitales irremovibles en obras de arte o documentos.\\
+Otro ámbito de la seguridad en el que se usa el tratamiento de imagen es en la estenografía y la encriptación, por ejemplo para crear firmas digitales irremovibles en obras de arte o documentos (Figura \ref{estenografia}).\\
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{imagenes/Steganography.png}
+\caption{Ejemplo básico de estenografía.}
+\label{estenografia}
+\end{figure}
 \item \textbf{Transmisión y codificación}: Herramientas de tratamiento de imagen como el análisis de imágenes en frecuencia o  la reducción de niveles se usan a menudo para la codificación de imágenes y videos con el objetivo de que ocupen menos espacio y facilitar su transmisión. Por ejemplo en el tema de video de la asignatura se estudian métodos de predicción de fotogramas usados de manera habitual para codificar videos.\\
 
-\item \textbf{Diseño y edición gráfica}: Por último mencionar el que seguramente sea el uso más común del tratamiento de imagen que es el diseño. Cualquier programa de uso común, como puede ser Photoshop, lo que tiene detrás de su interfaz son herramientas de tratamiento como filtros Gaussianos o filtros de detección de ejes.\\
+\item \textbf{Diseño y edición gráfica}: Seguramente el uso más común del tratamiento de imagen es el diseño. Cualquier programa de uso común, como puede ser Photoshop, lo que tiene detrás de su interfaz son herramientas de tratamiento como filtros Gaussianos o filtros de detección de ejes.\\
 
-\item \textbf{Teléfonos móviles}: En nuestra vida diaria también usamos herramientas de tratamiento de imagen a través del teléfono móvil, por ejemplo en el auto-enfoque de la cámara programado para detectar caras o en la lectura de códigos QR que cada vez se usa más, para validar unas entradas, como enlaces a cartas en restaurantes o en billetes de avión. Para los códigos QR la cámara del teléfono tiene que reconocer la imagen como un código QR, hacer varias transformaciones para colocarlo de forma digital y que se pueda analizar.\\
+\item \textbf{Teléfonos móviles}: En nuestra vida diaria también usamos herramientas de tratamiento de imagen a través del teléfono móvil, por ejemplo en el auto-enfoque de la cámara programado para detectar caras o en la lectura de códigos QR, que cada vez se usa más para validar unas entradas, como enlaces a cartas en restaurantes o en billetes de avión. Para los códigos QR la cámara del teléfono tiene que reconocer la imagen como un código QR, hacer varias transformaciones para colocarlo de forma digital y que se pueda analizar.\\
 
-Un ejemplo muy claro del uso de tratamiento de imagen es Captio una aplicación que usamos en el trabajo para subir las facturas del taxi. En esta aplicación subes una fotografía de una factura realizada con el teléfono y la aplicación extrae el texto de la factura, lo analiza y guarda la información con el objetivo de automatizar el sistema de gastos en nombre de la empresa. En la Figura \ref{taxi} se puede ver el tipo de información que extrae la aplicación de una factura de taxi.\\
+Un ejemplo muy claro del uso de tratamiento de imagen es Captio, una aplicación que usamos en el trabajo para subir las facturas del taxi. En esta aplicación subes una fotografía de una factura realizada con el teléfono y la aplicación extrae el texto de la factura, lo analiza y guarda la información con el objetivo de automatizar el sistema de gastos en nombre de la empresa. En la Figura \ref{taxi} se puede ver el tipo de información que extrae la aplicación de una factura de taxi.\\
 
 \begin{figure}[h]
 \centering
@@ -110,15 +116,11 @@ Esta no es la única aplicación que usa el tratamiento de imagen para leer text
 
 \section{Docencia de TDI}
 
-Debido al rápido avance de las tecnologías nos encontramos en un campo que requiere una formación constante para mantenerse al día, siempre hay una nueva versión de algo que conocías con la que familiarizarte, nuevos avances o inventos revolucionarios. De ahí que exista todo un mundo de cursos de pago, o cursos obligatorios ofrecidos por las empresas para informar a sus trabajadores de nuevos avances que se tienen que implementar para mantenerse a la vanguardia.\\
+Debido al rápido avance de las tecnologías nos encontramos en un campo que requiere una formación constante para mantenerse al día, siempre hay una nueva versión de algo que conocías con la que familiarizarte, nuevos avances o inventos revolucionarios. De ahí que exista todo un mundo de cursos de pago, o cursos ofrecidos por las empresas para informar a sus trabajadores de nuevos avances que se tienen que implementar para mantenerse a la vanguardia.\\
 
-Desde la invención de internet la gente lo ha usado para aprender sobre todo tipo de temas\cite{KUO201435}. En los últimos años el número de personas autodidactas ha ido creciendo gracias a esta nueva herramienta. Se usa para aprender sobre todo tipo de temas, desde manualidades hasta filología, pero debido a la complejidad de los temas técnicos como es el tratamiento de imagen puede resultar intimidante e inaccesible. Por eso es importante que se creen plataformas que faciliten el acceso a estos temas, usando un lenguaje técnico pero sencillo y con enlaces a más recursos que permitan el acceso a la información necesaria para aprender sobre un tema nuevo ya sea por necesidad o pura curiosidad.\\
+Desde la invención de internet la gente lo ha usado para aprender sobre todo tipo de temas\cite{KUO201435}. En los últimos años el número de personas autodidactas ha ido creciendo gracias a esta nueva herramienta global. Se usa para aprender sobre todo tipo de temas, desde manualidades hasta filología, pero debido a la complejidad de los temas técnicos como es el tratamiento de imagen puede resultar intimidante e inaccesible. Por eso es importante que se creen plataformas que faciliten el acceso a estos temas usando un lenguaje técnico pero sencillo y con enlaces a más recursos que permitan el acceso a la información necesaria para aprender sobre un tema nuevo, ya sea por necesidad o pura curiosidad.\\
 
-Con la llegada del Coronavirus las universidades y otras instituciones de enseñanza se han visto forzadas a adaptarse a la docencia a distancia con diferentes niveles de éxito. Se han tenido que crear nuevas herramientas docentes, formas de realizar exámenes e impartir clases que hasta hace poco ni se planteaban.\\
-
-Un ejemplo cercano a este proyecto de los cambios que se han tenido que realizar es la manera de gestionar las licencias de los programas necesarios para el desarrollo de algunas asignaturas, por ejemplo Matlab. Antes de la pandemia la licencia sólo se podía acceder con una IP del campus de la universidad pero para que los alumnos pudieran conectarse desde sus casas en el confinamiento se tuvo que modificar. También se han tenido que buscar alternativas a programas que requieren un hardware específico que no todos los alumnos pueden tener en casa o que sólo funcionan en un sistema operativo específico.\\
-
-En cuanto a formas de estudiar tratamiento de imagen en específico es una asignatura que se estudia en varias universidades, en diferentes carreras, normalmente relacionadas con imagen y video, ingeniería biomédica o robótica. También existe la posibilidad de acceder a cursos \emph{online} sobre este tema en sitios como Coursera que por ejemplo tiene un curso de procesamiento de imagen con Python o EDX que tiene algunos cursos de procesamiento de imagen orientado a diferentes campos como \emph{``Image Processing and Analysis for Life Scientists''}\footnote{\url{https://www.edx.org/course/image-processing-and-analysis-for-life-scientists?index=product&queryID=dbd34bf4ece2394643cfaff4d852d495&position=1}}. También existen videos en Youtube sobre este tema, con descripciones generales del campo, clases enteras dadas por expertos y subidas de forma gratuita, otro género común son los videos más específicos sobre aplicaciones concretas o programación (\ref{youtube}).\\
+En cuanto a formas de estudiar tratamiento de imagen en específico es una asignatura que se estudia en varias universidades, en diferentes carreras, normalmente relacionadas con imagen y video, ingeniería biomédica o robótica. También existe la posibilidad de acceder a cursos \emph{online} sobre este tema en sitios como Coursera que por ejemplo tiene un curso de procesamiento de imagen con Python o EDX que tiene algunos cursos de procesamiento de imagen orientado a diferentes campos como \emph{``Image Processing and Analysis for Life Scientists''}\footnote{\url{https://www.edx.org/course/image-processing-and-analysis-for-life-scientists?index=product&queryID=dbd34bf4ece2394643cfaff4d852d495&position=1}}. También existen videos en Youtube sobre este tema, con descripciones generales del campo, clases enteras dadas por expertos y subidas de forma gratuita, otro género común son los videos más específicos sobre aplicaciones concretas o programación (Figura \ref{youtube}).\\
 
 \begin{figure}[h]
 \centering
@@ -127,9 +129,25 @@ En cuanto a formas de estudiar tratamiento de imagen en específico es una asign
 \label{youtube}
 \end{figure}
 
-\section{TDI en la ETSIT-URJC}
+Con la llegada del Covid-19 las universidades y otras instituciones de enseñanza se han visto forzadas a adaptarse a la docencia a distancia con diferentes niveles de éxito. Se han tenido que crear nuevas herramientas docentes, formas de realizar exámenes e impartir clases que hasta hace poco ni se planteaban.\\
+
+Un ejemplo cercano a este proyecto de los cambios que se han tenido que realizar es la manera de gestionar las licencias de los programas necesarios para el desarrollo de algunas asignaturas, por ejemplo Matlab. Antes de la pandemia la licencia sólo se podía acceder con una IP del campus de la universidad pero para que los alumnos pudieran conectarse desde sus casas en el confinamiento se tuvo que modificar. También se han tenido que buscar alternativas a programas que requieren un hardware específico que no todos los alumnos pueden tener en casa o que sólo funcionan en un sistema operativo específico.\\
+
+\section{Asignatura de TDI en la ETSIT-URJC}
 
 Para terminar esta introducción quería hacer una breve explicación de por qué me fascinó este tema cuando se dio en la asignatura de Tratamiento Digital de la Imagen. Esta asignatura te permite entender los conceptos detrás de cosas que usamos y de las que se hablan muy a menudo.\\
 
-Todos usamos imágenes digitales constantemente, sin entender del todo lo que hay detrás. Cuando usas Photoshop y te da la opción de usar un filtro Gaussiano, sabe que va a hacer la imagen más borrosa pero no entiendes lo que hay detrás. O en OpenCV, la biblioteca de visión de Python, existen funciones que aíslan objetos por colores directamente, pero lo que hay detrás es un misterio. Por eso me fascinó esta asignatura, muchas veces tratamos elementos tecnológicos como cajas negras a las que le metes algo y te dan un resultado sin entender muy bien lo que hace, esta asignatura me permitió entender lo que hay detrás de los efectos que se usan en la televisión o cuando en las noticias hablan de reconocimiento facial con cámaras en qué consiste. Y es un conocimiento al que me gustaría que tuviera acceso más gente aunque solo sea para entender un poco mejor cómo funciona el mundo altamente visual en el que vivimos ahora mismo.
+Todos usamos imágenes digitales constantemente, sin entender del todo lo que hay detrás. Cuando usas Photoshop y te da la opción de usar un filtro Gaussiano, sabes que va a hacer la imagen más borrosa pero no entiendes lo que hay detrás. O en OpenCV, la biblioteca estandard de referencia en visión, existen funciones que aíslan objetos por colores directamente, pero lo que hay detrás es un misterio. Por eso me fascinó esta asignatura, muchas veces tratamos elementos tecnológicos como cajas negras a las que le metes algo y te dan un resultado sin entender muy bien lo que hace. Esta asignatura me permitió entender lo que hay detrás de los efectos que se usan en la televisión o cuando en las noticias hablan de reconocimiento facial con cámaras en qué consiste. Y es un conocimiento al que me gustaría que tuviera acceso más gente aunque sólo sea para entender un poco mejor cómo funciona el mundo altamente visual en el que vivimos ahora mismo.\\
+
+La asignatura tiene una parte teórica y otra práctica. El temario trata tanto imágenes como video. El primer tema es una introducción al tratamiento de imágen, se estudian los modelos de color, cómo funciona la visión humana, algo de terminología de la asigantura (como la diferencia entre tratamiento y procesado) y la digitalización de imágenes. También se tratan algunas transformaciones que se pueden realizar sobre la imagen, entre ellas los filtros en el espacio.\\
+
+El siguiente tema trata el filtrado de imágenes en el dominio de la frecuencia. Se explica en qué consiste una transformada de Fourier discreta y sus características. Este tema se centra en que el alumno entienda como interpretar una imagen vista en frecuencia y para qué se puede usar esta representación.\\
+
+El tercer tema trata la segmentación de imágenes y diferentes métodos para realizarla. Segmentar consiste en dividir una imagen en regiones u objetos. Unos de los métodos que se trata en este tema para segmentar son las técnicas de aprendizaje máquina como K-medias.\\
+
+A continuación se estudia morfología matemática aplicada al tratamiento de imagen. Así finaliza lo relativo al tema de imagen.\\
+
+El último tema de la asignatura trata el procesamiento de video. Se explican conceptos básicos como el muestreo de video. También se explica el funcionamiento de los algoritmos para la detección y estimación de movimiento y algunos filtros que en su funcionamiento usan varios fotogramas para mejorar sus resultados.\\
+
+Estos temas van acompañados de una o más prácticas relacionadas que se realizan en Matlab, en horario de clase. Las prácticas buscan demostrar de una forma más visual lo dado en teoría de forma que el alumno pueda entender mejor algunos de los conceptos más complejos de la asignatura.\\
 

@@ -7,6 +7,8 @@
 \usepackage{biblatex}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage{url}
+
 
 \bibliography{biblio}
 
@@ -41,6 +43,10 @@
 \include{Conclusiones}
 
 \nocite{*}
-\printbibliography
 
+\begingroup
+\raggedright
+\sloppy
+\printbibliography
+\endgroup
 \end{document}
